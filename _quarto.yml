@@ -6,7 +6,7 @@ website:
   title: "today"
   navbar:
     left:
-      - href: index.qmd
+      - href: index.ipynb
         text: Home
       - about.qmd
 
