@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/about.html</loc>
+    <lastmod>2022-11-01T04:01:53.885Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/hello.html</loc>
+    <lastmod>2022-11-01T04:01:54.381Z</lastmod>
+  </url>
+  <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/index.html</loc>
-    <lastmod>2022-10-31T07:24:09.381Z</lastmod>
+    <lastmod>2022-11-01T04:01:54.838Z</lastmod>
   </url>
 </urlset>
