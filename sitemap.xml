@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/189HW4Code.html</loc>
+    <lastmod>2022-11-01T05:27:39.125Z</lastmod>
+  </url>
+  <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/about.html</loc>
-    <lastmod>2022-11-01T04:21:30.294Z</lastmod>
+    <lastmod>2022-11-01T05:27:39.947Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/hello.html</loc>
-    <lastmod>2022-11-01T04:21:30.747Z</lastmod>
+    <lastmod>2022-11-01T05:27:40.743Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/index.html</loc>
-    <lastmod>2022-11-01T04:21:31.162Z</lastmod>
+    <lastmod>2022-11-01T05:27:41.543Z</lastmod>
   </url>
 </urlset>
