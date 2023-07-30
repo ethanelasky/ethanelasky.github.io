@@ -4,5 +4,14 @@
   },
   "mysite/index.qmd": {
     "index.html": "686514d2"
+  },
+  "index.qmd": {
+    "index.html": "999a0cfa"
+  },
+  "index.ipynb": {
+    "index.html": "a3547feb"
+  },
+  "about.qmd": {
+    "about.html": "c6e72b83"
   }
 }

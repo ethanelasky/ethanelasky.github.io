@@ -3,15 +3,23 @@ project:
   output-dir: docs
 
 website:
-  title: "today"
+  title: "Ethan Elasky"
+  favicon: favicon.ico
   navbar:
     left:
-      - href: index.ipynb
-        text: Home
-      - about.qmd
+      - href: index.qmd
+        text: Blog
+      - href: about.qmd
+        text: About
+      - icon: github
+        href: https://github.com/ethanelasky
+      - icon: twitter
+        href: https://twitter.com/elaskyethan
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - styles.scss
+      - flatly
     toc: true
+    mainfont: "IM Fell English"

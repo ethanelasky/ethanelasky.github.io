@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ethan Elasky’s Blog",
+    "section": "",
+    "text": "No matching items"
+  },
+  {
+    "objectID": "index.html#about-this-website",
+    "href": "index.html#about-this-website",
+    "title": "Ethan Elasky",
+    "section": "",
+    "text": "Hi, I’m Ethan! I’m a senior at the University of California, Berkeley, and a Data Science major.\nI’m also a member of Angus Hildreth’s Social Psychology and Business Lab at the Haas School of Business."
+  },
+  {
+    "objectID": "index.html#polar-axis",
+    "href": "index.html#polar-axis",
+    "title": "Quarto Basics",
+    "section": "",
+    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Ethan Elasky",
+    "section": "",
+    "text": "I’m a senior studying Data Science at the University of California, Berkeley.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nHaving studied abroad in Taiwan during Spring 2023 and grown up in America, I understand English and Mandarin.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally."
+  },
+  {
+    "objectID": "about.html#about-this-website",
+    "href": "about.html#about-this-website",
+    "title": "Ethan Elasky",
+    "section": "",
+    "text": "I’m a senior studying Data Science at the University of California, Berkeley.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nHaving studied abroad in Taiwan during Spring 2023 and grown up in America, I understand English and Mandarin.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally."
+  }
+]
