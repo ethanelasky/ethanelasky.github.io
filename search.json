@@ -18,7 +18,7 @@
     "href": "posts/flights-nontechnical.html",
     "title": "Everything to Know About Flight Delays (no code)",
     "section": "",
-    "text": "This article analyzes post-Covid flight information to February 2023 (the latest available as of today) without delving too far into how I processed flight data. I’m interested in understanding flight delays."
+    "text": "This article analyzes post-Covid flight information up to February 2023 (the latest available as of today) without delving too far into how I processed flight data. I’m interested in understanding flight delays."
   },
   {
     "objectID": "posts/flights-nontechnical.html#downloading-the-data",
