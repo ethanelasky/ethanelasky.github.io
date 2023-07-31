@@ -16,5 +16,11 @@
   },
   "posts/Flights.ipynb": {
     "Flights.html": "db8abb17"
+  },
+  "posts/flights-nontechnical.qmd": {
+    "flights-nontechnical.html": "bcb56e3e"
+  },
+  "posts/Flights-technical.ipynb": {
+    "Flights-technical.html": "b2ddafca"
   }
 }

@@ -1,0 +1,54 @@
+---
+date: 7/30/2023
+author: "Ethan Elasky"
+title: "Everything to Know About Flight Delays (no code)"
+
+---
+
+This article analyzes post-Covid flight information up to August 2022 (the latest available as of today) without delving too far into how I processed flight data. Of great interest are flight delays.
+
+## Downloading the data
+
+To investigate flights in the United States, there is no greater resource than the US Department of Transportation's [Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&QO_fu146_anzr=b0-gvzr). They have a handy website that we can download the data from. The data is available by month, meaning that we must obtain data for each month of all years we are interested in.
+
+I automated downloading the data using the programming language Python to request the data in batches directly from the government server. Then, I compiled the data into a spreadsheet with the Python extension pandas and did some processing to make later operations easier.
+
+## Plot of flight delays vs departure time
+
+Let's take a precursory view of flight delays in the aggregate and see how they correlate with departure time.
+
+![Figure 1](cell-9-output-2.png "Figure 1") 
+
+We see that delays are densest between 10am and 8pm. Also, most common delay is less than 10 minutes. Next, we'll look at significant delays, which I will define to be greater than or equal to 30 minutes in length.
+
+## Plot of  significant and nonsignificant delays vs departure 
+
+![Figure 2](cell-11-output-2.png "Figure 2") 
+
+From the chart, we see that both slight and significant delays increase as the day goes on, although significant delays have a more consistent increase between 6am and 6pm, while slight delays seem to plateau around 10am. 
+
+## Delays by airline
+
+Now, let's look at delays by airline. We merge wholly-owned subsidiaries with their parent company (a complete list of wholly-owned subsidiary airlines in North America can be found on [Wikipedia](https://en.wikipedia.org/wiki/Regional_airline)), as people do not often see their brand nor purchase from them. Some airlines, such as Republic Airline, are regional airlines that fly under multiple airline names; our data does not represent whose banner they fly under for a given flight, making it impossible for us to merge their flights with their contracted carrier.
+
+![Figure 3](cell-13-output-1.png "Figure 3") 
+
+As a proportion of total flights, the chance of significant delay is lowest in the early hours of the morning, regardless of airline. From there, the chance of delay steadily increases and peaks in the evening. Then there is a dip around midnight, with delays skyrocketing in the wee hours of the morning. 
+
+The budget airlines (Frontier, Spirit, Southwest, and JetBlue) all have higher rates of delay throughout the day according to this dataset, with the exception of Southwest, which has a delay rate comparable with the non-budget airlines in the morning. However, by 12pm, Southwest's significant delay rate grows past that of the non-budget airlines and joins its budget peers by 4 or 5 pm.
+
+By the numbers:
+
+![Table 1](cell-18-output-1.png "Table 1") 
+
+## Applications: LAX and BUR, and SFO and OAK
+
+I want to talk about why I felt inspired to examine flights in the first place. As a college student, I often take Southwest to and from school due to its cheap fares and customer service.
+
+Southern California common wisdom dictates that one should fly out of Burbank (BUR) whenever possible to avoid Los Angeles (LAX) delays. Coming to the Bay Area for college, I expected Oakland (OAK) and San Francisco (SFO) to share a similar dynamic. However, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO is better than OAK and BUR is better than LAX.
+
+I follow a similar approach as before but select only flight records that contain our desired airports. 
+
+![Figure 4](cell-15-output-1.png "Figure 4") 
+
+We see that BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same.

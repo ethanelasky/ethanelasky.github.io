@@ -2,8 +2,9 @@
 title: "Ethan Elasky's Blog"
 subtitle: "Thoughts about data science, Lincoln-Douglas debate, and more."
 listing:
-  contents: posts
   sort: "date desc"
   type: default
-  categories: true
+  categories: false
+max-description-length: 200
+
 ---

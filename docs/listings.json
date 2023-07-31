@@ -2,7 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/Flights.html"
+      "/about.html",
+      "/posts/Flights-technical.html",
+      "/posts/flights-nontechnical.html"
     ]
   }
 ]
