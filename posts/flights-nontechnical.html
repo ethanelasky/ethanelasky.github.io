@@ -8,6 +8,7 @@
 
 <meta name="author" content="Ethan Elasky">
 <meta name="dcterms.date" content="2023-07-30">
+<meta name="description" content="Analyzing post-Covid airline records">
 
 <title>Ethan Elasky - Everything to Know About Flight Delays (no code)</title>
 <style>
@@ -133,6 +134,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">Everything to Know About Flight Delays (no code)</h1>
 </div>
 
+<div>
+  <div class="description">
+    Analyzing post-Covid airline records
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -196,12 +202,158 @@ ul.task-list li input[type="checkbox"] {
 <p>Regardless of airline, the chance of significant delay is lowest in the early hours of the morning, regardless of airline. From there, the probability of delay steadily increases and peaks in the evening. Then there is a dip around midnight, with delays skyrocketing in the wee hours of the morning. Many of these flights are red-eyes from Alaska and Puerto Rico that occur <a href="https://www.adn.com/alaska-life/travel/2018/04/14/got-a-red-eye-flight-coming-up-heres-how-to-make-it-a-little-more-bearable/">at the end of an airline’s work day</a>. Flying at the end of the work day increases the chance of delay since planes fly multiple flights in a day, and any delay in an earlier flight can mess up the traffic control schedule for all later flights. Additionally, if delayed for too long, crew duty hours can also exceed the limit. This happened in <a href="https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis">Southwest’s meltdown</a> last year, where Southwest had insufficient replacement crews and misallocation of planes, leading to mass flight cancellations.</p>
 <p>The budget airlines (Frontier, Spirit, Southwest, and JetBlue) all have higher rates of delay throughout the day according to this dataset, with the exception of Southwest, which has a delay rate comparable with the non-budget airlines in the morning. However, by 12pm, Southwest’s significant delay rate grows past that of the non-budget airlines and joins its budget peers by 4 or 5 pm.</p>
 <p>By the numbers:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="cell-18-output-1.png" title="Table 1" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Table 1</figcaption>
-</figure>
-</div>
+
+<table class="dataframe table table-sm table-striped small">
+<thead>
+<tr>
+<th>
+Airline
+</th>
+<th>
+% Flights Significantly Delayed
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+JetBlue Airways
+</th>
+<td>
+22.078514
+</td>
+</tr>
+<tr>
+<th>
+Frontier Airlines Inc.
+</th>
+<td>
+21.896298
+</td>
+</tr>
+<tr>
+<th>
+Allegiant Air
+</th>
+<td>
+18.991785
+</td>
+</tr>
+<tr>
+<th>
+Spirit Air Lines
+</th>
+<td>
+16.958591
+</td>
+</tr>
+<tr>
+<th>
+Southwest Airlines Co.
+</th>
+<td>
+15.292280
+</td>
+</tr>
+<tr>
+<th>
+American Airlines Inc.
+</th>
+<td>
+14.529106
+</td>
+</tr>
+<tr>
+<th>
+Mesa Airlines Inc.
+</th>
+<td>
+13.838768
+</td>
+</tr>
+<tr>
+<th>
+United Air Lines Inc.
+</th>
+<td>
+12.994220
+</td>
+</tr>
+<tr>
+<th>
+Hawaiian Airlines Inc.
+</th>
+<td>
+11.101448
+</td>
+</tr>
+<tr>
+<th>
+PSA Airlines Inc.
+</th>
+<td>
+11.007379
+</td>
+</tr>
+<tr>
+<th>
+Delta Air Lines Inc.
+</th>
+<td>
+10.671968
+</td>
+</tr>
+<tr>
+<th>
+SkyWest Airlines Inc.
+</th>
+<td>
+10.629637
+</td>
+</tr>
+<tr>
+<th>
+Alaska Airlines Inc.
+</th>
+<td>
+10.458504
+</td>
+</tr>
+<tr>
+<th>
+Republic Airline
+</th>
+<td>
+10.361243
+</td>
+</tr>
+<tr>
+<th>
+Endeavor Air Inc.
+</th>
+<td>
+9.843149
+</td>
+</tr>
+<tr>
+<th>
+Envoy Air
+</th>
+<td>
+9.762695
+</td>
+</tr>
+<tr>
+<th>
+Horizon Air
+</th>
+<td>
+8.873647
+</td>
+</tr>
+</tbody>
+
+</table>
 </section>
 <section id="applications-lax-and-bur-and-sfo-and-oak" class="level2">
 <h2 class="anchored" data-anchor-id="applications-lax-and-bur-and-sfo-and-oak">Applications: LAX and BUR, and SFO and OAK</h2>

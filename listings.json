@@ -3,8 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/flights-nontechnical.html",
-      "/posts/Flights-technical.html",
-      "/about.html"
+      "/posts/Flights-technical.html"
     ]
   }
 ]
