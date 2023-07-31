@@ -5,7 +5,7 @@ title: "Everything to Know About Flight Delays (no code)"
 
 ---
 
-This article analyzes post-Covid flight information up to August 2022 (the latest available as of today) without delving too far into how I processed flight data. Of great interest are flight delays.
+This article analyzes post-Covid flight information up to Feburary 2023 (the latest available as of today) without delving too far into how I processed flight data. Of great interest are flight delays.
 
 ## Downloading the data
 
