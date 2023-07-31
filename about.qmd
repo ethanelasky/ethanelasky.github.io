@@ -1,7 +1,6 @@
 ---
 title: "Ethan Elasky"
 
-date: 7/29/2023
 about: 
   template: trestles # see other templates at https://quarto.org/docs/websites/website-about.html#templates
   image: headshot.jpg

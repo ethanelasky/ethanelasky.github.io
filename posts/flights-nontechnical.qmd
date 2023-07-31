@@ -2,7 +2,8 @@
 date: 7/30/2023
 author: "Ethan Elasky"
 title: "Everything to Know About Flight Delays (no code)"
-
+description: "Analyzing post-Covid airline records"
+image: "cell-11-output-2.png"
 ---
 
 This article analyzes post-Covid flight information up to February 2023 (the latest available as of today) without delving too far into how I processed flight data. I'm interested in understanding flight delays.
@@ -39,7 +40,85 @@ The budget airlines (Frontier, Spirit, Southwest, and JetBlue) all have higher r
 
 By the numbers:
 
-![Table 1](cell-18-output-1.png "Table 1")
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Airline</th>
+      <th>% Flights Significantly Delayed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>JetBlue Airways</th>
+      <td>22.078514</td>
+    </tr>
+    <tr>
+      <th>Frontier Airlines Inc.</th>
+      <td>21.896298</td>
+    </tr>
+    <tr>
+      <th>Allegiant Air</th>
+      <td>18.991785</td>
+    </tr>
+    <tr>
+      <th>Spirit Air Lines</th>
+      <td>16.958591</td>
+    </tr>
+    <tr>
+      <th>Southwest Airlines Co.</th>
+      <td>15.292280</td>
+    </tr>
+    <tr>
+      <th>American Airlines Inc.</th>
+      <td>14.529106</td>
+    </tr>
+    <tr>
+      <th>Mesa Airlines Inc.</th>
+      <td>13.838768</td>
+    </tr>
+    <tr>
+      <th>United Air Lines Inc.</th>
+      <td>12.994220</td>
+    </tr>
+    <tr>
+      <th>Hawaiian Airlines Inc.</th>
+      <td>11.101448</td>
+    </tr>
+    <tr>
+      <th>PSA Airlines Inc.</th>
+      <td>11.007379</td>
+    </tr>
+    <tr>
+      <th>Delta Air Lines Inc.</th>
+      <td>10.671968</td>
+    </tr>
+    <tr>
+      <th>SkyWest Airlines Inc.</th>
+      <td>10.629637</td>
+    </tr>
+    <tr>
+      <th>Alaska Airlines Inc.</th>
+      <td>10.458504</td>
+    </tr>
+    <tr>
+      <th>Republic Airline</th>
+      <td>10.361243</td>
+    </tr>
+    <tr>
+      <th>Endeavor Air Inc.</th>
+      <td>9.843149</td>
+    </tr>
+    <tr>
+      <th>Envoy Air</th>
+      <td>9.762695</td>
+    </tr>
+    <tr>
+      <th>Horizon Air</th>
+      <td>8.873647</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## Applications: LAX and BUR, and SFO and OAK
 

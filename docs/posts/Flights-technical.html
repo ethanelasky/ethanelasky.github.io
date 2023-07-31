@@ -8,6 +8,7 @@
 
 <meta name="author" content="Ethan Elasky">
 <meta name="dcterms.date" content="2023-07-30">
+<meta name="description" content="Analyzing post-Covid airline records with Python">
 
 <title>Ethan Elasky - Everything to Know About Flight Delays</title>
 <style>
@@ -154,12 +155,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#downloading-the-data" id="toc-downloading-the-data" class="nav-link active" data-scroll-target="#downloading-the-data">Downloading the data</a></li>
+  <li><a href="#everything-to-know-about-flight-delays" id="toc-everything-to-know-about-flight-delays" class="nav-link active" data-scroll-target="#everything-to-know-about-flight-delays">Everything to Know About Flight Delays</a>
+  <ul class="collapse">
+  <li><a href="#downloading-the-data" id="toc-downloading-the-data" class="nav-link" data-scroll-target="#downloading-the-data">Downloading the data</a></li>
   <li><a href="#reading-in-and-cleaning-data" id="toc-reading-in-and-cleaning-data" class="nav-link" data-scroll-target="#reading-in-and-cleaning-data">Reading in and cleaning data</a></li>
-  <li><a href="#plot-of-flight-delays-vs-departure-time" id="toc-plot-of-flight-delays-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-flight-delays-vs-departure-time">Plot of flight delays vs departure time</a></li>
-  <li><a href="#plot-of-delayed-and-nondelayed-flights-vs-departure-time" id="toc-plot-of-delayed-and-nondelayed-flights-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-delayed-and-nondelayed-flights-vs-departure-time">Plot of delayed and nondelayed flights vs departure time</a></li>
+  <li><a href="#plot-of-flight-delays-vs.-departure-time" id="toc-plot-of-flight-delays-vs.-departure-time" class="nav-link" data-scroll-target="#plot-of-flight-delays-vs.-departure-time">Plot of flight delays vs.&nbsp;departure time</a></li>
+  <li><a href="#plot-of-significant-and-nonsignificant-delays-vs.-departure" id="toc-plot-of-significant-and-nonsignificant-delays-vs.-departure" class="nav-link" data-scroll-target="#plot-of-significant-and-nonsignificant-delays-vs.-departure">Plot of significant and nonsignificant delays vs.&nbsp;departure</a></li>
   <li><a href="#delays-by-airline" id="toc-delays-by-airline" class="nav-link" data-scroll-target="#delays-by-airline">Delays by airline</a></li>
   <li><a href="#applications-lax-and-bur-and-sfo-and-oak" id="toc-applications-lax-and-bur-and-sfo-and-oak" class="nav-link" data-scroll-target="#applications-lax-and-bur-and-sfo-and-oak">Applications: LAX and BUR, and SFO and OAK</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -168,9 +172,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Everything to Know About Flight Delays</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title">Everything to Know About Flight Delays</h1>
 </div>
 
+<div>
+  <div class="description">
+    Analyzing post-Covid airline records with Python
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -195,13 +204,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="everything-to-know-about-flight-delays" class="level1">
+<h1>Everything to Know About Flight Delays</h1>
 <p>This is the technical version of an article that analyzes flight information from January 2022 to February 2023 (the latest available as of today). Of great interest are flight delays.</p>
-<section id="downloading-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-the-data">Downloading the data</h2>
-<p>To investigate flights in the United States, there is no greater resource than the US Department of Transportation’s <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr">Bureau of Transportation Statistics</a>. They have a handy HTML page that we can download the data from. The data is available by month, meaning that we must obtain data for each month of all years we are interested in.</p>
-<p>We can automate this download with the requests library of Python, setting START_YEAR to the beginning year of the period of interest and END_YEAR to the end year (exclusive).</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -215,21 +222,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<section id="downloading-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-the-data">Downloading the data</h2>
+<p>The best resource to investigate the regularity of flights within the US is the <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr">Bureau of Transportation Statistics</a>. They have a website that hosts the data, which is publicly available. The data is available by month, meaning that I had to manually request data for the 14 months I was interested in.</p>
+<p>We can automate this download with the requests library of Python, setting START_YEAR to the beginning year of the period of interest and END_YEAR to the end year (exclusive).</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>START_YEAR <span class="op">=</span> <span class="dv">2022</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>END_YEAR <span class="op">=</span> <span class="dv">2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>os.mkdir(<span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(START_YEAR, END_YEAR):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">13</span>):</span>
@@ -244,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>At this point, we have a bunch of <code>zip</code> files, one for each month of flights. We’ll unzip them one-by-one.</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Construct an array to hold our zip filepaths</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>zips <span class="op">=</span> []</span>
@@ -271,7 +282,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Now, we read the data in and clean it. We start out by reading in an arbitrary month to get a DataFrame with the correct columns, then loop through each month’s flight records (stored in a <code>csv</code>). We add each month’s flight records to our <code>flights</code> DataFrame; at this point, we are done loading data for this project.</p>
 <p>Cleaning the DataFrames involves several steps. To start, we read in <a href="https://www.bts.gov/topics/airlines-and-airports/airline-codes">this</a> HTML table from the Bureau of Transportation Statistics as a DataFrame. This table matches airlines with abbreviations. To aid legibility, we replace the abbreviations contained in our <code>flights</code> DataFrame with the airlines’ full names.</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -299,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We now make a copy of <code>flights</code> called <code>delays</code>. We can now safely transform our data and keep the original flights available for later analysis. We’ll also regularize our time (converting the HHMM format to HH.MM, where MM is out of 100 instead of 60).</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Makes a deep copy of flights called delays for transformation in this section. Filter out on-time flights.</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepTime'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">%</span> <span class="dv">100</span> <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">3</span> <span class="op">*</span> <span class="fl">.01</span> <span class="op">+</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">100</span></span>
@@ -308,11 +319,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="plot-of-flight-delays-vs-departure-time" class="level2">
-<h2 class="anchored" data-anchor-id="plot-of-flight-delays-vs-departure-time">Plot of flight delays vs departure time</h2>
+<section id="plot-of-flight-delays-vs.-departure-time" class="level2">
+<h2 class="anchored" data-anchor-id="plot-of-flight-delays-vs.-departure-time">Plot of flight delays vs.&nbsp;departure time</h2>
 <p>Let’s take a precursory view of flight delays in the aggregate and see how they correlate with departure time.</p>
 <div class="cell" data-outputid="97e075dc-97eb-4af6-d431-38aea01760e0">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -343,15 +354,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   Text(20, 0, '8pm')])</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Flights-technical_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+<p><img src="flights-technical_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<p>We see that delays are densest between 10am and 8pm. Also, the most common delay is less than 10 minutes. Next, we’ll look at significant delays, which I will define to be greater than or equal to 30 minutes in length.</p>
+<p>We see that delays overall are densest between 2pm and 6pm, but the most common delay is less than 10 minutes and occurs between 10am and 12pm. Given that the most common delay is minimal, I wanted to take a better look. We’ll look at significant delays, which I will define to be greater than or equal to 30 minutes in length.</p>
 </section>
-<section id="plot-of-delayed-and-nondelayed-flights-vs-departure-time" class="level2">
-<h2 class="anchored" data-anchor-id="plot-of-delayed-and-nondelayed-flights-vs-departure-time">Plot of delayed and nondelayed flights vs departure time</h2>
+<section id="plot-of-significant-and-nonsignificant-delays-vs.-departure" class="level2">
+<h2 class="anchored" data-anchor-id="plot-of-significant-and-nonsignificant-delays-vs.-departure">Plot of significant and nonsignificant delays vs.&nbsp;departure</h2>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delay_significance(x):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Categorizes delays into one of three categories."""</span></span>
@@ -366,9 +377,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'Delay Status'</span>] <span class="op">=</span> flights[<span class="st">'DepDelayMinutes'</span>].<span class="bu">apply</span>(delay_significance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Let’s define a significant delay as a delay of over thirty minutes. We can plot significant and nonsignificant delays against on-time flights.</p>
 <div class="cell" data-outputid="bccbc67a-09e4-406d-f10a-482fe7268867">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(flights, x<span class="op">=</span><span class="st">'CRSDepTime'</span>, kde<span class="op">=</span><span class="va">True</span>, hue<span class="op">=</span><span class="st">'Delay Status'</span>,</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             binwidth<span class="op">=</span><span class="dv">1</span>, kde_kws<span class="op">=</span>{<span class="st">'bw_adjust'</span>: <span class="dv">3</span>}).<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Departure time'</span>, title<span class="op">=</span><span class="st">'Flights from '</span></span>
@@ -392,16 +402,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   Text(20, 0, '8pm')])</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="Flights-technical_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+<p><img src="flights-technical_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<p>From the chart, we see that both slight and significant delays increase as the day goes on, although significant delays have a more consistent increase between 6am and 6pm, while slight delays seem to plateau around 10am.</p>
+<p>From the chart, we see that both slight and significant delays increase as the day goes on. Significant delays start low at 6am and steadily increase, peaking at 6pm, while slight delays seem to plateau around 10am.</p>
 </section>
 <section id="delays-by-airline" class="level2">
 <h2 class="anchored" data-anchor-id="delays-by-airline">Delays by airline</h2>
 <p>Now, let’s look at delays by airline. We merge wholly-owned subsidiaries with their parent company (a complete list of wholly-owned subsidiary airlines in North America can be found on <a href="https://en.wikipedia.org/wiki/Regional_airline">Wikipedia</a>), as people do not often see their brand nor purchase from them. Some airlines, such as Republic Airline, are regional airlines that fly under multiple airline names; our data does not represent whose banner they fly under for a given flight, making it impossible for us to merge their flights with their contracted carrier.</p>
 <div class="cell">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adds new departure hour columns to flights and delays for easier charting</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepHour'</span>], delays[<span class="st">'CRSDepHour'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span>,  delays[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span></span>
@@ -433,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <div class="cell" data-outputid="0d9553ff-ff74-4419-a478-f1548a0fe464">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructs a bar plot of flight delay percentage according to time</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.lineplot(data<span class="op">=</span>proportions, palette<span class="op">=</span><span class="st">"tab10"</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>)</span>
@@ -445,14 +455,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="Flights-technical_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<p><img src="flights-technical_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>As a proportion of total flights, the chance of significant delay is lowest in the early hours of the morning, regardless of airline. From there, the chance of delay steadily increases and peaks in the evening. Then there is a dip around midnight, with delays skyrocketing in the wee hours of the morning.</p>
+<p>Regardless of airline, the chance of significant delay is lowest in the early hours of the morning, regardless of airline. From there, the probability of delay steadily increases and peaks in the evening. Then there is a dip around midnight, with delays skyrocketing in the wee hours of the morning. Many of these flights are budget airline red-eyes from Alaska and Puerto Rico that occur <a href="https://www.adn.com/alaska-life/travel/2018/04/14/got-a-red-eye-flight-coming-up-heres-how-to-make-it-a-little-more-bearable/">at the end of an airline’s work day</a>, which can be later than 2am in those areas. Flying at the end of the work day increases the chance of delay since planes fly multiple flights in a day, and any delay in an earlier flight can mess up the traffic control schedule for all later flights. Additionally, if delayed for too long, crew duty hours can also exceed the limit. This happened in <a href="https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis">Southwest’s meltdow</a> last year, where Southwest had insufficient replacement crews and misallocation of planes, leading to mass flight cancellations.</p>
 <p>The budget airlines (Frontier, Spirit, Southwest, and JetBlue) all have higher rates of delay throughout the day according to this dataset, with the exception of Southwest, which has a delay rate comparable with the non-budget airlines in the morning. However, by 12pm, Southwest’s significant delay rate grows past that of the non-budget airlines and joins its budget peers by 4 or 5 pm.</p>
 <p>By the numbers:</p>
 <div class="cell" data-outputid="0e67af65-59ed-41b7-9b1e-eac6afd6d332">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(delays.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">/</span> flights.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">*</span> <span class="dv">100</span>).sort_values(<span class="st">'CRSDepTime'</span>, ascending<span class="op">=</span><span class="va">False</span>).rename({<span class="st">'CRSDepTime'</span>:<span class="st">'</span><span class="sc">% F</span><span class="st">lights Significantly Delayed'</span>}, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -690,11 +700,11 @@ function displayQuickchartButton(domScope) {
 </section>
 <section id="applications-lax-and-bur-and-sfo-and-oak" class="level2">
 <h2 class="anchored" data-anchor-id="applications-lax-and-bur-and-sfo-and-oak">Applications: LAX and BUR, and SFO and OAK</h2>
-<p>I want to talk about why I felt inspired to examine flights in the first place. As a college student, I often take Southwest to-and-from school due to its cheap fares and customer service.</p>
-<p>Southern California common wisdom dictates that one should fly out of Burbank Airport whenever possible to avoid LAX delays. Coming to the Bay Area for college, I expected Oakland and San Francisco to share a similar large/small airport dynamic. However, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO&gt;OAK and BUR&gt;LAX.</p>
-<p>I follow a similar approach as before but select only flight records that contain our desired origin airports.</p>
+<p>Since starting college, I’ve traveled quite regularly on planes between my hometown in Southern California and my university in the San Francisco Bay Area. I was drawn to this topic to get a better sense of which airline and airport combination offered me the fewest overall delays. As a college student with a constrained budget, I often take Southwest to and from school due to its cheap fares and customer service..</p>
+<p>Southern California common wisdom dictates that one should fly out of Burbank (BUR) whenever possible to avoid the hassle of traveling to and out of Los Angeles (LAX).. Coming to the Bay Area for college, I expected Oakland (OAK) and San Francisco (SFO) to share a similar dynamic. add another sentence here for a better flowHowever, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO is better than OAK and BUR is better than LAX.</p>
+<p>I follow a similar approach as before but select only flight records that contain our desired airports.</p>
 <div class="cell" data-outputid="8e53c36f-f932-4c02-9697-2e716111a350">
-<details open="">
+<details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_airports(airlines, airports, delays, flights):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Returns a DataFrame with delay rates by airport and airline. Indices follow the format 'airline airport.'</span></span>
@@ -716,12 +726,13 @@ function displayQuickchartButton(domScope) {
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="Flights-technical_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<p><img src="flights-technical_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>In fact, BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same.</p>
+<p>We see that BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same. Maybe my friends’ preference for SFO compared to OAK stems from something else, but clearly delays don’t play a major role in that decision.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -804,57 +815,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  const viewSource = window.document.getElementById('quarto-view-source') ||
-                     window.document.getElementById('quarto-code-tools-source');
-  if (viewSource) {
-    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
-    viewSource.addEventListener("click", function(e) {
-      if (sourceUrl) {
-        // rstudio viewer pane
-        if (/\bcapabilities=\b/.test(window.location)) {
-          window.open(sourceUrl);
-        } else {
-          window.location.href = sourceUrl;
-        }
-      } else {
-        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
-        modal.show();
-      }
-      return false;
-    });
-  }
-  function toggleCodeHandler(show) {
-    return function(e) {
-      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
-      for (let i=0; i<detailsSrc.length; i++) {
-        const details = detailsSrc[i].parentElement;
-        if (show) {
-          details.open = true;
-        } else {
-          details.removeAttribute("open");
-        }
-      }
-      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
-      const fromCls = show ? "hidden" : "unhidden";
-      const toCls = show ? "unhidden" : "hidden";
-      for (let i=0; i<cellCodeDivs.length; i++) {
-        const codeDiv = cellCodeDivs[i];
-        if (codeDiv.classList.contains(fromCls)) {
-          codeDiv.classList.remove(fromCls);
-          codeDiv.classList.add(toCls);
-        } 
-      }
-      return false;
-    }
-  }
-  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
-  if (hideAllCode) {
-    hideAllCode.addEventListener("click", toggleCodeHandler(false));
-  }
-  const showAllCode = window.document.getElementById("quarto-show-all-code");
-  if (showAllCode) {
-    showAllCode.addEventListener("click", toggleCodeHandler(true));
-  }
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
