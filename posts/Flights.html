@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Ethan Elasky - Everything to Know About Flight Delays</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ethan Elasky</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ethanelasky" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/elaskyethan" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#downloading-the-data" id="toc-downloading-the-data" class="nav-link active" data-scroll-target="#downloading-the-data">Downloading the data</a></li>
+  <li><a href="#reading-in-and-cleaning-data" id="toc-reading-in-and-cleaning-data" class="nav-link" data-scroll-target="#reading-in-and-cleaning-data">Reading in and cleaning data</a></li>
+  <li><a href="#plot-of-flight-delays-vs-departure-time" id="toc-plot-of-flight-delays-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-flight-delays-vs-departure-time">Plot of flight delays vs departure time</a></li>
+  <li><a href="#plot-of-delays-greater-than-30-minutes-vs-departure-time" id="toc-plot-of-delays-greater-than-30-minutes-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-delays-greater-than-30-minutes-vs-departure-time">Plot of delays greater than 30 minutes vs departure time</a></li>
+  <li><a href="#delays-by-airline" id="toc-delays-by-airline" class="nav-link" data-scroll-target="#delays-by-airline">Delays by airline</a></li>
+  <li><a href="#applications-lax-vs-bur-sfo-vs-oak" id="toc-applications-lax-vs-bur-sfo-vs-oak" class="nav-link" data-scroll-target="#applications-lax-vs-bur-sfo-vs-oak">Applications: LAX vs BUR, SFO vs OAK</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Everything to Know About Flight Delays</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This is the technical version of an article that analyzes post-Covid flight information up to August 2022 (the latest available as of today). Of great interest are flight delays.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zipfile</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="downloading-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="downloading-the-data">Downloading the data</h2>
+<p>To investigate flights in the United States, there is no greater resource than the US Department of Transportation’s <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr">Bureau of Transportation Statistics</a>. They have a handy HTML page that we can download the data from. The data is available by month, meaning that we must obtain data for each month of all years we are interested in.</p>
+<p>We can automate this download with the requests library of Python, setting START_YEAR to the beginning year of the period of interest and END_YEAR to the end year (exclusive).</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>START_YEAR <span class="op">=</span> <span class="dv">2022</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>END_YEAR <span class="op">=</span> <span class="dv">2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>os.mkdir(<span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(START_YEAR, END_YEAR):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">13</span>):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">#We set verify to False because an SSL cert error gets thrown otherwise for some reason</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(<span class="ss">f"https://transtats.bts.gov/PREZIP/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">.zip"</span>, verify<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f"data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">.zip"</span>, <span class="st">"wb"</span>) <span class="im">as</span> fd:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            fd.write(r.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>At this point, we have a bunch of <code>zip</code> files, one for each month of flights. We’ll unzip them one-by-one.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Construct an array to hold our zip filepaths</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>zips <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, directories, filenames <span class="kw">in</span> os.walk(<span class="st">'data'</span>):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> directory <span class="kw">in</span> directories:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         dpath <span class="op">=</span> os.path.join(root, directory)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        fpath <span class="op">=</span> os.path.join(root,filename)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> fpath[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'zip'</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            zips.append(fpath)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> zip_path <span class="kw">in</span> zips:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        my_zip <span class="op">=</span> zipfile.ZipFile(zip_path, <span class="st">'r'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        my_zip.extractall(<span class="st">'data'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> zipfile.BadZipFile:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="reading-in-and-cleaning-data" class="level2">
+<h2 class="anchored" data-anchor-id="reading-in-and-cleaning-data">Reading in and cleaning data</h2>
+<p>Now, we read the data in and clean it. We start out by reading in an arbitrary month to get a DataFrame with the correct columns, then loop through each month’s flight records (stored in a <code>csv</code>). We add each month’s flight records to our <code>flights</code> DataFrame; at this point, we are done loading data for this project.</p>
+<p>Cleaning the DataFrames involves several steps. To start, we read in <a href="https://www.bts.gov/topics/airlines-and-airports/airline-codes">this</a> HTML table from the Bureau of Transportation Statistics as a DataFrame. This table matches airlines with abbreviations. To aid legibility, we replace the abbreviations contained in our <code>flights</code> DataFrame with the airlines’ full names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtains DataFrame with correct columns</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>pd.read_csv(<span class="st">"data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_5.csv"</span>).columns)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Concatenates inputs to flights DataFrame</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, directories, filenames <span class="kw">in</span> os.walk(<span class="st">'data'</span>):</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        fpath <span class="op">=</span> os.path.join(root,filename)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (fpath[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'csv'</span>) <span class="op">&amp;</span> (fpath[<span class="dv">5</span>:<span class="dv">8</span>] <span class="op">==</span> <span class="st">'On_'</span>):</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> pd.read_csv(fpath)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Filter out unneeded rows (only keep things relevant to flight origin, airline, and departure delay)</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> a.<span class="bu">filter</span>([<span class="st">'CRSDepTime'</span>, <span class="st">'DepDelayMinutes'</span>, <span class="st">'Reporting_Airline'</span>, <span class="st">'TaxiOut'</span>, <span class="st">'Origin'</span>, <span class="st">'Flight_Number_Reporting_Airline'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Concatenate month table to flights</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>fpath<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            flights <span class="op">=</span> pd.concat([flights, a], ignore_index<span class="op">=</span><span class="va">True</span>, join<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtains a DataFrame version of the HTML table on the BTS Airline Codes webpage</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>codes <span class="op">=</span> pd.read_html(<span class="st">"https://www.bts.gov/topics/airlines-and-airports/airline-codes"</span>)[<span class="dv">0</span>]</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> flights.merge(right<span class="op">=</span>codes, left_on<span class="op">=</span><span class="st">'Reporting_Airline'</span>, right_on<span class="op">=</span><span class="st">'Code'</span>, suffixes<span class="op">=</span>[<span class="st">''</span>,<span class="st">''</span>])<span class="co">#.drop(["Reporting_Airline", 'Code'], axis=1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We now make a copy of <code>flights</code> called <code>delays</code>. We can now safely transform our data and keep the original flights available for later analysis. We’ll also regularize our time (converting the HHMM format to HH.MM, where MM is out of 100 instead of 60).</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Makes a deep copy of flights called delays for transformation in this section. Filter out on-time flights.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepTime'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">%</span> <span class="dv">100</span> <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">3</span> <span class="op">*</span> <span class="fl">.01</span> <span class="op">+</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">100</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'delay'</span>] <span class="op">=</span> flights[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> flights.copy(deep<span class="op">=</span><span class="va">True</span>)[flights[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-of-flight-delays-vs-departure-time" class="level2">
+<h2 class="anchored" data-anchor-id="plot-of-flight-delays-vs-departure-time">Plot of flight delays vs departure time</h2>
+<p>Let’s take a precursory view of flight delays in the aggregate and see how they correlate with departure time.</p>
+<div class="cell" data-outputid="417bd4dc-a86f-4adf-9eae-3a13a80fa7f7" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>f, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.histplot(data<span class="op">=</span>delays, x<span class="op">=</span><span class="st">'CRSDepTime'</span>, y<span class="op">=</span><span class="st">'DepDelayMinutes'</span>, bins<span class="op">=</span>[<span class="dv">12</span>,<span class="dv">600</span>],</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>sns.color_palette(<span class="st">"flare_r"</span>, as_cmap<span class="op">=</span><span class="va">True</span>), cbar<span class="op">=</span><span class="va">True</span>, cbar_kws<span class="op">=</span>{<span class="st">'label'</span>: <span class="st">'Quantity of delays'</span>})</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>delays.sample(<span class="dv">1000</span>), x<span class="op">=</span><span class="st">'CRSDepTime'</span>, y<span class="op">=</span><span class="st">'DepDelayMinutes'</span>, levels<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span><span class="st">"w"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Density of delays by departure time, '</span> <span class="op">+</span> <span class="bu">str</span>(START_YEAR) <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> <span class="bu">str</span>(END_YEAR <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Departure time'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Departure delay, in minutes'</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.xlim((<span class="dv">0</span>, <span class="dv">24</span>))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.ylim(bottom<span class="op">=</span><span class="dv">0</span>, top<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>([&lt;matplotlib.axis.XTick at 0x7fc51928ddb0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc51928de40&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506530040&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506531000&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506531ab0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506532560&gt;],
+ [Text(0, 0, '12am'),
+  Text(4, 0, '4am'),
+  Text(8, 0, '8am'),
+  Text(12, 0, '12pm'),
+  Text(16, 0, '4pm'),
+  Text(20, 0, '8pm')])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Flights_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We see that delays are densest between 10am and 8pm. The most common delay takes less than 10 minutes. Next, we’ll look at significant delays, which I will define to be greater than or equal to 30 minutes in length.</p>
+</section>
+<section id="plot-of-delays-greater-than-30-minutes-vs-departure-time" class="level2">
+<h2 class="anchored" data-anchor-id="plot-of-delays-greater-than-30-minutes-vs-departure-time">Plot of delays greater than 30 minutes vs departure time</h2>
+<p>We filter all delays &lt;= 30 minutes out of the <code>delays</code> table.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delay_significance(x):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Categorizes delays into one of three categories."""</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"On Time"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">30</span> <span class="kw">and</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Slight Delay"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Significant Delay"</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates labels for hue sorting on histogram.</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'Delay Status'</span>] <span class="op">=</span> flights[<span class="st">'DepDelayMinutes'</span>].<span class="bu">apply</span>(delay_significance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Below, you can see all significant flight delays plotted against on-time flights.</p>
+<div class="cell" data-outputid="194f5bfd-b172-488a-8a62-e6812aa65199" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(flights, x<span class="op">=</span><span class="st">'CRSDepTime'</span>, kde<span class="op">=</span><span class="va">True</span>, hue<span class="op">=</span><span class="st">'Delay Status'</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             binwidth<span class="op">=</span><span class="dv">1</span>, kde_kws<span class="op">=</span>{<span class="st">'bw_adjust'</span>: <span class="dv">3</span>}).<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Departure time'</span>, title<span class="op">=</span><span class="st">'Flights from '</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                             <span class="op">+</span> <span class="bu">str</span>(START_YEAR) <span class="op">+</span> <span class="st">' to '</span> <span class="op">+</span> <span class="bu">str</span>(END_YEAR) <span class="op">+</span> <span class="st">', by hour'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>,<span class="dv">24</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>([&lt;matplotlib.axis.XTick at 0x7fc52b1e4b20&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc52b1e4af0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc52c489c30&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc524cbfd30&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc524ce8b80&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc524cbfcd0&gt;],
+ [Text(0, 0, '12am'),
+  Text(4, 0, '4am'),
+  Text(8, 0, '8am'),
+  Text(12, 0, '12pm'),
+  Text(16, 0, '4pm'),
+  Text(20, 0, '8pm')])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Flights_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>From the chart, we see that both slight and significant delays increase as the day goes on, although significant delays have a more consistent increase between 6am and 6pm, while slight delays seem to plateau around 10am.</p>
+</section>
+<section id="delays-by-airline" class="level2">
+<h2 class="anchored" data-anchor-id="delays-by-airline">Delays by airline</h2>
+<p>Now, let’s look at delays by airline. We merge wholly-owned subsidiaries with their parent company (a complete list of wholly-owned subsidiary airlines in North America can be found on <a href="https://en.wikipedia.org/wiki/Regional_airline">Wikipedia</a>), as people do not often see their brand nor purchase from them. Some airlines, such as Republic Airline, are regional airlines that fly under multiple airline names; our data does not represent whose banner they fly under for a given flight, making it impossible for us to merge their flights with their contracted carrier.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adds new departure hour columns to flights and delays for easier charting</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepHour'</span>], delays[<span class="st">'CRSDepHour'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span>,  delays[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Selects only for significant delays</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> delays[delays[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;=</span> <span class="dv">30</span>]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Merges wholly-owned subsidiary airlines with their parent companies</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>delays_ma <span class="op">=</span> delays.replace(to_replace<span class="op">=</span>{<span class="st">"Airline"</span>: {<span class="st">"Horizon Air"</span>:<span class="st">"Alaska Airlines Inc."</span>, <span class="st">"Envoy Air"</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"PSA Airlines Inc."</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"Endeavor Air Inc."</span>: <span class="st">"Delta Air Lines Inc."</span>}})</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>flights_ma <span class="op">=</span> flights.replace(to_replace<span class="op">=</span>{<span class="st">"Airline"</span>: {<span class="st">"Horizon Air"</span>:<span class="st">"Alaska Airlines Inc."</span>, <span class="st">"Envoy Air"</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"PSA Airlines Inc."</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"Endeavor Air Inc."</span>: <span class="st">"Delta Air Lines Inc."</span>}})</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> airline_delay_frequencies(airline, delays, flights):</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Returns delay proportions, grouped by departure hour and departure time."""</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    total_delays <span class="op">=</span> delays[delays[<span class="st">'Airline'</span>] <span class="op">==</span> airline].groupby(<span class="st">'CRSDepHour'</span>)[<span class="st">'CRSDepTime'</span>].count()</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    total_flights <span class="op">=</span> flights[flights[<span class="st">'Airline'</span>] <span class="op">==</span> airline].groupby(<span class="st">'CRSDepHour'</span>)[<span class="st">'CRSDepTime'</span>].count()</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (total_delays <span class="op">/</span> total_flights).reindex(np.arange(<span class="dv">24</span>), fill_value<span class="op">=</span><span class="dv">0</span>) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Accumulates multiple airline Series into a DataFrame for line plot</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>airlines <span class="op">=</span> [<span class="st">'American Airlines Inc.'</span>, <span class="co">#'SkyWest Airlines Inc.',</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Alaska Airlines Inc.'</span>, <span class="st">'United Air Lines Inc.'</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Delta Air Lines Inc.'</span>, <span class="st">'Frontier Airlines Inc.'</span>, <span class="co">#'Allegiant Air',</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>       <span class="co">#'Hawaiian Airlines Inc.',</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Spirit Air Lines'</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Southwest Airlines Co.'</span>, <span class="co">#'Mesa Airlines Inc.', 'Republic Airline',</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>       <span class="st">'JetBlue Airways'</span>]</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>proportions <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> airline <span class="kw">in</span> airlines:</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    proportions[airline] <span class="op">=</span> airline_delay_frequencies(airline, delays_ma, flights_ma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="40dec9bd-8752-46bd-95e9-c5406978ec8c" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructs a bar plot of flight delay percentage according to time</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.lineplot(data<span class="op">=</span>proportions, palette<span class="op">=</span><span class="st">"tab10"</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Scheduled Hour of Flight Departure"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Percentage"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Percent of flights significantly delayed, by time of day"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">40</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Flights_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>As a proportion of total flights, the chance of significant delay is lowest in the early hours of the morning, regardless of airline. From there, the chance of delay steadily increases and peaks in the evening. Then there is a dip around midnight, with delays skyrocketing in the wee hours of the morning.</p>
+<p>The budget airlines (Frontier, Spirit, Southwest, and JetBlue) all have higher rates of delay throughout the day according to this dataset, with the exception of Southwest, which has a delay rate comparable with the non-budget airlines in the morning. However, by 12pm, Southwest’s significant delay rate grows past that of the non-budget airlines and joins its budget peers by 4 or 5 pm.</p>
+<p>After aggregating budget and non-budget airlines, we can notice a large difference between budget airline performance and non-budget performance in terms of significant delays.</p>
+<p>By the numbers:</p>
+<div class="cell" data-outputid="2a44d9ca-cd02-4772-b5c7-acbe4c6831da" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(delays.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">/</span> flights.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">*</span> <span class="dv">100</span>).sort_values(<span class="st">'CRSDepTime'</span>, ascending<span class="op">=</span><span class="va">False</span>).rename({<span class="st">'CRSDepTime'</span>:<span class="st">'</span><span class="sc">% F</span><span class="st">lights Significantly Delayed'</span>}, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+
+
+  <div id="df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c">
+    <div class="colab-df-container">
+      <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">% Flights Significantly Delayed</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Airline</th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">JetBlue Airways</td>
+<td>22.078514</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Frontier Airlines Inc.</td>
+<td>21.896298</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Allegiant Air</td>
+<td>18.991785</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Spirit Air Lines</td>
+<td>16.958591</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Southwest Airlines Co.</td>
+<td>15.292280</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">American Airlines Inc.</td>
+<td>14.529106</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Mesa Airlines Inc.</td>
+<td>13.838768</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">United Air Lines Inc.</td>
+<td>12.994220</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Hawaiian Airlines Inc.</td>
+<td>11.101448</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">PSA Airlines Inc.</td>
+<td>11.007379</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Delta Air Lines Inc.</td>
+<td>10.671968</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">SkyWest Airlines Inc.</td>
+<td>10.629637</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Alaska Airlines Inc.</td>
+<td>10.458504</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Republic Airline</td>
+<td>10.361243</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Endeavor Air Inc.</td>
+<td>9.843149</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Envoy Air</td>
+<td>9.762695</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Horizon Air</td>
+<td>8.873647</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"></path>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"></path><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"></path>
+  </svg>
+      </button>
+
+
+
+    <div id="df-6118a7ff-b20f-40c8-ab35-f53dfee79530">
+      <button class="colab-df-quickchart" onclick="quickchart('df-6118a7ff-b20f-40c8-ab35-f53dfee79530')" title="Suggest charts." style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+      </button>
+    </div>
+
+<style>
+  .colab-df-quickchart {
+    background-color: #E8F0FE;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: #1967D2;
+    height: 32px;
+    padding: 0 0 0 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: #E2EBFA;
+    box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: #174EA6;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+    background-color: #3B4455;
+    fill: #D2E3FC;
+  }
+
+  [theme=dark] .colab-df-quickchart:hover {
+    background-color: #434B5C;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+    fill: #FFFFFF;
+  }
+</style>
+
+    <script>
+      async function quickchart(key) {
+        const containerElement = document.querySelector('#' + key);
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      }
+    </script>
+
+      <script>
+
+function displayQuickchartButton(domScope) {
+  let quickchartButtonEl =
+    domScope.querySelector('#df-6118a7ff-b20f-40c8-ab35-f53dfee79530 button.colab-df-quickchart');
+  quickchartButtonEl.style.display =
+    google.colab.kernel.accessAllowed ? 'block' : 'none';
+}
+
+        displayQuickchartButton(document);
+      </script>
+      <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<section id="applications-lax-vs-bur-sfo-vs-oak" class="level1">
+<h1>Applications: LAX vs BUR, SFO vs OAK</h1>
+<p>I want to talk about why I felt inspired to examine flights in the first place. As a college student, I often take Southwest to-and-from school due to its cheap fares and customer service.</p>
+<p>Southern California common wisdom dictates that one should fly out of Burbank Airport whenever possible to avoid LAX delays. Coming to the Bay Area for college, I expected Oakland and San Francisco to share a similar large/small airport dynamic. However, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO&gt;OAK and BUR&gt;LAX.</p>
+<p>I follow a similar approach as before but select only flight records that contain our desired origin airports.</p>
+<div class="cell" data-outputid="c94736bd-dbc2-45eb-946c-2cb5f1a7a3d6" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_airports(airlines, airports, delays, flights):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Returns a DataFrame with delay rates by airport and airline. Indices follow the format 'airline airport.'</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">    airlines' and airports must be lists. delays and flights are DataFrames as created above.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    proportions <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> airline <span class="kw">in</span> airlines:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> origin <span class="kw">in</span> airports:</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>            proportions[airline <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> origin] <span class="op">=</span> airline_delay_frequencies(airline,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                            delays[delays[<span class="st">'Origin'</span>] <span class="op">==</span> origin], flights[flights[<span class="st">'Origin'</span>] <span class="op">==</span> origin])</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proportions</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a bar plot of flight delay percentage according to time</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.lineplot(data<span class="op">=</span>compare_airports([<span class="st">'Southwest Airlines Co.'</span>], [<span class="st">'LAX'</span>, <span class="st">'BUR'</span>, <span class="st">'OAK'</span>, <span class="st">'SFO'</span>], delays_ma, flights_ma))</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Scheduled Hour of Flight Departure"</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Percentage"</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Percent of flights delayed by airport, airline"</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Flights_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>In fact, BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
