@@ -22,4 +22,4 @@ format:
       - styles.scss
       - flatly
     toc: true
-    mainfont: "IM Fell English"
+    mainfont: "EB Garamond"

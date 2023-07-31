@@ -157,11 +157,11 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This article analyzes post-Covid flight information up to August 2022 (the latest available as of today) without delving too far into how I processed flight data. Of great interest are flight delays.</p>
+<p>This article analyzes post-Covid flight information to February 2023 (the latest available as of today) without delving too far into how I processed flight data. I’m interested in understanding flight delays</p>
 <section id="downloading-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="downloading-the-data">Downloading the data</h2>
-<p>To investigate flights in the United States, there is no greater resource than the US Department of Transportation’s <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr">Bureau of Transportation Statistics</a>. They have a handy website that we can download the data from. The data is available by month, meaning that we must obtain data for each month of all years we are interested in.</p>
-<p>I automated downloading the data using the programming language Python to request the data in batches directly from the government server. Then, I compiled the data into a spreadsheet with the Python extension pandas and did some processing to make later operations easier.</p>
+<p>The best resource to investigate the regularity of flights within the US is the <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr">Bureau of Transportation Statistics</a>. They have a website that hosts the data, which is publicly available. The data is available by month, meaning that I had to manually request data for the 14 months I was interested in.</p>
+<p>I automated data downloading using Python (a common programming language) to request the data in batches directly from the government server. Then, I compiled the data into a spreadsheet with the data processing tool pandas and did some additional processing to make later operations easier.</p>
 </section>
 <section id="plot-of-flight-delays-vs-departure-time" class="level2">
 <h2 class="anchored" data-anchor-id="plot-of-flight-delays-vs-departure-time">Plot of flight delays vs departure time</h2>
@@ -172,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">Figure 1</figcaption>
 </figure>
 </div>
-<p>We see that delays are densest between 10am and 8pm. Also, most common delay is less than 10 minutes. Next, we’ll look at significant delays, which I will define to be greater than or equal to 30 minutes in length.</p>
+<p>We see that delays overall are densest between 2pm and 6pm, but the most common delay is less than 10 minutes and occurs between 10am and 12pm. Given that the most common delay is minimal, I wanted to take a better look. We’ll look at significant delays, which I will define to be greater than or equal to 30 minutes in length.</p>
 </section>
 <section id="plot-of-significant-and-nonsignificant-delays-vs-departure" class="level2">
 <h2 class="anchored" data-anchor-id="plot-of-significant-and-nonsignificant-delays-vs-departure">Plot of significant and nonsignificant delays vs departure</h2>
@@ -182,18 +182,18 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">Figure 2</figcaption>
 </figure>
 </div>
-<p>From the chart, we see that both slight and significant delays increase as the day goes on, although significant delays have a more consistent increase between 6am and 6pm, while slight delays seem to plateau around 10am.</p>
+<p>From the chart, we see that both slight and significant delays increase as the day goes on. Significant delays start low at 6am and steadily increase, peaking at 6pm, while slight delays seem to plateau around 10am.</p>
 </section>
 <section id="delays-by-airline" class="level2">
 <h2 class="anchored" data-anchor-id="delays-by-airline">Delays by airline</h2>
-<p>Now, let’s look at delays by airline. We merge wholly-owned subsidiaries with their parent company (a complete list of wholly-owned subsidiary airlines in North America can be found on <a href="https://en.wikipedia.org/wiki/Regional_airline">Wikipedia</a>), as people do not often see their brand nor purchase from them. Some airlines, such as Republic Airline, are regional airlines that fly under multiple airline names; our data does not represent whose banner they fly under for a given flight, making it impossible for us to merge their flights with their contracted carrier.</p>
+<p>Now, let’s look at delays by airline. I merged wholly-owned subsidiaries with their parent company (a complete list of wholly-owned subsidiary airlines in North America can be found on <a href="https://en.wikipedia.org/wiki/Regional_airline">Wikipedia</a>), as people do not often see their brand nor purchase from them. Some airlines, such as Republic Airline, are regional airlines that fly under multiple airline names; our data does not represent whose banner they fly under for a given flight, making it impossible for us to merge their flights with their contracted carrier.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="cell-13-output-1.png" title="Figure 3" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Figure 3</figcaption>
 </figure>
 </div>
-<p>As a proportion of total flights, the chance of significant delay is lowest in the early hours of the morning, regardless of airline. From there, the chance of delay steadily increases and peaks in the evening. Then there is a dip around midnight, with delays skyrocketing in the wee hours of the morning.</p>
+<p>Regardless of airline, the chance of significant delay is lowest in the early hours of the morning, regardless of airline. From there, the probability of delay steadily increases and peaks in the evening. Then there is a dip around midnight, with delays skyrocketing in the wee hours of the morning. Many of these flights are red-eyes from Alaska and Puerto Rico that occur <a href="https://www.adn.com/alaska-life/travel/2018/04/14/got-a-red-eye-flight-coming-up-heres-how-to-make-it-a-little-more-bearable/">at the end of an airline’s work day</a>. Flying at the end of the work day increases the chance of delay since planes fly multiple flights in a day, and any delay in an earlier flight can mess up the traffic control schedule for all later flights. Additionally, if delayed for too long, crew duty hours can also exceed the limit. This happened in <a href="https://en.wikipedia.org/wiki/2022_Southwest_Airlines_scheduling_crisis">Southwest’s meltdown</a> last year, where Southwest had insufficient replacement crews and misallocation of planes, leading to mass flight cancellations.</p>
 <p>The budget airlines (Frontier, Spirit, Southwest, and JetBlue) all have higher rates of delay throughout the day according to this dataset, with the exception of Southwest, which has a delay rate comparable with the non-budget airlines in the morning. However, by 12pm, Southwest’s significant delay rate grows past that of the non-budget airlines and joins its budget peers by 4 or 5 pm.</p>
 <p>By the numbers:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -205,8 +205,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="applications-lax-and-bur-and-sfo-and-oak" class="level2">
 <h2 class="anchored" data-anchor-id="applications-lax-and-bur-and-sfo-and-oak">Applications: LAX and BUR, and SFO and OAK</h2>
-<p>I want to talk about why I felt inspired to examine flights in the first place. As a college student, I often take Southwest to and from school due to its cheap fares and customer service.</p>
-<p>Southern California common wisdom dictates that one should fly out of Burbank (BUR) whenever possible to avoid Los Angeles (LAX) delays. Coming to the Bay Area for college, I expected Oakland (OAK) and San Francisco (SFO) to share a similar dynamic. However, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO is better than OAK and BUR is better than LAX.</p>
+<p>Since starting college, I’ve traveled quite regularly on planes between my hometown in Southern California and my university in the San Francisco Bay Area. I was drawn to this topic to get a better sense of which airline and airport combination offered me the fewest overall delays. As a college student with a constrained budget, I often take Southwest to and from school due to its cheap fares and customer service..</p>
+<p>Southern California common wisdom dictates that one should fly out of Burbank (BUR) whenever possible to avoid the hassle of traveling to and out of Los Angeles (LAX).. Coming to the Bay Area for college, I expected Oakland (OAK) and San Francisco (SFO) to share a similar dynamic. add another sentence here for a better flowHowever, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO is better than OAK and BUR is better than LAX.</p>
 <p>I follow a similar approach as before but select only flight records that contain our desired airports.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -214,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">Figure 4</figcaption>
 </figure>
 </div>
-<p>We see that BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same.</p>
+<p>We see that BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same. Maybe my friends’ preference for SFO compared to OAK stems from something else, but clearly delays don’t play a major role in that decision.</p>
 
 
 </section>
