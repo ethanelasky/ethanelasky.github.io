@@ -152,13 +152,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ssl-verification" id="toc-ssl-verification" class="nav-link active" data-scroll-target="#ssl-verification">SSL Verification</a></li>
-  <li><a href="#downloading-the-data" id="toc-downloading-the-data" class="nav-link" data-scroll-target="#downloading-the-data">Downloading the Data</a></li>
+  <li><a href="#downloading-the-data" id="toc-downloading-the-data" class="nav-link active" data-scroll-target="#downloading-the-data">Downloading the data</a></li>
   <li><a href="#reading-in-and-cleaning-data" id="toc-reading-in-and-cleaning-data" class="nav-link" data-scroll-target="#reading-in-and-cleaning-data">Reading in and cleaning data</a></li>
-  <li><a href="#plot-of-flight-delays-vs-departure-time" id="toc-plot-of-flight-delays-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-flight-delays-vs-departure-time">Plot of Flight Delays vs Departure Time</a></li>
-  <li><a href="#plot-of-delays-30-minutes-vs-departure-time" id="toc-plot-of-delays-30-minutes-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-delays-30-minutes-vs-departure-time">Plot of Delays &gt; 30 Minutes vs Departure Time</a></li>
+  <li><a href="#plot-of-flight-delays-vs-departure-time" id="toc-plot-of-flight-delays-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-flight-delays-vs-departure-time">Plot of flight delays vs departure time</a></li>
+  <li><a href="#plot-of-delays-greater-than-30-minutes-vs-departure-time" id="toc-plot-of-delays-greater-than-30-minutes-vs-departure-time" class="nav-link" data-scroll-target="#plot-of-delays-greater-than-30-minutes-vs-departure-time">Plot of delays greater than 30 minutes vs departure time</a></li>
   <li><a href="#delays-by-airline" id="toc-delays-by-airline" class="nav-link" data-scroll-target="#delays-by-airline">Delays by airline</a></li>
-  <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a></li>
+  <li><a href="#applications-lax-vs-bur-sfo-vs-oak" id="toc-applications-lax-vs-bur-sfo-vs-oak" class="nav-link" data-scroll-target="#applications-lax-vs-bur-sfo-vs-oak">Applications: LAX vs BUR, SFO vs OAK</a></li>
   </ul>
 </nav>
     </div>
@@ -183,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 <p>This is the technical version of an article that analyzes post-Covid flight information up to August 2022 (the latest available as of today). Of great interest are flight delays.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -195,257 +194,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="ssl-verification" class="level3">
-<h3 class="anchored" data-anchor-id="ssl-verification">SSL Verification</h3>
-<p>Before we start, we will verify our SSL to ensure that the files we are downloading are secure. To ensure our SSL is certified properly, we need to use the verify parameter of requests.get. See <a href="https://urllib3.readthedocs.io/en/1.26.x/user-guide.html#ssl">this guide about SSL verification</a> for more details.</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> certifi</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> urllib3</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>http <span class="op">=</span> urllib3.PoolManager(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    cert_reqs<span class="op">=</span><span class="st">'CERT_REQUIRED'</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    ca_certs<span class="op">=</span>certifi.where()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
 <section id="downloading-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="downloading-the-data">Downloading the Data</h2>
+<h2 class="anchored" data-anchor-id="downloading-the-data">Downloading the data</h2>
 <p>To investigate flights in the United States, there is no greater resource than the US Department of Transportation’s <a href="https://www.transtats.bts.gov/DL_SelectFields.aspx?gnoyr_VQ=FGJ&amp;QO_fu146_anzr=b0-gvzr">Bureau of Transportation Statistics</a>. They have a handy HTML page that we can download the data from. The data is available by month, meaning that we must obtain data for each month of all years we are interested in.</p>
 <p>We can automate this download with the requests library of Python, setting START_YEAR to the beginning year of the period of interest and END_YEAR to the end year (exclusive).</p>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>START_YEAR <span class="op">=</span> <span class="dv">2022</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>END_YEAR <span class="op">=</span> <span class="dv">2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>START_YEAR <span class="op">=</span> <span class="dv">2022</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>END_YEAR <span class="op">=</span> <span class="dv">2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="cf7ae771-560a-46a1-b2c6-f037889824b5" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>os.mkdir(<span class="st">"data"</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(START_YEAR, END_YEAR):</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">13</span>):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">#We set verify to False because an SSL cert error gets thrown otherwise for some reason</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(<span class="ss">f"https://transtats.bts.gov/PREZIP/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">.zip"</span>, verify<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f"data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">.zip"</span>, <span class="st">"wb"</span>) <span class="im">as</span> fd:</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            fd.write(r.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(
-/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py:1056: InsecureRequestWarning: Unverified HTTPS request is being made to host 'transtats.bts.gov'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</code></pre>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>os.mkdir(<span class="st">"data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(START_YEAR, END_YEAR):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">13</span>):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">#We set verify to False because an SSL cert error gets thrown otherwise for some reason</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> requests.get(<span class="ss">f"https://transtats.bts.gov/PREZIP/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">.zip"</span>, verify<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(<span class="ss">f"data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>j<span class="sc">}</span><span class="ss">.zip"</span>, <span class="st">"wb"</span>) <span class="im">as</span> fd:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            fd.write(r.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>At this point, we have a bunch of <code>zip</code> files, one for each month of flights. We’ll unzip them one-by-one.</p>
-<div class="cell" data-outputid="8de89e15-be6f-4008-ff7f-e3245b5b2a21" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Construct an array to hold our zip filepaths</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>zips <span class="op">=</span> []</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, directories, filenames <span class="kw">in</span> os.walk(<span class="st">'data'</span>):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#first, print out all directories</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> directory <span class="kw">in</span> directories:</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>         dpath <span class="op">=</span> os.path.join(root, directory)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>         <span class="bu">print</span>(<span class="ss">f"d </span><span class="sc">{</span>dpath<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>     <span class="co"># next, print out all filepaths</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        fpath <span class="op">=</span> os.path.join(root,filename)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> fpath[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'zip'</span>:</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            zips.append(fpath)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>fpath<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#FIXME: make this unzip the data files</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> zip_path <span class="kw">in</span> zips:</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        my_zip <span class="op">=</span> zipfile.ZipFile(zip_path, <span class="st">'r'</span>)</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        my_zip.extractall(<span class="st">'data'</span>)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> zipfile.BadZipFile:</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_8.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_9.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_1.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_6.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_11.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_6.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_5.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_3.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_4.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_10.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_12.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_12.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_7.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_3.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_5.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_11.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_4.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_8.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_7.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_2.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_2.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2023_1.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_9.zip
-  data/On_Time_Reporting_Carrier_On_Time_Performance_1987_present_2022_10.zip</code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Construct an array to hold our zip filepaths</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>zips <span class="op">=</span> []</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, directories, filenames <span class="kw">in</span> os.walk(<span class="st">'data'</span>):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> directory <span class="kw">in</span> directories:</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>         dpath <span class="op">=</span> os.path.join(root, directory)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        fpath <span class="op">=</span> os.path.join(root,filename)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> fpath[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'zip'</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            zips.append(fpath)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> zip_path <span class="kw">in</span> zips:</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        my_zip <span class="op">=</span> zipfile.ZipFile(zip_path, <span class="st">'r'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        my_zip.extractall(<span class="st">'data'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> zipfile.BadZipFile:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="reading-in-and-cleaning-data" class="level2">
 <h2 class="anchored" data-anchor-id="reading-in-and-cleaning-data">Reading in and cleaning data</h2>
 <p>Now, we read the data in and clean it. We start out by reading in an arbitrary month to get a DataFrame with the correct columns, then loop through each month’s flight records (stored in a <code>csv</code>). We add each month’s flight records to our <code>flights</code> DataFrame; at this point, we are done loading data for this project.</p>
 <p>Cleaning the DataFrames involves several steps. To start, we read in <a href="https://www.bts.gov/topics/airlines-and-airports/airline-codes">this</a> HTML table from the Bureau of Transportation Statistics as a DataFrame. This table matches airlines with abbreviations. To aid legibility, we replace the abbreviations contained in our <code>flights</code> DataFrame with the airlines’ full names.</p>
-<div class="cell" data-outputid="e577c765-4f69-4c95-a84f-ccff2838e3ca" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain DataFrame with correct columns</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>pd.read_csv(<span class="st">"data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_5.csv"</span>).columns)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate inputs to flights DataFrame</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#flights = pd.concat([flights, pd.read_csv("data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_5.csv")], join='inner')</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, directories, filenames <span class="kw">in</span> os.walk(<span class="st">'data'</span>):</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        fpath <span class="op">=</span> os.path.join(root,filename)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (fpath[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'csv'</span>) <span class="op">&amp;</span> (fpath[<span class="dv">5</span>:<span class="dv">8</span>] <span class="op">==</span> <span class="st">'On_'</span>):</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> pd.read_csv(fpath)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Filter out unneeded rows (only keep things relevant to flight origin, airline, and departure delay)</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> a.<span class="bu">filter</span>([<span class="st">'CRSDepTime'</span>, <span class="st">'DepDelayMinutes'</span>, <span class="st">'Reporting_Airline'</span>, <span class="st">'TaxiOut'</span>, <span class="st">'Origin'</span>, <span class="st">'Flight_Number_Reporting_Airline'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Concatenate month table to flights</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>fpath<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>            flights <span class="op">=</span> pd.concat([flights, a], ignore_index<span class="op">=</span><span class="va">True</span>, join<span class="op">=</span><span class="st">'inner'</span>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean flights dataset, replacing each airline's abbreviation with its full name</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtain a DataFrame version of the HTML table on the BTS Airline Codes webpage</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>codes <span class="op">=</span> pd.read_html(<span class="st">"https://www.bts.gov/topics/airlines-and-airports/airline-codes"</span>)[<span class="dv">0</span>]</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co"># codes = pd.read_csv('data/airline-codes.csv')</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> flights.merge(right<span class="op">=</span>codes, left_on<span class="op">=</span><span class="st">'Reporting_Airline'</span>, right_on<span class="op">=</span><span class="st">'Code'</span>, suffixes<span class="op">=</span>[<span class="st">''</span>,<span class="st">''</span>])<span class="co">#.drop(["Reporting_Airline", 'Code'], axis=1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  flights = pd.DataFrame(columns=pd.read_csv("data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_5.csv").columns)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (76,77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (76,77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (48,69,76,77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (77,84,85) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (69,76,77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (76,77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (48,69,76,77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)
-&lt;ipython-input-36-dec7574120e3&gt;:11: DtypeWarning: Columns (48,69,76,77,84) have mixed types. Specify dtype option on import or set low_memory=False.
-  a = pd.read_csv(fpath)</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_4.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_11.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_7.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_2.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_5.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2023_1.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_1.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_8.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2023_4.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_10.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2023_2.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_3.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_9.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_6.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_12.csv
-  data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2023_3.csv</code></pre>
-</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Obtains DataFrame with correct columns</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>pd.read_csv(<span class="st">"data/On_Time_Reporting_Carrier_On_Time_Performance_(1987_present)_2022_5.csv"</span>).columns)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Concatenates inputs to flights DataFrame</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root, directories, filenames <span class="kw">in</span> os.walk(<span class="st">'data'</span>):</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        fpath <span class="op">=</span> os.path.join(root,filename)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (fpath[<span class="op">-</span><span class="dv">3</span>:] <span class="op">==</span> <span class="st">'csv'</span>) <span class="op">&amp;</span> (fpath[<span class="dv">5</span>:<span class="dv">8</span>] <span class="op">==</span> <span class="st">'On_'</span>):</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> pd.read_csv(fpath)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Filter out unneeded rows (only keep things relevant to flight origin, airline, and departure delay)</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            a <span class="op">=</span> a.<span class="bu">filter</span>([<span class="st">'CRSDepTime'</span>, <span class="st">'DepDelayMinutes'</span>, <span class="st">'Reporting_Airline'</span>, <span class="st">'TaxiOut'</span>, <span class="st">'Origin'</span>, <span class="st">'Flight_Number_Reporting_Airline'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Concatenate month table to flights</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>fpath<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>            flights <span class="op">=</span> pd.concat([flights, a], ignore_index<span class="op">=</span><span class="va">True</span>, join<span class="op">=</span><span class="st">'inner'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtains a DataFrame version of the HTML table on the BTS Airline Codes webpage</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>codes <span class="op">=</span> pd.read_html(<span class="st">"https://www.bts.gov/topics/airlines-and-airports/airline-codes"</span>)[<span class="dv">0</span>]</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>flights <span class="op">=</span> flights.merge(right<span class="op">=</span>codes, left_on<span class="op">=</span><span class="st">'Reporting_Airline'</span>, right_on<span class="op">=</span><span class="st">'Code'</span>, suffixes<span class="op">=</span>[<span class="st">''</span>,<span class="st">''</span>])<span class="co">#.drop(["Reporting_Airline", 'Code'], axis=1)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now make a copy of <code>flights</code> called <code>delays</code>. We can now safely transform our data and keep the original flights available for later analysis. We’ll also regularize our time (converting the HHMM format to HH.MM, where MM is out of 100 instead of 60).</p>
-<div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a deep copy of flights called delays for transformation in this section. Filter out on-time flights.</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepTime'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">%</span> <span class="dv">100</span> <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">3</span> <span class="op">*</span> <span class="fl">.01</span> <span class="op">+</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">100</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'delay'</span>] <span class="op">=</span> flights[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> flights.copy(deep<span class="op">=</span><span class="va">True</span>)[flights[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Makes a deep copy of flights called delays for transformation in this section. Filter out on-time flights.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepTime'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">%</span> <span class="dv">100</span> <span class="op">*</span> <span class="dv">5</span><span class="op">/</span><span class="dv">3</span> <span class="op">*</span> <span class="fl">.01</span> <span class="op">+</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">100</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'delay'</span>] <span class="op">=</span> flights[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> flights.copy(deep<span class="op">=</span><span class="va">True</span>)[flights[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="plot-of-flight-delays-vs-departure-time" class="level2">
-<h2 class="anchored" data-anchor-id="plot-of-flight-delays-vs-departure-time">Plot of Flight Delays vs Departure Time</h2>
+<h2 class="anchored" data-anchor-id="plot-of-flight-delays-vs-departure-time">Plot of flight delays vs departure time</h2>
 <p>Let’s take a precursory view of flight delays in the aggregate and see how they correlate with departure time.</p>
-<div class="cell" data-outputid="673558b6-bf3c-4453-80c0-e50ffea9b200" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme()</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#x = plt.hexbin(data=delays.sample(10000), x='CRSDepTime', y='DepDelayMinutes', #fill=True,</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#            #thresh=0, levels=50,</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#               #log_scale=[False, False],</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#               cmap=sns.color_palette("light:b", as_cmap=True), gridsize=[25,200])</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>f, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.histplot(data<span class="op">=</span>delays, x<span class="op">=</span><span class="st">'CRSDepTime'</span>, y<span class="op">=</span><span class="st">'DepDelayMinutes'</span>, bins<span class="op">=</span>[<span class="dv">12</span>,<span class="dv">600</span>],</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>sns.color_palette(<span class="st">"flare_r"</span>, as_cmap<span class="op">=</span><span class="va">True</span>), cbar<span class="op">=</span><span class="va">True</span>, cbar_kws<span class="op">=</span>{<span class="st">'label'</span>: <span class="st">'Quantity of delays'</span>})</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>delays.sample(<span class="dv">1000</span>), x<span class="op">=</span><span class="st">'CRSDepTime'</span>, y<span class="op">=</span><span class="st">'DepDelayMinutes'</span>, levels<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span><span class="st">"w"</span>)</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Density of delays by departure time, '</span> <span class="op">+</span> <span class="bu">str</span>(START_YEAR) <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> <span class="bu">str</span>(END_YEAR <span class="op">-</span> <span class="dv">1</span>))</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Departure time'</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Departure delay, in minutes'</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.xlim((<span class="dv">0</span>, <span class="dv">24</span>))</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>plt.ylim(bottom<span class="op">=</span><span class="dv">0</span>, top<span class="op">=</span><span class="dv">90</span>)</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>([&lt;matplotlib.axis.XTick at 0x7d260705c5e0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d260705c5b0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d2662ef8a60&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d2662ef9540&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d2662ef9ff0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d2662efaaa0&gt;],
+<div class="cell" data-outputid="417bd4dc-a86f-4adf-9eae-3a13a80fa7f7" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.set_theme()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>f, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">7</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.histplot(data<span class="op">=</span>delays, x<span class="op">=</span><span class="st">'CRSDepTime'</span>, y<span class="op">=</span><span class="st">'DepDelayMinutes'</span>, bins<span class="op">=</span>[<span class="dv">12</span>,<span class="dv">600</span>],</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>sns.color_palette(<span class="st">"flare_r"</span>, as_cmap<span class="op">=</span><span class="va">True</span>), cbar<span class="op">=</span><span class="va">True</span>, cbar_kws<span class="op">=</span>{<span class="st">'label'</span>: <span class="st">'Quantity of delays'</span>})</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>delays.sample(<span class="dv">1000</span>), x<span class="op">=</span><span class="st">'CRSDepTime'</span>, y<span class="op">=</span><span class="st">'DepDelayMinutes'</span>, levels<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span><span class="st">"w"</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Density of delays by departure time, '</span> <span class="op">+</span> <span class="bu">str</span>(START_YEAR) <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> <span class="bu">str</span>(END_YEAR <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Departure time'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Departure delay, in minutes'</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>plt.xlim((<span class="dv">0</span>, <span class="dv">24</span>))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>plt.ylim(bottom<span class="op">=</span><span class="dv">0</span>, top<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>([&lt;matplotlib.axis.XTick at 0x7fc51928ddb0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc51928de40&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506530040&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506531000&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506531ab0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc506532560&gt;],
  [Text(0, 0, '12am'),
   Text(4, 0, '4am'),
   Text(8, 0, '8am'),
@@ -459,37 +307,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We see that delays are densest between 10am and 8pm. The most common delay takes less than 10 minutes. Next, we’ll look at significant delays, which I will define to be greater than or equal to 30 minutes in length.</p>
 </section>
-<section id="plot-of-delays-30-minutes-vs-departure-time" class="level2">
-<h2 class="anchored" data-anchor-id="plot-of-delays-30-minutes-vs-departure-time">Plot of Delays &gt; 30 Minutes vs Departure Time</h2>
+<section id="plot-of-delays-greater-than-30-minutes-vs-departure-time" class="level2">
+<h2 class="anchored" data-anchor-id="plot-of-delays-greater-than-30-minutes-vs-departure-time">Plot of delays greater than 30 minutes vs departure time</h2>
 <p>We filter all delays &lt;= 30 minutes out of the <code>delays</code> table.</p>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Categorizes delays into one of three categories.</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delay_significance(x):</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"On Time"</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">30</span> <span class="kw">and</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Slight Delay"</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Significant Delay"</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Creates labels for hue sorting on histogram.</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'Delay Status'</span>] <span class="op">=</span> flights[<span class="st">'DepDelayMinutes'</span>].<span class="bu">apply</span>(delay_significance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delay_significance(x):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Categorizes delays into one of three categories."""</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"On Time"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">&lt;</span> <span class="dv">30</span> <span class="kw">and</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Slight Delay"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"Significant Delay"</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#Creates labels for hue sorting on histogram.</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'Delay Status'</span>] <span class="op">=</span> flights[<span class="st">'DepDelayMinutes'</span>].<span class="bu">apply</span>(delay_significance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Below, you can see all significant flight delays plotted against on-time flights.</p>
-<div class="cell" data-outputid="54caa5a0-c32c-4509-ec40-92fc2457f602" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(flights, x<span class="op">=</span><span class="st">'CRSDepTime'</span>, kde<span class="op">=</span><span class="va">True</span>, hue<span class="op">=</span><span class="st">'Delay Status'</span>,</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>             binwidth<span class="op">=</span><span class="dv">1</span>, kde_kws<span class="op">=</span>{<span class="st">'bw_adjust'</span>: <span class="dv">3</span>}).<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Departure time'</span>, title<span class="op">=</span><span class="st">'Flights from '</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                             <span class="op">+</span> <span class="bu">str</span>(START_YEAR) <span class="op">+</span> <span class="st">' to '</span> <span class="op">+</span> <span class="bu">str</span>(END_YEAR) <span class="op">+</span> <span class="st">', by hour'</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>,<span class="dv">24</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
-<pre><code>([&lt;matplotlib.axis.XTick at 0x7d262155ca00&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d262155c9d0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d2607f696f0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d25ea42bfa0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d257abf4ac0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7d257abf4cd0&gt;],
+<div class="cell" data-outputid="194f5bfd-b172-488a-8a62-e6812aa65199" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(flights, x<span class="op">=</span><span class="st">'CRSDepTime'</span>, kde<span class="op">=</span><span class="va">True</span>, hue<span class="op">=</span><span class="st">'Delay Status'</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             binwidth<span class="op">=</span><span class="dv">1</span>, kde_kws<span class="op">=</span>{<span class="st">'bw_adjust'</span>: <span class="dv">3</span>}).<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'Departure time'</span>, title<span class="op">=</span><span class="st">'Flights from '</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                             <span class="op">+</span> <span class="bu">str</span>(START_YEAR) <span class="op">+</span> <span class="st">' to '</span> <span class="op">+</span> <span class="bu">str</span>(END_YEAR) <span class="op">+</span> <span class="st">', by hour'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>,<span class="dv">24</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>([&lt;matplotlib.axis.XTick at 0x7fc52b1e4b20&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc52b1e4af0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc52c489c30&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc524cbfd30&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc524ce8b80&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fc524cbfcd0&gt;],
  [Text(0, 0, '12am'),
   Text(4, 0, '4am'),
   Text(8, 0, '8am'),
@@ -506,44 +354,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="delays-by-airline" class="level2">
 <h2 class="anchored" data-anchor-id="delays-by-airline">Delays by airline</h2>
 <p>Now, let’s look at delays by airline. We merge wholly-owned subsidiaries with their parent company (a complete list of wholly-owned subsidiary airlines in North America can be found on <a href="https://en.wikipedia.org/wiki/Regional_airline">Wikipedia</a>), as people do not often see their brand nor purchase from them. Some airlines, such as Republic Airline, are regional airlines that fly under multiple airline names; our data does not represent whose banner they fly under for a given flight, making it impossible for us to merge their flights with their contracted carrier.</p>
-<div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new departure hour columns to flights and delays for easier charting</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepHour'</span>], delays[<span class="st">'CRSDepHour'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span>,  delays[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Select only for significant delays</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> delays[delays[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;=</span> <span class="dv">30</span>]</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge wholly-owned subsidiary airlines with their parent companies</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>delays_ma <span class="op">=</span> delays.replace(to_replace<span class="op">=</span>{<span class="st">"Airline"</span>: {<span class="st">"Horizon Air"</span>:<span class="st">"Alaska Airlines Inc."</span>, <span class="st">"Envoy Air"</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"PSA Airlines Inc."</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"Endeavor Air Inc."</span>: <span class="st">"Delta Air Lines Inc."</span>}})</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>flights_ma <span class="op">=</span> flights.replace(to_replace<span class="op">=</span>{<span class="st">"Airline"</span>: {<span class="st">"Horizon Air"</span>:<span class="st">"Alaska Airlines Inc."</span>, <span class="st">"Envoy Air"</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"PSA Airlines Inc."</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"Endeavor Air Inc."</span>: <span class="st">"Delta Air Lines Inc."</span>}})</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Return a Series corresponding to an airline's delay frequency for each hour of the day</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> airline_delay_frequencies(airline, delays, flights):</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    total_delays <span class="op">=</span> delays[delays[<span class="st">'Airline'</span>] <span class="op">==</span> airline].groupby(<span class="st">'CRSDepHour'</span>)[<span class="st">'CRSDepTime'</span>].count()</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    total_flights <span class="op">=</span> flights[flights[<span class="st">'Airline'</span>] <span class="op">==</span> airline].groupby(<span class="st">'CRSDepHour'</span>)[<span class="st">'CRSDepTime'</span>].count()</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (total_delays <span class="op">/</span> total_flights).reindex(np.arange(<span class="dv">24</span>), fill_value<span class="op">=</span><span class="dv">0</span>) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Accumulate multiple airline Series into a DataFrame for line plot</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>airlines <span class="op">=</span> [<span class="st">'American Airlines Inc.'</span>, <span class="co">#'SkyWest Airlines Inc.',</span></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Alaska Airlines Inc.'</span>, <span class="st">'United Air Lines Inc.'</span>,</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Delta Air Lines Inc.'</span>, <span class="st">'Frontier Airlines Inc.'</span>, <span class="co">#'Allegiant Air',</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>       <span class="co">#'Hawaiian Airlines Inc.',</span></span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Spirit Air Lines'</span>,</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Southwest Airlines Co.'</span>, <span class="co">#'Mesa Airlines Inc.', 'Republic Airline',</span></span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>       <span class="st">'JetBlue Airways'</span>]</span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>proportions <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> airline <span class="kw">in</span> airlines:</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    proportions[airline] <span class="op">=</span> airline_delay_frequencies(airline, delays_ma, flights_ma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adds new departure hour columns to flights and delays for easier charting</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>flights[<span class="st">'CRSDepHour'</span>], delays[<span class="st">'CRSDepHour'</span>] <span class="op">=</span> flights[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span>,  delays[<span class="st">'CRSDepTime'</span>] <span class="op">//</span> <span class="dv">1</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Selects only for significant delays</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>delays <span class="op">=</span> delays[delays[<span class="st">'DepDelayMinutes'</span>] <span class="op">&gt;=</span> <span class="dv">30</span>]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Merges wholly-owned subsidiary airlines with their parent companies</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>delays_ma <span class="op">=</span> delays.replace(to_replace<span class="op">=</span>{<span class="st">"Airline"</span>: {<span class="st">"Horizon Air"</span>:<span class="st">"Alaska Airlines Inc."</span>, <span class="st">"Envoy Air"</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"PSA Airlines Inc."</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"Endeavor Air Inc."</span>: <span class="st">"Delta Air Lines Inc."</span>}})</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>flights_ma <span class="op">=</span> flights.replace(to_replace<span class="op">=</span>{<span class="st">"Airline"</span>: {<span class="st">"Horizon Air"</span>:<span class="st">"Alaska Airlines Inc."</span>, <span class="st">"Envoy Air"</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"PSA Airlines Inc."</span>:<span class="st">"American Airlines Inc."</span>, <span class="st">"Endeavor Air Inc."</span>: <span class="st">"Delta Air Lines Inc."</span>}})</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> airline_delay_frequencies(airline, delays, flights):</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Returns delay proportions, grouped by departure hour and departure time."""</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    total_delays <span class="op">=</span> delays[delays[<span class="st">'Airline'</span>] <span class="op">==</span> airline].groupby(<span class="st">'CRSDepHour'</span>)[<span class="st">'CRSDepTime'</span>].count()</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    total_flights <span class="op">=</span> flights[flights[<span class="st">'Airline'</span>] <span class="op">==</span> airline].groupby(<span class="st">'CRSDepHour'</span>)[<span class="st">'CRSDepTime'</span>].count()</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (total_delays <span class="op">/</span> total_flights).reindex(np.arange(<span class="dv">24</span>), fill_value<span class="op">=</span><span class="dv">0</span>) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Accumulates multiple airline Series into a DataFrame for line plot</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>airlines <span class="op">=</span> [<span class="st">'American Airlines Inc.'</span>, <span class="co">#'SkyWest Airlines Inc.',</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Alaska Airlines Inc.'</span>, <span class="st">'United Air Lines Inc.'</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Delta Air Lines Inc.'</span>, <span class="st">'Frontier Airlines Inc.'</span>, <span class="co">#'Allegiant Air',</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>       <span class="co">#'Hawaiian Airlines Inc.',</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Spirit Air Lines'</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>       <span class="st">'Southwest Airlines Co.'</span>, <span class="co">#'Mesa Airlines Inc.', 'Republic Airline',</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>       <span class="st">'JetBlue Airways'</span>]</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>proportions <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> airline <span class="kw">in</span> airlines:</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    proportions[airline] <span class="op">=</span> airline_delay_frequencies(airline, delays_ma, flights_ma)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="7c05db71-58c4-499c-c4b4-cb8d1c9737a5" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a bar plot of flight delay percentage according to time</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.lineplot(data<span class="op">=</span>proportions, palette<span class="op">=</span><span class="st">"tab10"</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Scheduled Hour of Flight Departure"</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Percentage"</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Percent of flights significantly delayed, by time of day"</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">40</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-outputid="40dec9bd-8752-46bd-95e9-c5406978ec8c" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Constructs a bar plot of flight delay percentage according to time</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.lineplot(data<span class="op">=</span>proportions, palette<span class="op">=</span><span class="st">"tab10"</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Scheduled Hour of Flight Departure"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Percentage"</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Percent of flights significantly delayed, by time of day"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="dv">40</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Flights_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
@@ -552,12 +400,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The budget airlines (Frontier, Spirit, Southwest, and JetBlue) all have higher rates of delay throughout the day according to this dataset, with the exception of Southwest, which has a delay rate comparable with the non-budget airlines in the morning. However, by 12pm, Southwest’s significant delay rate grows past that of the non-budget airlines and joins its budget peers by 4 or 5 pm.</p>
 <p>After aggregating budget and non-budget airlines, we can notice a large difference between budget airline performance and non-budget performance in terms of significant delays.</p>
 <p>By the numbers:</p>
-<div class="cell" data-outputid="8678972c-e7f6-4c1c-94f1-63556149c319">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(delays.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">/</span> flights.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">*</span> <span class="dv">100</span>).sort_values(<span class="st">'CRSDepTime'</span>, ascending<span class="op">=</span><span class="va">False</span>).rename({<span class="st">'CRSDepTime'</span>:<span class="st">'</span><span class="sc">% F</span><span class="st">lights Significantly Delayed'</span>}, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div class="cell" data-outputid="2a44d9ca-cd02-4772-b5c7-acbe4c6831da" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(delays.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">/</span> flights.groupby(<span class="st">'Airline'</span>).count()[[<span class="st">'CRSDepTime'</span>]] <span class="op">*</span> <span class="dv">100</span>).sort_values(<span class="st">'CRSDepTime'</span>, ascending<span class="op">=</span><span class="va">False</span>).rename({<span class="st">'CRSDepTime'</span>:<span class="st">'</span><span class="sc">% F</span><span class="st">lights Significantly Delayed'</span>}, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 
 
-  <div id="df-e1355674-a5b1-4ece-9353-e416a482a034">
+  <div id="df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c">
     <div class="colab-df-container">
       <div>
 
@@ -576,78 +424,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">JetBlue Airways</td>
-<td>21.652816</td>
+<td>22.078514</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Frontier Airlines Inc.</td>
-<td>21.419026</td>
+<td>21.896298</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Allegiant Air</td>
-<td>18.555946</td>
+<td>18.991785</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Spirit Air Lines</td>
-<td>16.562758</td>
+<td>16.958591</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Southwest Airlines Co.</td>
-<td>14.770963</td>
+<td>15.292280</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">American Airlines Inc.</td>
-<td>14.214442</td>
+<td>14.529106</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Mesa Airlines Inc.</td>
-<td>13.577397</td>
+<td>13.838768</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">United Air Lines Inc.</td>
-<td>12.699216</td>
+<td>12.994220</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">PSA Airlines Inc.</td>
-<td>10.777328</td>
-</tr>
-<tr class="even">
 <td data-quarto-table-cell-role="th">Hawaiian Airlines Inc.</td>
-<td>10.647634</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">SkyWest Airlines Inc.</td>
-<td>10.414303</td>
+<td>11.101448</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th">PSA Airlines Inc.</td>
+<td>11.007379</td>
+</tr>
+<tr class="odd">
 <td data-quarto-table-cell-role="th">Delta Air Lines Inc.</td>
-<td>10.389507</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Republic Airline</td>
-<td>10.145860</td>
+<td>10.671968</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th">SkyWest Airlines Inc.</td>
+<td>10.629637</td>
+</tr>
+<tr class="odd">
 <td data-quarto-table-cell-role="th">Alaska Airlines Inc.</td>
-<td>10.135582</td>
+<td>10.458504</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Republic Airline</td>
+<td>10.361243</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Endeavor Air Inc.</td>
-<td>9.629982</td>
+<td>9.843149</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Envoy Air</td>
-<td>9.500922</td>
+<td>9.762695</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Horizon Air</td>
-<td>8.595466</td>
+<td>8.873647</td>
 </tr>
 </tbody>
 </table>
 
 
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-e1355674-a5b1-4ece-9353-e416a482a034')" title="Convert this dataframe to an interactive table." style="display:none;">
+      <button class="colab-df-convert" onclick="convertToInteractive('df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <path d="M0 0h24v24H0V0z" fill="none"></path>
@@ -657,8 +505,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-    <div id="df-a2ba2720-0a73-4b81-a1fc-3ffd699a3643">
-      <button class="colab-df-quickchart" onclick="quickchart('df-a2ba2720-0a73-4b81-a1fc-3ffd699a3643')" title="Suggest charts." style="display:none;">
+    <div id="df-6118a7ff-b20f-40c8-ab35-f53dfee79530">
+      <button class="colab-df-quickchart" onclick="quickchart('df-6118a7ff-b20f-40c8-ab35-f53dfee79530')" title="Suggest charts." style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -712,7 +560,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 function displayQuickchartButton(domScope) {
   let quickchartButtonEl =
-    domScope.querySelector('#df-a2ba2720-0a73-4b81-a1fc-3ffd699a3643 button.colab-df-quickchart');
+    domScope.querySelector('#df-6118a7ff-b20f-40c8-ab35-f53dfee79530 button.colab-df-quickchart');
   quickchartButtonEl.style.display =
     google.colab.kernel.accessAllowed ? 'block' : 'none';
 }
@@ -759,12 +607,12 @@ function displayQuickchartButton(domScope) {
 
       <script>
         const buttonEl =
-          document.querySelector('#df-e1355674-a5b1-4ece-9353-e416a482a034 button.colab-df-convert');
+          document.querySelector('#df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-e1355674-a5b1-4ece-9353-e416a482a034');
+          const element = document.querySelector('#df-9750e9c8-1cb6-4b0d-833d-1f340e0c1d1c');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -786,29 +634,30 @@ function displayQuickchartButton(domScope) {
 </div>
 </div>
 </section>
-<section id="part-2" class="level1">
-<h1>Part 2</h1>
-<p>Let’s narrow our scope to my particular situation. As a college student, I often take Southwest to-and-from school due to its cheap fares and customer service.</p>
+<section id="applications-lax-vs-bur-sfo-vs-oak" class="level1">
+<h1>Applications: LAX vs BUR, SFO vs OAK</h1>
+<p>I want to talk about why I felt inspired to examine flights in the first place. As a college student, I often take Southwest to-and-from school due to its cheap fares and customer service.</p>
 <p>Southern California common wisdom dictates that one should fly out of Burbank Airport whenever possible to avoid LAX delays. Coming to the Bay Area for college, I expected Oakland and San Francisco to share a similar large/small airport dynamic. However, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO&gt;OAK and BUR&gt;LAX.</p>
-<p>We follow a similar approach to before but only select flight records that contain our desired origin airports.</p>
-<div class="cell" data-outputid="f34c5ca1-8f6c-43e5-dedf-cbf7485ae3da" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns a DataFrame with delay rates by airport and airline. Indices follow the format 'airline airport.'</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># airlines and airports must be lists. delays and flights are DataFrames as created above.</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_airports(airlines, airports, delays, flights):</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    proportions <span class="op">=</span> pd.DataFrame()</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> airline <span class="kw">in</span> airlines:</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> origin <span class="kw">in</span> airports:</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>            proportions[airline <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> origin] <span class="op">=</span> airline_delay_frequencies(airline,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                            delays[delays[<span class="st">'Origin'</span>] <span class="op">==</span> origin], flights[flights[<span class="st">'Origin'</span>] <span class="op">==</span> origin])</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proportions</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a bar plot of flight delay percentage according to time</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.lineplot(data<span class="op">=</span>compare_airports([<span class="st">'Southwest Airlines Co.'</span>], [<span class="st">'LAX'</span>, <span class="st">'BUR'</span>, <span class="st">'OAK'</span>, <span class="st">'SFO'</span>], delays_ma, flights_ma))</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Scheduled Hour of Flight Departure"</span>)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Percentage"</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Percent of flights delayed by airport, airline"</span>)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I follow a similar approach as before but select only flight records that contain our desired origin airports.</p>
+<div class="cell" data-outputid="c94736bd-dbc2-45eb-946c-2cb5f1a7a3d6" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compare_airports(airlines, airports, delays, flights):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Returns a DataFrame with delay rates by airport and airline. Indices follow the format 'airline airport.'</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">    airlines' and airports must be lists. delays and flights are DataFrames as created above.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    proportions <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> airline <span class="kw">in</span> airlines:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> origin <span class="kw">in</span> airports:</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>            proportions[airline <span class="op">+</span> <span class="st">" "</span> <span class="op">+</span> origin] <span class="op">=</span> airline_delay_frequencies(airline,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                            delays[delays[<span class="st">'Origin'</span>] <span class="op">==</span> origin], flights[flights[<span class="st">'Origin'</span>] <span class="op">==</span> origin])</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proportions</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a bar plot of flight delay percentage according to time</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> sns.lineplot(data<span class="op">=</span>compare_airports([<span class="st">'Southwest Airlines Co.'</span>], [<span class="st">'LAX'</span>, <span class="st">'BUR'</span>, <span class="st">'OAK'</span>, <span class="st">'SFO'</span>], delays_ma, flights_ma))</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Scheduled Hour of Flight Departure"</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Percentage"</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Percent of flights delayed by airport, airline"</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">4</span>), [<span class="st">'12am'</span>,<span class="st">'4am'</span>,<span class="st">'8am'</span>,<span class="st">'12pm'</span>,<span class="st">'4pm'</span>,<span class="st">'8pm'</span>])</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>sns.move_legend(a, <span class="st">"upper left"</span>, bbox_to_anchor<span class="op">=</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Flights_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
