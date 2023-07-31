@@ -13,5 +13,8 @@
   },
   "about.qmd": {
     "about.html": "c6e72b83"
+  },
+  "posts/Flights.ipynb": {
+    "Flights.html": "db8abb17"
   }
 }
