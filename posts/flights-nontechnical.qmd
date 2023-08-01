@@ -5,8 +5,9 @@ title: "Everything to Know About Flight Delays (no code)"
 description: "Analyzing post-Covid airline records"
 image: "cell-11-output-2.png"
 ---
+As a teenager, when booking flights, my mom always insisted that we book the earliest flight possible. It made no sense to me. "But we'll have wasted a day traveling anyway, Mom! Why should we wake up super early and be tired just to get to the hotel and do nothing? Why not just book a flight for later in the day?" Years later, I got in an argument with my sister about this exact thing. Hving studied data science as my major at UC Berkeley, I realized that this question was answerable with more than just anecdotes about delays.
 
-This article analyzes post-Covid flight information up to February 2023 (the latest available as of today) without delving too far into how I processed flight data. I'm interested in understanding flight delays.
+That's why I decided to study flight delays in-depth and write an article summarizing my conclusions. This article analyzes post-Covid flight information up to February 2023 (the latest available as of today) while sparing the reader the details of data processing.   
 
 ## Downloading the data
 
@@ -119,6 +120,7 @@ By the numbers:
   </tbody>
 </table>
 
+In sum, to minimize the chance of delay, it's best to choose a non-budget airline and depart as early as possible to avoid a significant delay. Your chances of making a connecting flight, getting to your destination at a reasonable hour, and enjoying a warm, healthy dinner all increase if you leave earlier in the day. Your body will thank you.
 
 ## Applications: LAX and BUR, and SFO and OAK
 
