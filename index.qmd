@@ -1,10 +1,32 @@
 ---
-title: "Ethan Elasky's Blog"
-subtitle: "Thoughts about data science, Lincoln-Douglas debate, and more."
-listing:
-  sort: "date desc"
-  type: default
-  categories: false
-  contents: posts
-max-description-length: 200
+title: "Ethan Elasky"
+
+about: 
+  template: trestles # see other templates at https://quarto.org/docs/websites/website-about.html#templates
+  image: headshot.jpg
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - icon: linkedin # you'll need to the fontawesome extension to include icons: https://github.com/quarto-ext/fontawesome
+      text: LinkedIn
+      href: https://www.linkedin.com/in/ethanelasky/
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/elaskyethan
+    - icon: github
+      text: GitHub
+      href: https://github.com/ethanelasky
+    - icon: envelope
+      text: Email
+      href: mailto:elasky2024@berkeley.edu
 ---
+
+## About this website
+
+I'm a senior studying Data Science at the University of California, Berkeley. 
+
+At the Haas School of Business, I'm a member of Angus Hildreth's Social Psychology and Business Lab.
+
+Having studied abroad in Taiwan during Spring 2023 and grown up in America, I understand English and Mandarin.
+
+In high school, I was ranked top-50 in Lincoln-Douglas debate nationally.
