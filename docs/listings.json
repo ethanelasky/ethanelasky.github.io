@@ -1,8 +1,8 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/posts.html",
     "items": [
-      "/posts/flights-technical.html",
+      "/posts/Flights-technical.html",
       "/posts/flights-nontechnical.html"
     ]
   }

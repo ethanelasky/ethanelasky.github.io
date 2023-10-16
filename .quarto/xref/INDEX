@@ -28,5 +28,11 @@
   },
   "posts/flights-technical.ipynb": {
     "flights-technical.html": "ac4a9e9d"
+  },
+  "blog.qmd": {
+    "blog.html": "ef4270e8"
+  },
+  "posts.qmd": {
+    "posts.html": "f9b8dc3e"
   }
 }
