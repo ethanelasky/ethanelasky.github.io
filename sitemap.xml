@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/about.html</loc>
-    <lastmod>2023-10-16T02:03:54.910Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/flights-nontechnical.html</loc>
-    <lastmod>2023-10-16T02:03:53.634Z</lastmod>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/Flights-technical.html</loc>
+    <lastmod>2023-10-16T02:11:33.323Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/index.html</loc>
-    <lastmod>2023-10-16T02:03:52.442Z</lastmod>
+    <lastmod>2023-10-16T02:11:31.971Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/Flights-technical.html</loc>
-    <lastmod>2023-10-16T02:03:54.530Z</lastmod>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/blog.html</loc>
+    <lastmod>2023-10-16T02:11:31.287Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/flights-nontechnical.html</loc>
+    <lastmod>2023-10-16T02:11:32.571Z</lastmod>
   </url>
 </urlset>
