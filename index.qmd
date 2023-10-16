@@ -2,12 +2,12 @@
 title: "Ethan Elasky"
 
 about: 
-  template: trestles # see other templates at https://quarto.org/docs/websites/website-about.html#templates
+  template: solana
   image: headshot.jpg
   image-shape: rounded
   image-width: 15em
   links:
-    - icon: linkedin # you'll need to the fontawesome extension to include icons: https://github.com/quarto-ext/fontawesome
+    - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/ethanelasky/
     - icon: twitter
@@ -21,12 +21,12 @@ about:
       href: mailto:elasky2024@berkeley.edu
 ---
 
-## About this website
+## About me
 
-I'm a senior studying Data Science at the University of California, Berkeley. 
+I'm a senior studying Data Science at the University of California, Berkeley. Currently, I'm currently working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to American and Taiwanese news media to understand each society's view on China.
 
-At the Haas School of Business, I'm a member of Angus Hildreth's Social Psychology and Business Lab.
+At the Haas School of Business, I'm a member of [Angus Hildreth](https://www.johnson.cornell.edu/faculty-research/faculty/jdh362/)'s Social Psychology and Business Lab.
 
-Having studied abroad in Taiwan during Spring 2023 and grown up in America, I understand English and Mandarin.
+Having studied abroad in Taiwan during Spring 2023 and grown up in the United States, I understand English and Mandarin.
 
-In high school, I was ranked top-50 in Lincoln-Douglas debate nationally.
+In high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman year.
