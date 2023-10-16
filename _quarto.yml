@@ -7,10 +7,10 @@ website:
   favicon: favicon.ico
   navbar:
     left:
-      - href: index.qmd
-        text: Blog
       - href: about.qmd
         text: About
+      - href: index.qmd
+        text: Blog
       - icon: github
         href: https://github.com/ethanelasky
       - icon: twitter
