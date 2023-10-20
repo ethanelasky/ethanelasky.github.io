@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ethan Elasky",
+    "section": "",
+    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to American and Taiwanese news media to understand each’s framing/stance/agenda-setting with respect to China. I am advised by Lucy Li.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nHaving studied abroad in Taiwan during Spring 2023 and grown up in the United States, I understand English and Mandarin.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman year."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Ethan Elasky",
+    "section": "",
+    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to American and Taiwanese news media to understand each’s framing/stance/agenda-setting with respect to China. I am advised by Lucy Li.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nHaving studied abroad in Taiwan during Spring 2023 and grown up in the United States, I understand English and Mandarin.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman year."
+  },
+  {
     "objectID": "posts/Flights-technical.html",
     "href": "posts/Flights-technical.html",
     "title": "Everything to Know About Flight Delays",
@@ -49,25 +63,11 @@
     "text": "Since starting college, I’ve traveled quite regularly on planes between my hometown in Southern California and my university in the San Francisco Bay Area. I was drawn to this topic to get a better sense of which airline and airport combination offered me the fewest overall delays. As a college student with a constrained budget, I often take Southwest to and from school due to its cheap fares and customer service..\nSouthern California common wisdom dictates that one should fly out of Burbank (BUR) whenever possible to avoid the hassle of traveling to and out of Los Angeles (LAX).. Coming to the Bay Area for college, I expected Oakland (OAK) and San Francisco (SFO) to share a similar dynamic. add another sentence here for a better flowHowever, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO is better than OAK and BUR is better than LAX.\nI follow a similar approach as before but select only flight records that contain our desired airports.\n\n\nCode\ndef compare_airports(airlines, airports, delays, flights):\n    \"\"\" Returns a DataFrame with delay rates by airport and airline. Indices follow the format 'airline airport.'\n    airlines' and airports must be lists. delays and flights are DataFrames as created above.\n    \"\"\"\n    proportions = pd.DataFrame()\n    for airline in airlines:\n        for origin in airports:\n            proportions[airline + \" \" + origin] = airline_delay_frequencies(airline,\n                            delays[delays['Origin'] == origin], flights[flights['Origin'] == origin])\n    return proportions\n\n# Construct a bar plot of flight delay percentage according to time\na = sns.lineplot(data=compare_airports(['Southwest Airlines Co.'], ['LAX', 'BUR', 'OAK', 'SFO'], delays_ma, flights_ma))\nplt.xlabel(\"Scheduled Hour of Flight Departure\")\nplt.ylabel(\"Percentage\")\nplt.title(\"Percent of flights delayed by airport, airline\")\nplt.xticks(range(0,24,4), ['12am','4am','8am','12pm','4pm','8pm'])\nsns.move_legend(a, \"upper left\", bbox_to_anchor=(1, 1))\n\n\n\n\n\nWe see that BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same. Maybe my friends’ preference for SFO compared to OAK stems from something else, but clearly delays don’t play a major role in that decision."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ethan Elasky",
-    "section": "",
-    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m currently working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to American and Taiwanese news media to understand each society’s view on China.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nHaving studied abroad in Taiwan during Spring 2023 and grown up in the United States, I understand English and Mandarin.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman year."
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Ethan Elasky",
-    "section": "",
-    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m currently working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to American and Taiwanese news media to understand each society’s view on China.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nHaving studied abroad in Taiwan during Spring 2023 and grown up in the United States, I understand English and Mandarin.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman year."
-  },
-  {
     "objectID": "posts.html",
     "href": "posts.html",
     "title": "Ethan Elasky’s Blog",
     "section": "",
-    "text": "Everything to Know About Flight Delays (no code)\n\n\n\n\n\nAnalyzing post-Covid airline records\n\n\n\n\n\n\nJul 30, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\n  \n\n\n\n\nEverything to Know About Flight Delays\n\n\n\n\n\nAnalyzing post-Covid airline records with Python\n\n\n\n\n\n\nJul 30, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\nNo matching items"
+    "text": "Everything to Know About Flight Delays\n\n\n\n\n\nAnalyzing post-Covid airline records with Python\n\n\n\n\n\n\nJul 30, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\n  \n\n\n\n\nEverything to Know About Flight Delays (no code)\n\n\n\n\n\nAnalyzing post-Covid airline records\n\n\n\n\n\n\nJul 30, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/flights-nontechnical.html",
