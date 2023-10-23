@@ -1,6 +1,9 @@
 ---
 title: "Ethan Elasky"
 
+format: 
+- toc: false
+
 about: 
   template: solana
   image: headshot.jpg
