@@ -6,7 +6,7 @@
 // Colors
 $light-sage-green: #D1D9CE;
 $dark-sage-green: #98A08D;
-$navblue: #356d9f;
+$navblue: #7393B3;
 $purple: #AE8BD1;
 $dark-gray: #292929; 
 $light-gray: #f0f0f0;
@@ -16,7 +16,7 @@ $navbar-bg: $navblue; // navbar
 $navbar-fg: $white; // navbar foreground elements
 $navbar-hl: $dark-gray; // highlight color when hovering over navbar links
 $body-bg: $white; // page background 
-$body-color: $black; // page text 
+$body-color: $black; // page text
 $footer-bg: $navblue; // footer 
 $link-color: $dark-gray; // hyperlinks 
 
@@ -26,3 +26,6 @@ $code-color: $dark-gray; // inline code text color
 
 // Code blocks
 $code-block-bg: $light-gray; // code block background color
+
+// Navbar customization
+$navbar-padding-y: 70;

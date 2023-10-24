@@ -1,14 +1,11 @@
 ---
 title: "Ethan Elasky"
 
-format: 
-- toc: false
-
 about: 
   template: solana
   image: headshot.jpg
   image-shape: rounded
-  image-width: 15em
+  image-width: 20em
   links:
     - icon: linkedin
       text: LinkedIn
