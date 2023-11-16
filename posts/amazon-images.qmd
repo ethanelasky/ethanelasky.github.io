@@ -2,6 +2,8 @@
 date: 11/15/2023
 author: "Ethan Elasky"
 title: "Amazon Photos collects data from your photos and videos -- here's how to disable this"
+description: "Don't become Amazon's training data"
+image: "Amazon-Photos-Logo.jpg"
 ---
 
 Amazon Photo grants unlimited photo storage (and 5GB of video storage) to Prime members, which is why I use it to store my photo backups.
