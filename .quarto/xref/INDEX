@@ -34,5 +34,11 @@
   },
   "posts.qmd": {
     "posts.html": "f9b8dc3e"
+  },
+  "posts/amazon-images.qmd": {
+    "amazon-images.html": "96d38d7d"
+  },
+  "posts/debate-is-not-an-activity.ipynb": {
+    "debate-is-not-an-activity.html": "3dd715d9"
   }
 }
