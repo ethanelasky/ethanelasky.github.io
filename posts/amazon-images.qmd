@@ -12,4 +12,4 @@ I was peeking around in the Amazon Photos Terms and Conditions recently when I f
 
 > We retain image recognition data relating to the photos and videos you store using the Services until you disable the applicable Tagging Feature or your account's access to the Services is terminated.
 
-Although vague, this language suggests that your photos and videos are fair targets for their models. To prevent your photos and videos from being included in their training dataset, go to (Amazon Photo Settings)[https://www.amazon.com/photos/settings], click on **Image Recognition**, and toggle the **Tag Photos** to **OFF**.
+Although vague, this language suggests that your photos and videos are fair targets for their models. To prevent your photos and videos from being included in their training dataset, go to [Amazon Photo Settings](https://www.amazon.com/photos/settings), click on **Image Recognition**, and toggle **Tag Photos** to **OFF**.
