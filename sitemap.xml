@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/index.html</loc>
-    <lastmod>2023-10-24T05:14:30.870Z</lastmod>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/flights-nontechnical.html</loc>
+    <lastmod>2023-11-16T01:56:12.683Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/Flights-technical.html</loc>
-    <lastmod>2023-10-24T05:14:29.834Z</lastmod>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/debate-is-not-an-activity.html</loc>
+    <lastmod>2023-11-16T01:56:11.999Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts.html</loc>
-    <lastmod>2023-10-24T05:14:28.557Z</lastmod>
+    <lastmod>2023-11-16T01:56:11.031Z</lastmod>
   </url>
   <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/flights-nontechnical.html</loc>
-    <lastmod>2023-10-24T05:14:30.494Z</lastmod>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/index.html</loc>
+    <lastmod>2023-11-16T01:56:10.271Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/Flights-technical.html</loc>
+    <lastmod>2023-11-16T01:56:11.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/amazon-images.html</loc>
+    <lastmod>2023-11-16T01:56:12.251Z</lastmod>
   </url>
 </urlset>
