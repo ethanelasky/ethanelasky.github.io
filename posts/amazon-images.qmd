@@ -1,7 +1,7 @@
 ---
 date: 11/15/2023
 author: "Ethan Elasky"
-title: "Amazon Photos collects data from your photos and videos -- here's how to disable this"
+title: "Amazon Photos collects your photo data -- you can disable this"
 description: "Don't become Amazon's training data"
 image: "Amazon-Photos-Logo.jpg"
 ---
@@ -12,4 +12,4 @@ I was peeking around in the [Amazon Photos Terms and Conditions](https://www.ama
 
 > We retain image recognition data relating to the photos and videos you store using the Services until you disable the applicable Tagging Feature or your account's access to the Services is terminated.
 
-Although vague, this language suggests that your photos and videos are fair targets for their models. To prevent your photos and videos from being included in their training dataset, go to [Amazon Photo Settings](https://www.amazon.com/photos/settings), click on **Image Recognition**, and toggle **Tag Photos** to **OFF**.
+Although vague, this language suggests that your photos and videos could become training data for their models. To avoid your photos' and videos' inclusion, go to [Amazon Photo Settings](https://www.amazon.com/photos/settings), click on **Image Recognition**, and toggle **Tag Photos** to **OFF**.
