@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/flights-nontechnical.html</loc>
-    <lastmod>2023-11-16T02:07:16.147Z</lastmod>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts.html</loc>
+    <lastmod>2023-12-14T00:41:00.455Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/Flights-technical.html</loc>
-    <lastmod>2023-11-16T02:07:15.411Z</lastmod>
+    <lastmod>2023-12-14T00:40:59.655Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/index.html</loc>
-    <lastmod>2023-11-16T02:07:14.079Z</lastmod>
-  </url>
-  <url>
-    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts.html</loc>
-    <lastmod>2023-11-16T02:07:14.803Z</lastmod>
+    <lastmod>2023-12-14T00:40:58.527Z</lastmod>
   </url>
   <url>
     <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/amazon-images.html</loc>
-    <lastmod>2023-11-16T02:07:15.687Z</lastmod>
+    <lastmod>2023-12-14T00:40:59.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://github.com/ethanelasky/ethanelasky.github.io/posts/flights-nontechnical.html</loc>
+    <lastmod>2023-12-14T00:41:00.103Z</lastmod>
   </url>
 </urlset>
