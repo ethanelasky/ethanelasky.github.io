@@ -23,10 +23,10 @@ about:
 
 ## About me
 
-I'm a senior studying Data Science at the University of California, Berkeley. Currently, I'm  working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to American and Taiwanese news media to understand each's framing/stance/agenda-setting with respect to China. I am advised by [Lucy Li](lucy3.github.io).
+I'm a senior studying Data Science at the University of California, Berkeley. Currently, I'm  working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to quantify American and Taiwanese news media's attitudes regarding China. I am advised by [Lucy Li](https://lucy3.github.io).
 
 At the Haas School of Business, I'm a member of [Angus Hildreth](https://www.johnson.cornell.edu/faculty-research/faculty/jdh362/)'s Social Psychology and Business Lab.
 
-Having studied abroad in Taiwan during Spring 2023 and grown up in the United States, I understand English and Mandarin.
+I understand English and Mandarin. I studied abroad in Taiwan in Spring 2023 and have future plans to go back.
 
-In high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman year.
+In high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman and sophomore years.
