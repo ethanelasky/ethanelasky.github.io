@@ -7,6 +7,7 @@
 $light-sage-green: #D1D9CE;
 $dark-sage-green: #98A08D;
 $navblue: #7393B3;
+$linkblue: #045ebf;
 $purple: #AE8BD1;
 $dark-gray: #292929; 
 $light-gray: #f0f0f0;
@@ -18,7 +19,7 @@ $navbar-hl: $dark-gray; // highlight color when hovering over navbar links
 $body-bg: $white; // page background 
 $body-color: $black; // page text
 $footer-bg: $navblue; // footer 
-$link-color: $dark-gray; // hyperlinks 
+$link-color: $linkblue; // hyperlinks 
 
 // Inline code
 $code-bg: $light-gray; // inline code background color
