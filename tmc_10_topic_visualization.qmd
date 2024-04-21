@@ -1,0 +1,41 @@
+---
+format: 
+  html:
+    page-layout: custom
+---
+
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .content {
+    width: 100%;
+    padding: 0;
+  }
+  
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>
+
+<div class="content">
+  <iframe id="myIframe" src="/projects/tmc-interactives/pyLDAvis_10_topic.html"></iframe>
+</div>
+
+<script>
+  function adjustIframeHeight() {
+    var iframe = document.getElementById('myIframe');
+    var headerHeight = 0; // Adjust this value based on your navigation header height
+    var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    var iframeHeight = (screenHeight - headerHeight); // Scale down by 10%
+    iframe.style.height = iframeHeight + 'px';
+  }
+
+  window.addEventListener('load', adjustIframeHeight);
+  window.addEventListener('resize', adjustIframeHeight);
+</script>
