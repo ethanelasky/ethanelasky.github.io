@@ -2,30 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ethanelasky.github.io/index.html</loc>
-    <lastmod>2024-04-21T20:07:50.314Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/taiwanese_music_1.html</loc>
-    <lastmod>2024-04-21T20:07:50.326Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/flights-nontechnical.html</loc>
-    <lastmod>2024-04-21T20:07:50.322Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/tmc_10_topic_visualization.html</loc>
-    <lastmod>2024-04-21T20:07:50.326Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/amazon-images.html</loc>
-    <lastmod>2024-04-21T20:07:50.322Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/Flights-technical.html</loc>
-    <lastmod>2024-04-21T20:07:50.318Z</lastmod>
+    <lastmod>2024-04-22T05:41:57.184Z</lastmod>
   </url>
   <url>
     <loc>https://ethanelasky.github.io/posts.html</loc>
-    <lastmod>2024-04-21T20:07:50.314Z</lastmod>
+    <lastmod>2024-04-22T05:41:57.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/Flights-technical.html</loc>
+    <lastmod>2024-04-22T05:41:57.188Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/amazon-images.html</loc>
+    <lastmod>2024-04-22T05:41:57.192Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/flights-nontechnical.html</loc>
+    <lastmod>2024-04-22T05:41:57.192Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/taiwanese_music_1.html</loc>
+    <lastmod>2024-04-22T05:41:57.196Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/projects/tmc-interactives/tmc_10_topic_visualization_gensim.html</loc>
+    <lastmod>2024-04-22T05:41:57.196Z</lastmod>
   </url>
 </urlset>
