@@ -52,5 +52,8 @@
   },
   "tmc_10_topic_visualization.qmd": {
     "tmc_10_topic_visualization.html": "75b02c29"
+  },
+  "projects/tmc-interactives/tmc_10_topic_visualization_gensim.qmd": {
+    "tmc_10_topic_visualization_gensim.html": "510f216e"
   }
 }

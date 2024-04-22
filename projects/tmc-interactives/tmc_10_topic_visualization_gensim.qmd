@@ -24,7 +24,7 @@ format:
 </style>
 
 <div class="content">
-  <iframe id="myIframe" src="/projects/tmc-interactives/pyLDAvis_10_topic.html"></iframe>
+  <iframe id="myIframe" src="pyLDAvis_10_topic.html"></iframe>
 </div>
 
 <script>

@@ -7,20 +7,6 @@
     "text": "Notes on Taiwanese Indie Music\n\n\n\n\n\nFresh songs from across the planet\n\n\n\n\n\n\nDec 29, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\n  \n\n\n\n\nAmazon Photos collects your photo data – you can disable this\n\n\n\n\n\nDon’t become Amazon’s training data\n\n\n\n\n\n\nNov 15, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\n  \n\n\n\n\nEverything to Know About Flight Delays\n\n\n\n\n\nAnalyzing post-Covid airline records with Python\n\n\n\n\n\n\nJul 30, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\n  \n\n\n\n\nEverything to Know About Flight Delays (no code)\n\n\n\n\n\nAnalyzing post-Covid airline records\n\n\n\n\n\n\nJul 30, 2023\n\n\nEthan Elasky\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Ethan Elasky",
-    "section": "",
-    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to quantify American and Taiwanese news media’s attitudes regarding China. I am advised by Lucy Li.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nI understand English and Mandarin. I studied abroad in Taiwan in Spring 2023 and have future plans to go back.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman and sophomore years."
-  },
-  {
-    "objectID": "index.html#about-me",
-    "href": "index.html#about-me",
-    "title": "Ethan Elasky",
-    "section": "",
-    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to quantify American and Taiwanese news media’s attitudes regarding China. I am advised by Lucy Li.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nI understand English and Mandarin. I studied abroad in Taiwan in Spring 2023 and have future plans to go back.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman and sophomore years."
-  },
-  {
     "objectID": "posts/Flights-technical.html",
     "href": "posts/Flights-technical.html",
     "title": "Everything to Know About Flight Delays",
@@ -124,5 +110,19 @@
     "title": "Everything to Know About Flight Delays (no code)",
     "section": "Applications: LAX and BUR, and SFO and OAK",
     "text": "Applications: LAX and BUR, and SFO and OAK\nSince starting college, I’ve traveled quite regularly on planes between my hometown in Southern California and my university in the San Francisco Bay Area. I was drawn to this topic to get a better sense of which airline and airport combination offered me the fewest overall delays. As a college student with a constrained budget, I often take Southwest to and from school due to its cheap fares and customer service..\nSouthern California common wisdom dictates that one should fly out of Burbank (BUR) whenever possible to avoid the hassle of traveling to and out of Los Angeles (LAX.. Coming to the Bay Area for college, I expected Oakland (OAK) and San Francisco (SFO) to share a similar dynamic. However, I was surprised to hear that some of my friends preferred SFO over OAK. In this section, we will determine whether SFO is better than OAK and BUR is better than LAX.\nI follow a similar approach as before but select only flight records that contain our desired airports.\n\n\n\nFigure 4\n\n\nWe see that BUR has fewer delays than LAX, OAK, and SFO. Burbank is better than LAX, but Oakland and SFO are about the same. Maybe my friends’ preference for SFO compared to OAK stems from something else, but clearly delays don’t play a major role in that decision."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Ethan Elasky",
+    "section": "",
+    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to quantify American and Taiwanese news media’s attitudes regarding China. I am advised by Lucy Li.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nI understand English and Mandarin. I studied abroad in Taiwan in Spring 2023 and have future plans to go back.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman and sophomore years."
+  },
+  {
+    "objectID": "index.html#about-me",
+    "href": "index.html#about-me",
+    "title": "Ethan Elasky",
+    "section": "",
+    "text": "I’m a senior studying Data Science at the University of California, Berkeley. Currently, I’m working on my Data Science honors thesis, in which I am applying natural language processing (NLP) techniques to quantify American and Taiwanese news media’s attitudes regarding China. I am advised by Lucy Li.\nAt the Haas School of Business, I’m a member of Angus Hildreth’s Social Psychology and Business Lab.\nI understand English and Mandarin. I studied abroad in Taiwan in Spring 2023 and have future plans to go back.\nIn high school, I was ranked top-50 in Lincoln-Douglas debate nationally and coached for DebateDrills during my freshman and sophomore years."
   }
 ]
