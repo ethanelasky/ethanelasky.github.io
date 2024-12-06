@@ -22,11 +22,14 @@ about:
 ---
 
 ## About me
+I am cofounder of [Acaceta](acaceta.com), which is a knowledge solutions platform for medical sales representatives and doctors.
 
-I did undergrad (Data Science) at the University of California, Berkeley. At Berkeley, I wrote an honors thesis, in which I applied natural language processing (NLP) techniques to quantify media bias in Taiwan. I am advised by [Lucy Li](https://lucy3.github.io).
+I am currently Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) in the Lab of Professor Lun-Wei Ku, where I am researching retrieval-augmented generation strategies and debate between language models as a means of finding truth.
+
+My undergraduate degree (major: Data Science, concentration: Applied Mathematics and Modeling, minor: Chinese Language) is from the University of California, Berkeley. At Berkeley, I wrote an honors thesis, in which I applied natural language processing (NLP) techniques to quantify media bias in Taiwan. I was advised by [Lucy Li](https://lucy3.github.io).
 
 At the Haas School of Business, I was a member of [Angus Hildreth](https://www.johnson.cornell.edu/faculty-research/faculty/jdh362/)'s Social Psychology and Business Lab for four semesters (Spring 2022-Spring 2024).
 
-I understand English and Mandarin. I studied abroad in Taiwan in Spring 2023.
+I understand English and Mandarin. I studied abroad in Taiwan in Spring 2023 and have returned to Taiwan full-time for work.
 
-In high school, I was ranked top-50 in Lincoln-Douglas debate nationally, and coached for DebateDrills, a nationally successful team, during my freshman and sophomore years.
+In high school, I was ranked top-50 in Lincoln-Douglas debate nationally, and coached for DebateDrills, a nationally successful team, during my freshman and sophomore years of college.
