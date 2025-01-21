@@ -55,5 +55,14 @@
   },
   "projects/tmc-interactives/tmc_10_topic_visualization_gensim.qmd": {
     "tmc_10_topic_visualization_gensim.html": "510f216e"
+  },
+  "posts/avoiding-overfitting.qmd": {
+    "avoiding-overfitting.html": "44c0d744"
+  },
+  "posts/improving-argument-extensions.qmd": {
+    "improving-argument-extensions.html": "3c2f2887"
+  },
+  "posts/embedded-clash.qmd": {
+    "embedded-clash.html": "c1916d8d"
   }
 }
