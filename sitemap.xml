@@ -2,30 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ethanelasky.github.io/index.html</loc>
-    <lastmod>2025-01-21T05:32:57.545Z</lastmod>
+    <lastmod>2025-01-21T05:37:19.776Z</lastmod>
   </url>
   <url>
-    <loc>https://ethanelasky.github.io/posts/flights-nontechnical.html</loc>
-    <lastmod>2025-01-21T05:32:57.552Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/taiwanese_music_1.html</loc>
-    <lastmod>2025-01-21T05:32:57.554Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts.html</loc>
-    <lastmod>2025-01-21T05:32:57.545Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/amazon-images.html</loc>
-    <lastmod>2025-01-21T05:32:57.550Z</lastmod>
+    <loc>https://ethanelasky.github.io/posts/improving-argument-extensions.html</loc>
+    <lastmod>2025-01-21T05:37:19.783Z</lastmod>
   </url>
   <url>
     <loc>https://ethanelasky.github.io/posts/Flights-technical.html</loc>
-    <lastmod>2025-01-21T05:32:57.547Z</lastmod>
+    <lastmod>2025-01-21T05:37:19.778Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/embedded-clash.html</loc>
+    <lastmod>2025-01-21T05:37:19.783Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/avoiding-overfitting.html</loc>
+    <lastmod>2025-01-21T05:37:19.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts.html</loc>
+    <lastmod>2025-01-21T05:37:19.776Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/amazon-images.html</loc>
+    <lastmod>2025-01-21T05:37:19.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/taiwanese_music_1.html</loc>
+    <lastmod>2025-01-21T05:37:19.786Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/flights-nontechnical.html</loc>
+    <lastmod>2025-01-21T05:37:19.783Z</lastmod>
   </url>
   <url>
     <loc>https://ethanelasky.github.io/projects/tmc-interactives/tmc_10_topic_visualization_gensim.html</loc>
-    <lastmod>2025-01-21T05:32:57.556Z</lastmod>
+    <lastmod>2025-01-21T05:37:19.787Z</lastmod>
   </url>
 </urlset>

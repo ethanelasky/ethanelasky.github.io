@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ethan Elasky">
+<meta name="dcterms.date" content="2020-05-28">
+<meta name="description" content="Keeping your skills robust against new arguments">
 
-<title>Ethan Elasky’s Blog – Ethan Elasky</title>
+<title>Avoiding overfitting in Lincoln-Douglas debate practice – Ethan Elasky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-892c1693bebcb80aeec795e27d9e7510.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-892c1693bebcb80aeec795e27d9e7510.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -138,7 +110,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ethan Elasky</span>
     </a>
   </div>
@@ -149,11 +121,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../posts.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -183,15 +155,31 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ethan Elasky’s Blog</h1>
-<p class="subtitle lead">Thoughts about data science, Lincoln-Douglas debate, and more.</p>
+<h1 class="title">Avoiding overfitting in Lincoln-Douglas debate practice</h1>
 </div>
 
+<div>
+  <div class="description">
+    Keeping your skills robust against new arguments
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ethan Elasky </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 28, 2020</p>
+    </div>
+  </div>
   
     
   </div>
@@ -201,213 +189,26 @@ window.Quarto = {
 </header>
 
 
+<p>In this article, I hope to explain overfitting, a concept from the discipline of machine learning, and apply it to debate.</p>
+<p>Overfitting is traditionally <a href="https://en.wikipedia.org/wiki/Overfitting">defined</a> as producing a model that is too particular and doesn’t accurately work with future problems.</p>
+<p>We’ve all experienced overfitting before. Probably the most prominent debate example of this phenomenon is redoing speeches. For me, the process of redoing a speech went in the following order: first, I would produce redo material by doing a practice debate, looking through old flows, or watching a debate online. Then, I’d re-give the target speech several times, first with myself and then later with a coach to listen and give feedback. In the end, I’d always feel like I’d improved a lot. For example, I seriously drilled <a href="https://youtu.be/X35P3AWDU8I?t=5592">this 2NR</a> from the 2019 National Debate Tournament and got really good at it.</p>
+<p>After that drill regiment, I expected I would be much better at giving topicality speeches, but I was disappointed to find that I was only good at producing that one speech, all the while not much better at giving other T 2NRs. In retrospect, the problem is clear: the sample size of topicality rounds at that point was miniscule (<span class="math inline">\(n = 1\)</span>), so my model for giving topicality 2NRs was severely overfitted. Many of the arguments from that speech were contextual to the Executive Authority topic, so I was good at explaining the particularities of why it was hard to be neg in context of that resolution, but not in context of any others. After spelling it out like this, the solution seems to be obvious.</p>
+<p>I did what many of you are thinking: redo speeches in context of the current topic! I drilled several 2NRs on topicality, some of which I’ll link to at the end of this article. This allowed me to better abstract (or generalize) my knowledge about what good topicality debating was and thus allowed me to better apply that generalizable knowledge/intuition to future rounds. To make this advice more concrete, if I were looking to improve at topicality, I’d not only practice/block out the generic “limits outweighs aff counter-standards” but also “limits outweighs predictability,” “it’s hard to be neg for ____ reason,” and even standard-level answers like responses to the PICs objection to T-Bare Plurals, etc. To take it to the next level, I’d also drill different kinds of T arguments across different topics to improve the skill of contextualization (i.e.&nbsp;the AFF’s PICs objection might be more persuasive on a topic in which the States counterplan ran rampant, compared to one in which PICs weren’t good).</p>
+<p>Ideally, regardless of the style of debate being pursued, you would be best to eliminate all “unknown unknowns” (https://en.wikipedia.org/wiki/There_are_known_knowns), or things that catch you by complete surprise. Once you do this, you’ll start finding patterns. For example, the PICs objection applies to most topicality arguments that argue that a type of specification is bad (some that come to mind are T-Plural, T-Eliminate, T-Substantial, T-Nearly All, T-The, T-In, etc.), so with a few modifications, frontlines should be cross-applicable between some T debates.</p>
+<p>A word of caution to taking pattern focus too far: you will inevitably lose specificity and contextualization. This is what judges complain about when they say that topicality debates are becoming stale. It’s one thing to know the generic 7-point response to the aff’s PICs objection, but knowing how to make the all-purpose block more specific (and thus far more persuasive) is an entirely different beast. For instance, quantitative limits claims for Nebel T on the 2019 January-February topic about authoritarian regimes may be less applicable to this year’s January-February topic, which deals with far fewer countries (compare 50 regimes on the JF19 topic with 9 countries on the JF20 topic). This should tell that even the same topicality violation should be debated very differently depending on topic. The difference between Nebel T and an entirely different violation, say T-Plural, is even starker!</p>
+<p>In sum, you should disrupt your brain to prevent overfitting. If you’re getting better at beating case dumps that you’ve put together on your own, ask a coach or a teammate to put together new ones with random cards from around the wiki. Take the case dumps and do them in sequence, focusing on the quality of the first attempt. Obviously, the unfamiliar ones will be harder than the familiar ones, but ideally, you should be working to close the gap between them. This can help you practice getting used to the unfamiliarity of any good 1NC case strategy, because in a real round, your speech should be great the first time, not the tenth. Sample drill ideas:</p>
+<ul>
+<li><p>Drill the topicality rounds below.</p></li>
+<li><p>Go through each Lincoln-Douglas topic that you have debated (or college policy topics, if you know how a topic’s meta breaks down) and write down specificities that complicate generic responses (i.e.&nbsp;the dominance of a core negative generic, lack of disadvantage ground, resolution vagueness, hypothetical quantitative number of affirmatives). Then, try to give speeches while noting these nuances. Rounds that I drilled:</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=LrTYHn1Am0c">Montgomery Bell Academy GH vs Monta Vista PS at the 2018 Cal RR</a>. Note: the blocks read here are <strong>stale</strong> because since 2018 people have been transcribing and reading them.</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=X35P3AWDU8I">Northwestern JW vs Kentucky BT at the 2019 NDT</a></p></li>
+<li><p>Many of Ishan Bhatt’s (unlisted ☹). A few more topicality rounds that may be helpful:</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=87eh4RJw-QI">Harvard-Westlake SM vs Archbishop Mitty JP at the 2020 Stanford Invitational</a></p></li>
+</ul>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1703808000000" data-listing-file-modified-sort="1737437839786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="743">
-<div class="thumbnail">
-<p><a href="./posts/taiwanese_music_1.html" class="no-external"></a></p><a href="./posts/taiwanese_music_1.html" class="no-external">
-<p><img loading="lazy" src="./posts/iruka_porisu.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/taiwanese_music_1.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/taiwanese_music_1.html" class="no-external">Notes on Taiwanese Indie Music</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/taiwanese_music_1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/taiwanese_music_1.html" class="no-external">Fresh songs from across the planet</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/taiwanese_music_1.html" class="no-external">
-<div class="listing-date">
-Dec 29, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1700006400000" data-listing-file-modified-sort="1737437839781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
-<div class="thumbnail">
-<p><a href="./posts/amazon-images.html" class="no-external"></a></p><a href="./posts/amazon-images.html" class="no-external">
-<p><img loading="lazy" src="./posts/Amazon-Photos-Logo.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/amazon-images.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/amazon-images.html" class="no-external">Amazon Photos collects your photo data – you can disable this</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/amazon-images.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/amazon-images.html" class="no-external">Don’t become Amazon’s training data</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/amazon-images.html" class="no-external">
-<div class="listing-date">
-Nov 15, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1737437839778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="948">
-<div class="thumbnail">
-<p><a href="./posts/Flights-technical.html" class="no-external"></a></p><a href="./posts/Flights-technical.html" class="no-external">
-<p class="card-img-top"><img src="posts/Flights-technical_files/figure-html/cell-9-output-2.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Flights-technical.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Flights-technical.html" class="no-external">Everything to Know About Flight Delays</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Flights-technical.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Flights-technical.html" class="no-external">Analyzing post-Covid airline records with Python</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Flights-technical.html" class="no-external">
-<div class="listing-date">
-Jul 30, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1737437839783" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1363">
-<div class="thumbnail">
-<p><a href="./posts/flights-nontechnical.html" class="no-external"></a></p><a href="./posts/flights-nontechnical.html" class="no-external">
-<p><img loading="lazy" src="./posts/cell-11-output-2.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/flights-nontechnical.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/flights-nontechnical.html" class="no-external">Everything to Know About Flight Delays (no code)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/flights-nontechnical.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/flights-nontechnical.html" class="no-external">Analyzing post-Covid airline records</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/flights-nontechnical.html" class="no-external">
-<div class="listing-date">
-Jul 30, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1595548800000" data-listing-file-modified-sort="1737437839783" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="840">
-<div class="thumbnail">
-<p><a href="./posts/improving-argument-extensions.html" class="no-external"></a></p><a href="./posts/improving-argument-extensions.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/improving-argument-extensions.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/improving-argument-extensions.html" class="no-external">Improving Argument Extensions in Lincoln-Douglas debate</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/improving-argument-extensions.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/improving-argument-extensions.html" class="no-external">How to explain your arguments clearly</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/improving-argument-extensions.html" class="no-external">
-<div class="listing-date">
-Jul 24, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1737437839781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="898">
-<div class="thumbnail">
-<p><a href="./posts/avoiding-overfitting.html" class="no-external"></a></p><a href="./posts/avoiding-overfitting.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/avoiding-overfitting.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/avoiding-overfitting.html" class="no-external">Avoiding overfitting in Lincoln-Douglas debate practice</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/avoiding-overfitting.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/avoiding-overfitting.html" class="no-external">Keeping your skills robust against new arguments</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/avoiding-overfitting.html" class="no-external">
-<div class="listing-date">
-May 28, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1737437839783" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
-<div class="thumbnail">
-<p><a href="./posts/embedded-clash.html" class="no-external"></a></p><a href="./posts/embedded-clash.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/embedded-clash.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/embedded-clash.html" class="no-external">Embedded Clash - a Primer</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/embedded-clash.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/embedded-clash.html" class="no-external">Getting through your flow faster than ever</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/embedded-clash.html" class="no-external">
-<div class="listing-date">
-May 28, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

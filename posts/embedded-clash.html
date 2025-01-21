@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ethan Elasky">
+<meta name="dcterms.date" content="2020-05-28">
+<meta name="description" content="Getting through your flow faster than ever">
 
-<title>Ethan Elasky’s Blog – Ethan Elasky</title>
+<title>Embedded Clash - a Primer – Ethan Elasky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-892c1693bebcb80aeec795e27d9e7510.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-892c1693bebcb80aeec795e27d9e7510.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,65 +70,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -138,7 +81,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ethan Elasky</span>
     </a>
   </div>
@@ -149,11 +92,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../posts.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -183,15 +126,31 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ethan Elasky’s Blog</h1>
-<p class="subtitle lead">Thoughts about data science, Lincoln-Douglas debate, and more.</p>
+<h1 class="title">Embedded Clash - a Primer</h1>
 </div>
 
+<div>
+  <div class="description">
+    Getting through your flow faster than ever
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ethan Elasky </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 28, 2020</p>
+    </div>
+  </div>
   
     
   </div>
@@ -201,213 +160,32 @@ window.Quarto = {
 </header>
 
 
+<p>Embedded clash is a specific method of shortening of transitions on the line-by-line. I’ll give an example that illustrates what I mean.</p>
+<p>Say you have the following flow on a sample 1NC Case page with the following carded arguments (I’ll only show the tags for brevity):</p>
+<blockquote class="blockquote">
+<p>No China war Circumvention – Trump hates the plan and won’t comply Turn – terrorists steal nuclear weapons in the process of elimination and detonate them</p>
+</blockquote>
+<p>This case hit, although flawed in its brevity, is emblematic of what many debaters read on JF20. Now presume that you are to answer this case hit. For many, I’m sure that it would sound something like</p>
+<blockquote class="blockquote">
+<p>“They say no China war but they’re wrong – China war is real because…” “They say Trump hates the plan but…” “They say terrorists steal nukes but…”</p>
+</blockquote>
+<p>While this phrasing can be useful in some situations, especially when your opponent is unclear/when you can tell your judge is having trouble following along, it’s preferable in most cases to use the following phrasing:</p>
+<blockquote class="blockquote">
+<p>“Yes China war – …“</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>“No circumvention – …”</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>“Terrorists don’t steal nukes – …”</p>
+</blockquote>
+<p>I know it looks like a small change, but I can’t understate its importance. This tool not only will improve your speeches on a technical level, but it will also make you sound more argumentatively formidable. Past a certain skill level embedded clash becomes the default, and not employing it will reduce your speaker points and presence.</p>
+<p>From the given example, some may assume it’s only relevant to doing very technical case work, but it’s actually very applicable to any line-by-line analysis. Whether giving the 2NR on topicality, the critique, a disadvantage, or a counterplan, or even a lengthy case dump, it would be best in all cases to practice this style and best in most rounds to employ this method of delivery.</p>
+<p>Note: it may be better to use the former phrasing in a few situations: first, when a judge looks confused or is visibly having trouble flowing you; second, against an opponent who doesn’t signpost well/jumps around a lot; third, when you have to jump around a lot or are making more “overview-y” claims rather than mostly doing a lot of line-by-line work.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1703808000000" data-listing-file-modified-sort="1737437839786" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="743">
-<div class="thumbnail">
-<p><a href="./posts/taiwanese_music_1.html" class="no-external"></a></p><a href="./posts/taiwanese_music_1.html" class="no-external">
-<p><img loading="lazy" src="./posts/iruka_porisu.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/taiwanese_music_1.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/taiwanese_music_1.html" class="no-external">Notes on Taiwanese Indie Music</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/taiwanese_music_1.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/taiwanese_music_1.html" class="no-external">Fresh songs from across the planet</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/taiwanese_music_1.html" class="no-external">
-<div class="listing-date">
-Dec 29, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1700006400000" data-listing-file-modified-sort="1737437839781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
-<div class="thumbnail">
-<p><a href="./posts/amazon-images.html" class="no-external"></a></p><a href="./posts/amazon-images.html" class="no-external">
-<p><img loading="lazy" src="./posts/Amazon-Photos-Logo.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/amazon-images.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/amazon-images.html" class="no-external">Amazon Photos collects your photo data – you can disable this</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/amazon-images.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/amazon-images.html" class="no-external">Don’t become Amazon’s training data</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/amazon-images.html" class="no-external">
-<div class="listing-date">
-Nov 15, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1737437839778" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="948">
-<div class="thumbnail">
-<p><a href="./posts/Flights-technical.html" class="no-external"></a></p><a href="./posts/Flights-technical.html" class="no-external">
-<p class="card-img-top"><img src="posts/Flights-technical_files/figure-html/cell-9-output-2.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/Flights-technical.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Flights-technical.html" class="no-external">Everything to Know About Flight Delays</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/Flights-technical.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/Flights-technical.html" class="no-external">Analyzing post-Covid airline records with Python</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/Flights-technical.html" class="no-external">
-<div class="listing-date">
-Jul 30, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1737437839783" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1363">
-<div class="thumbnail">
-<p><a href="./posts/flights-nontechnical.html" class="no-external"></a></p><a href="./posts/flights-nontechnical.html" class="no-external">
-<p><img loading="lazy" src="./posts/cell-11-output-2.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/flights-nontechnical.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/flights-nontechnical.html" class="no-external">Everything to Know About Flight Delays (no code)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/flights-nontechnical.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/flights-nontechnical.html" class="no-external">Analyzing post-Covid airline records</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/flights-nontechnical.html" class="no-external">
-<div class="listing-date">
-Jul 30, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1595548800000" data-listing-file-modified-sort="1737437839783" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="840">
-<div class="thumbnail">
-<p><a href="./posts/improving-argument-extensions.html" class="no-external"></a></p><a href="./posts/improving-argument-extensions.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/improving-argument-extensions.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/improving-argument-extensions.html" class="no-external">Improving Argument Extensions in Lincoln-Douglas debate</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/improving-argument-extensions.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/improving-argument-extensions.html" class="no-external">How to explain your arguments clearly</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/improving-argument-extensions.html" class="no-external">
-<div class="listing-date">
-Jul 24, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1737437839781" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="898">
-<div class="thumbnail">
-<p><a href="./posts/avoiding-overfitting.html" class="no-external"></a></p><a href="./posts/avoiding-overfitting.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/avoiding-overfitting.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/avoiding-overfitting.html" class="no-external">Avoiding overfitting in Lincoln-Douglas debate practice</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/avoiding-overfitting.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/avoiding-overfitting.html" class="no-external">Keeping your skills robust against new arguments</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/avoiding-overfitting.html" class="no-external">
-<div class="listing-date">
-May 28, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1737437839783" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
-<div class="thumbnail">
-<p><a href="./posts/embedded-clash.html" class="no-external"></a></p><a href="./posts/embedded-clash.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/embedded-clash.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/embedded-clash.html" class="no-external">Embedded Clash - a Primer</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/embedded-clash.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/embedded-clash.html" class="no-external">Getting through your flow faster than ever</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/embedded-clash.html" class="no-external">
-<div class="listing-date">
-May 28, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
