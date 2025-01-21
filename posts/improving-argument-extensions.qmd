@@ -1,0 +1,40 @@
+---
+date: 07/24/2020
+author: "Ethan Elasky"
+title: "Improving Argument Extensions in Lincoln-Douglas debate"
+description: "How to explain your arguments clearly"
+---
+
+It’s important to know how to extend arguments correctly. If you fail to give a clear understanding of your arguments to the judge, it’s unlikely they’ll vote for you.
+
+The first thing that you should do is explain the thesis or impact of your argument. In my opinion, if you’re extending an individual argument (i.e. a single card), you should always just explain the thesis of it. If you’re extending a position, the choice to explain your overarching thesis or terminal impact should depend on the off/on-case argument you’re going for.
+
+I’ll list what I think the best top-level overview explanation is for each:
+
+- Critique: theory of power or impact description (dependent on critique).
+
+- Counterplan: clear explanation of what each plank does.
+
+- Disadvantage: terminal impact description and comparison.
+
+- Topicality shell: overarching view of the model that the aff should defend. Something similar to “Our interpretation is that the aff should defend ______________.” Then, get into impact comparison.
+
+- Offensive case turn: if it has an external impact, treat it as a disadvantage. If it only straight turns one of the aff’s internal links, explain the thesis of the straight turn.
+
+- Defensive case turn: thesis.
+
+This list won't work perfectly for all positions, but it can serve as a guiding tool for when you're unsure.
+
+A sample disadvantage extension for the 2020 Base DA could sound something like “Trump lash-out goes nuclear – strikes on Chinese mainland spark catastrophic escalation because the CCP will escalate to de-escalate, thinking that they’ll scare Trump into giving up.” This is a good length for any speech starter; it makes a coherent argument in ~25 words, and it clearly paints a picture for the judge of what your argument is.
+
+The second thing to do is frame your argument/position. When I say framing, I mean explaining to the judge why your position should be preferred over your opponent’s. if you’re extending a full position, this can include weighing (think magnitude, timeframe, probability), turns case, or important issues to deal with in the overview. If you’re extending a single piece of evidence, you still need reasons to prefer your cards to your opponent’s—examples include depth/breadth/type/specificity of warrants, author/publication qualifications, or recency. And it’s also important to create clear judge instruction that describes why your comparisons should matter more than the other side’s (i.e. Bostrom, etc).
+
+There is a third type of argument resolution that I call judge instruction. It’s important to resolve issues in the judge’s mind and instruct them on how to evaluate the round because if you don’t, you may not be happy with the judge’s defaults. I can think of a few instances that illustrate the importance of this. First, in a debate where the 2NR is a process counterplan that solves the aff with a very questionable net benefit, how should the judge evaluate the net benefit? Is it best for the judge to vote on “any risk” of the disadvantage, or should they hold the negative to the bar of presenting a “complete” argument in the fullest sense of the word? Second, in a policy aff vs K debate, how should the judge evaluate the perm? Is the perm an advocacy or a test of competition? In what cases does the aff get the perm? To answer the last question, it might be best for the negative to say that the aff only gets the permutation if they prove “no link,” but the aff might be better off if the judge thought that the permutation can “shield” some of the link to the aff. It is these framing questions that are mostly unanswered in debates at the 3-3 level and lead to many split decisions in elimination rounds. If you’re interested in reading more about this, Scott Phillips delves into this in this post on HS Impact.
+
+This isn’t to say every argument ever needs multiple framing issues; you sorta have to collapse more so you have time to resolve the most important parts of the debate in your favor.
+
+Now that I’m done with my rant about the importance of framing and judge instruction, we’ll deal with the last part of any argument extension: the line by line.
+
+This is the simplest part of extending an argument; you just need to answer the other side’s arguments. You should extend important parts of your argument that you didn’t explain above, if any. I’ve seen many high-level critique debaters extend their link(s) on the permutation, and most for whom politics is the disadvantage du jour always extend uniqueness on the first non-unique argument made by the 2AC/1AR.
+
+To summarize, there are three parts to extending any argument: first, a top-level explanation that contextualizes your argument for the judge; second, framing issue(s) that shows the judge how to evaluate the debate in your favor; third, a line-by-line refutation that proves to the judge that your argument doesn’t have glaring holes in it. This is something worth practicing, because regardless of the content of your position, you need to be able to competently explain your position/evidence and compare it/them to the other side’s to win.

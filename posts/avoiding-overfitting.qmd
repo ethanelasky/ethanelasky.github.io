@@ -1,0 +1,36 @@
+---
+date: 05/28/2020
+author: "Ethan Elasky"
+title: "Avoiding overfitting in Lincoln-Douglas debate practice"
+description: "Keeping your skills robust against new arguments"
+---
+In this article, I hope to explain overfitting, a concept from the discipline of machine learning, and apply it to debate.
+
+Overfitting is traditionally [defined](https://en.wikipedia.org/wiki/Overfitting) as producing a model that is too particular and doesn’t accurately work with future problems.
+
+We’ve all experienced overfitting before. Probably the most prominent debate example of this phenomenon is redoing speeches. For me, the process of redoing a speech went in the following order: first, I would produce redo material by doing a practice debate, looking through old flows, or watching a debate online. Then, I’d re-give the target speech several times, first with myself and then later with a coach to listen and give feedback. In the end, I’d always feel like I’d improved a lot. For example, I seriously drilled [this 2NR](https://youtu.be/X35P3AWDU8I?t=5592) from the 2019 National Debate Tournament and got really good at it.
+
+After that drill regiment, I expected I would be much better at giving topicality speeches, but I was disappointed to find that I was only good at producing that one speech, all the while not much better at giving other T 2NRs. In retrospect, the problem is clear: the sample size of topicality rounds at that point was miniscule ($n = 1$), so my model for giving topicality 2NRs was severely overfitted. Many of the arguments from that speech were contextual to the Executive Authority topic, so I was good at explaining the particularities of why it was hard to be neg in context of that resolution, but not in context of any others. After spelling it out like this, the solution seems to be obvious.
+
+I did what many of you are thinking: redo speeches in context of the current topic! I drilled several 2NRs on topicality, some of which I’ll link to at the end of this article. This allowed me to better abstract (or generalize) my knowledge about what good topicality debating was and thus allowed me to better apply that generalizable knowledge/intuition to future rounds. To make this advice more concrete, if I were looking to improve at topicality, I’d not only practice/block out the generic “limits outweighs aff counter-standards” but also “limits outweighs predictability,” “it’s hard to be neg for ____ reason,” and even standard-level answers like responses to the PICs objection to T-Bare Plurals, etc. To take it to the next level, I’d also drill different kinds of T arguments across different topics to improve the skill of contextualization (i.e. the AFF’s PICs objection might be more persuasive on a topic in which the States counterplan ran rampant, compared to one in which PICs weren’t good).
+
+Ideally, regardless of the style of debate being pursued, you would be best to eliminate all “unknown unknowns” (https://en.wikipedia.org/wiki/There_are_known_knowns), or things that catch you by complete surprise. Once you do this, you’ll start finding patterns. For example, the PICs objection applies to most topicality arguments that argue that a type of specification is bad (some that come to mind are T-Plural, T-Eliminate, T-Substantial, T-Nearly All, T-The, T-In, etc.), so with a few modifications, frontlines should be cross-applicable between some T debates.
+
+A word of caution to taking pattern focus too far: you will inevitably lose specificity and contextualization. This is what judges complain about when they say that topicality debates are becoming stale. It’s one thing to know the generic 7-point response to the aff’s PICs objection, but knowing how to make the all-purpose block more specific (and thus far more persuasive) is an entirely different beast. For instance, quantitative limits claims for Nebel T on the 2019 January-February topic about authoritarian regimes may be less applicable to this year’s January-February topic, which deals with far fewer countries (compare 50 regimes on the JF19 topic with 9 countries on the JF20 topic). This should tell that even the same topicality violation should be debated very differently depending on topic. The difference between Nebel T and an entirely different violation, say T-Plural, is even starker!
+
+In sum, you should disrupt your brain to prevent overfitting. If you’re getting better at beating case dumps that you’ve put together on your own, ask a coach or a teammate to put together new ones with random cards from around the wiki. Take the case dumps and do them in sequence, focusing on the quality of the first attempt. Obviously, the unfamiliar ones will be harder than the familiar ones, but ideally, you should be working to close the gap between them. This can help you practice getting used to the unfamiliarity of any good 1NC case strategy, because in a real round, your speech should be great the first time, not the tenth.
+Sample drill ideas:
+
+- Drill the topicality rounds below.
+
+- Go through each Lincoln-Douglas topic that you have debated (or college policy topics, if you know how a topic’s meta breaks down) and write down specificities that complicate generic responses (i.e. the dominance of a core negative generic, lack of disadvantage ground, resolution vagueness, hypothetical quantitative number of affirmatives). Then, try to give speeches while noting these nuances.
+Rounds that I drilled:
+
+- [Montgomery Bell Academy GH vs Monta Vista PS at the 2018 Cal RR](https://www.youtube.com/watch?v=LrTYHn1Am0c). Note: the blocks read here are **stale** because since 2018 people have been transcribing and reading them.
+
+- [Northwestern JW vs Kentucky BT at the 2019 NDT](https://www.youtube.com/watch?v=X35P3AWDU8I)
+
+- Many of Ishan Bhatt’s (unlisted ☹).
+A few more topicality rounds that may be helpful:
+
+- [Harvard-Westlake SM vs Archbishop Mitty JP at the 2020 Stanford Invitational](https://www.youtube.com/watch?v=87eh4RJw-QI)

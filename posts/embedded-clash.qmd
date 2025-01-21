@@ -1,0 +1,33 @@
+---
+date: 05/28/2020
+author: "Ethan Elasky"
+title: "Embedded Clash - a Primer"
+description: "Getting through your flow faster than ever"
+---
+Embedded clash is a specific method of shortening of transitions on the line-by-line. I’ll give an example that illustrates what I mean.
+
+Say you have the following flow on a sample 1NC Case page with the following carded arguments (I’ll only show the tags for brevity):
+
+> No China war
+> Circumvention – Trump hates the plan and won’t comply
+> Turn – terrorists steal nuclear weapons in the process of elimination and detonate them
+
+This case hit, although flawed in its brevity, is emblematic of what many debaters read on JF20. Now presume that you are to answer this case hit. For many, I’m sure that it would sound something like
+
+> “They say no China war but they’re wrong – China war is real because…”
+> “They say Trump hates the plan but…”
+> “They say terrorists steal nukes but…”
+
+While this phrasing can be useful in some situations, especially when your opponent is unclear/when you can tell your judge is having trouble following along, it’s preferable in most cases to use the following phrasing:
+
+> “Yes China war – …“
+
+> “No circumvention – …”
+
+> “Terrorists don’t steal nukes – …”
+
+I know it looks like a small change, but I can’t understate its importance. This tool not only will improve your speeches on a technical level, but it will also make you sound more argumentatively formidable. Past a certain skill level embedded clash becomes the default, and not employing it will reduce your speaker points and presence.
+
+From the given example, some may assume it's only relevant to doing very technical case work, but it’s actually very applicable to any line-by-line analysis. Whether giving the 2NR on topicality, the critique, a disadvantage, or a counterplan, or even a lengthy case dump, it would be best in all cases to practice this style and best in most rounds to employ this method of delivery.
+
+Note: it may be better to use the former phrasing in a few situations: first, when a judge looks confused or is visibly having trouble flowing you; second, against an opponent who doesn’t signpost well/jumps around a lot; third, when you have to jump around a lot or are making more “overview-y” claims rather than mostly doing a lot of line-by-line work.
