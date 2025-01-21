@@ -1,7 +1,7 @@
 ---
 date: 05/28/2020
 author: "Ethan Elasky"
-title: "Embedded Clash - a Primer"
+title: "Embedded Clash - a Primer for Lincoln-Douglas debate"
 description: "Getting through your flow faster than ever"
 ---
 Embedded clash is a specific method of shortening of transitions on the line-by-line. I’ll give an example that illustrates what I mean.
