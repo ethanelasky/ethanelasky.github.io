@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://ethanelasky.github.io/projects/tmc-interactives/tmc_10_topic_visualization_gensim.html</loc>
+    <lastmod>2025-06-22T06:10:07.394Z</lastmod>
+  </url>
+  <url>
     <loc>https://ethanelasky.github.io/index.html</loc>
-    <lastmod>2025-01-21T05:44:52.850Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/improving-argument-extensions.html</loc>
-    <lastmod>2025-01-21T05:44:52.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/Flights-technical.html</loc>
-    <lastmod>2025-01-21T05:44:52.853Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/embedded-clash.html</loc>
-    <lastmod>2025-01-21T05:44:52.858Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts/avoiding-overfitting.html</loc>
-    <lastmod>2025-01-21T05:44:52.856Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ethanelasky.github.io/posts.html</loc>
-    <lastmod>2025-01-21T05:44:52.851Z</lastmod>
+    <lastmod>2025-06-22T06:10:07.384Z</lastmod>
   </url>
   <url>
     <loc>https://ethanelasky.github.io/posts/amazon-images.html</loc>
-    <lastmod>2025-01-21T05:44:52.856Z</lastmod>
+    <lastmod>2025-06-22T06:10:07.388Z</lastmod>
   </url>
   <url>
-    <loc>https://ethanelasky.github.io/posts/taiwanese_music_1.html</loc>
-    <lastmod>2025-01-21T05:44:52.860Z</lastmod>
+    <loc>https://ethanelasky.github.io/posts/Flights-technical.html</loc>
+    <lastmod>2025-06-22T06:10:07.386Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/embedded-clash.html</loc>
+    <lastmod>2025-06-22T06:10:07.390Z</lastmod>
   </url>
   <url>
     <loc>https://ethanelasky.github.io/posts/flights-nontechnical.html</loc>
-    <lastmod>2025-01-21T05:44:52.858Z</lastmod>
+    <lastmod>2025-06-22T06:10:07.390Z</lastmod>
   </url>
   <url>
-    <loc>https://ethanelasky.github.io/projects/tmc-interactives/tmc_10_topic_visualization_gensim.html</loc>
-    <lastmod>2025-01-21T05:44:52.862Z</lastmod>
+    <loc>https://ethanelasky.github.io/posts/avoiding-overfitting.html</loc>
+    <lastmod>2025-06-22T06:10:07.388Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/improving-argument-extensions.html</loc>
+    <lastmod>2025-06-22T06:10:07.390Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts/taiwanese_music_1.html</loc>
+    <lastmod>2025-06-22T06:10:07.392Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ethanelasky.github.io/posts.html</loc>
+    <lastmod>2025-06-22T06:10:07.384Z</lastmod>
   </url>
 </urlset>

@@ -4,11 +4,11 @@
     "items": [
       "/posts/taiwanese_music_1.html",
       "/posts/amazon-images.html",
-      "/posts/Flights-technical.html",
       "/posts/flights-nontechnical.html",
+      "/posts/Flights-technical.html",
       "/posts/improving-argument-extensions.html",
-      "/posts/avoiding-overfitting.html",
-      "/posts/embedded-clash.html"
+      "/posts/embedded-clash.html",
+      "/posts/avoiding-overfitting.html"
     ]
   }
 ]
