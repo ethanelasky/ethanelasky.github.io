@@ -1,0 +1,99 @@
+---
+date: 06/21/2025
+author: "Ethan Elasky"
+title: “Debate” is not an activity
+description: "Or at least, not a monolithic one"
+---
+
+
+
+Debate is one of the most misunderstood extracurriculars. It is not a singular entity; “debate” is an umbrella term that encompasses two highly dissimilar activities. Lay debate is a slow, rhetoric-focused activity that appeals to laypeople, while flow debate is a fast, evidence-intensive activity that requires trained judges.
+
+
+Lay debate is debate judged by laypeople – think parents, volunteers, and sometimes a few coaches. In this format, debaters use a normal cadence and appeal to common sense and traditional values. When people imagine debate, what they think of is something like lay debate – something between presidential debates and [Charlie Kirk](https://youtu.be/LQbmA3PfRFg?si=NwGPHEaxNBpFtPJR) on YouTube.
+
+
+In fact, the default mode of debate, particularly at lower-prestige debate tournaments, is lay debate. At most county- or state-level tournaments, this is what you’ll encounter. There are two national tournaments that cater to lay debate: the NSDA and NCFL Nationals, both held in June.
+
+
+Flow debate is an activity where details matter much more, and it dominates the National Circuit^[Flow debate is near-universal in the Policy and Lincoln-Douglas debate formats on the National Circuit, and it's extremely prevalent in Public Forum.]. People speak at double or triple normal speed, the opening speeches are extremely evidence-heavy, and experienced judges meticulously track arguments from speech to speech. Almost all major national tournament rounds in the Policy Debate and Lincoln Douglas formats use the flow format; with judges generally required to be debate experts. This is somewhat antithetical to lay debate, which is supposed to appeal to the general public. To get a feel for what flow debate looks like, you can watch [this](https://www.youtube.com/live/G2GKX4Y0hNA?si=7FlGpcyxKaa2VsA1&t=392) collegiate flow debate round.
+
+{{< video https://www.youtube.com/embed/G2GKX4Y0hNA?si=2gOtPDJOxvRVNbjq >}}
+
+
+## Types of resolutionality
+
+
+One immediate difference between flow and lay debate is that flow debate usually adopts a different form of resolutionality.
+
+
+To understand this difference, let’s examine a past resolution from the January-February 2019 high school Lincoln-Douglas topic: 
+
+
+> Resolved: The United States ought not provide military aid to authoritarian regimes.
+
+
+Note that the phrases “military aid” and “authoritarian regimes” are not specified. At face value, these terms seem like they should be interpreted broadly, which aligns with how lay debate interprets resolutions. But flow affirmatives usually specify a certain type of military aid, particular authoritarian regime(s), or another element in the resolution to narrow the debate's scope. In other words, flow debate allows participants to make more specific advocacies ("plans") within the resolution's bounds. For instance, on the military aid topic above, a flow affirmative might narrow the debate to eliminating arms sales to Saudi Arabia and the UAE, and the negative must be prepared to disagree with that specific affirmative, as well as all other possible specifications. As you might expect, this massively increases the preparation burden for both sides: the affirmative is incentivized to research all possible plans in search of the best one, while the negative must be ready to negate every conceivable affirmative.
+
+
+Since negatives must be prepared to debate all possible affirmatives, students can spend up to thousands of hours over the course of their debate career reading academic journal articles, books, and newspapers for high-quality sources and arguments. In fact, in flow debate, such extreme focus is placed on evidence that the first speeches consist almost solely of reading evidence into the record for use in rebuttal speeches. This is in contrast to lay debate, in which it’s possible to spend roughly 50 hours or less on research for a given topic. Flow debaters often develop extremely strong understandings of their topic areas—both the available arguments and their comparative merit, as competitive dynamics tend to push competitors toward the truest arguments. 
+
+
+Within the flow debate community, other norms have proliferated. There is a standard of open evidence, meaning both sides must disclose all previously argued positions and evidence online at [this wiki](http://opencaselist.com). Also, before any debate round, the affirmative must tell the negative side which advocacy they plan to deploy—a practice established to facilitate in-round clash.
+
+
+Another norm is substantial time commitment. Flow debaters often also have no choice but to make debate their “main activity” when they compete, whether in high school or college. Flow debate requires significant commitment and, on top of a difficult course load, can be difficult to pursue seriously alongside other activities. This contrasts to lay debate, which can be done in conjunction with other activities. 
+
+These cultural differences between the formats become even more pronounced when we consider how each approaches one of debate's most fundamental and controversial features—the requirement that students argue both sides of an issue.
+
+
+## Switching Sides
+
+One commonality between both lay and flow debate is the ability to switch sides. According to debate veteran Laurence Zhou, this practice ^[If you’re interested in learning more about the benefits of switch-side debate, see [here](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2734689).]
+
+> increases the chance for good faith debates to emerge and helps strengthen your existing beliefs by helping you find weaknesses in them, both desperately needed in an age where partisanship has made good faith debate difficult if not impossible. This process of switching sides forces students who may never have been exposed to more leftist or radical views to evaluate them on their merits. It forces students to think about how to offer a defense of views they may disagree with, challenging previous strawmen they may have previously believed. Debate, then, provides an obvious mechanism for penetrating filter bubbles by exposing students to a range of views they have previously not considered. ([Zhou 2021]( https://www.currentaffairs.org/2021/10/why-we-should-teach-kids-to-debate))
+
+Flow debaters have pushed this principle far beyond what most lay tournaments would find acceptable. For over thirty years, flow debaters have been deploying critical theory, normally seen in graduate humanities classrooms, in their debate rounds. Alongside the usual policy and traditional value-level disagreements with an affirmative, negatives now frequently introduce methodological disagreements (“critiques”) using concepts from Marxism, feminism, colonialism, psychoanalysis, and other frameworks of analysis. These concepts typically create debates about epistemology, metaphysics, ontology, and other abstract philosophical concepts, forcing the affirmative to justify their assumptions and methods alongside their policy arguments. Some affirmatives also employ critical arguments in support of the resolution (or perhaps an unconventional interpretation of it), shifting the focus away from the policy consequences of the resolution and towards theory, which further increases the diversity of arguments.
+
+
+Recently, people on the right like James Fishback, founder of neo-traditional debate league [Incubate Debate](incubatedebate.org), have been posting out-of-context clips of critical theory affirmatives from flow debate on Twitter. His replies are full of people who assume that yet another institution in American society—this time good old-fashioned high school debate—has been taken over by leftists.
+
+
+There are two problems with this view.
+
+
+First, debate is by nature internally resolving. It’s not an activity like soccer, where if someone cheats, the game is paused, a referee makes a call, and a punishment is meted out. Debate is self-adjudicating. If an argument is of poor quality or if someone is cheating, then the two teams can use the debate itself to resolve the issue. If an argument seems wrong but the other side can’t come up with a counterargument, the other side should either (a) get better at debate or (b) tailor their strategy accordingly, as this “wrong” argument might just be true.
+
+
+If a team makes an argument like what James [describes](https://x.com/j_fishback/status/1720400504600072247): 
+
+> “They have a white debater on their team, which inherently means they have more whiteness than us” argues a \*\*nationally ranked high school debater.\*\*
+
+their opponents can and should make arguments that the round should be evaluated on arguments, not identity, and that deciding wins and losses based on identity is a bad model for debate.
+
+
+If an affirmative decides not to present a resolutional advocacy because they would rather talk about, e.g., [trans rights](https://x.com/j_fishback/status/1719060564633169921), the negative can and should argue that that affirmative should lose. Negatives can talk about why it’s unfair that the affirmative has presented an advocacy that is hard to disagree with, why debate is good, why the resolution should be the center of the debate, and so on.
+
+
+Second is the issue of judges. Some people like James and his reply guys, with another [clip](https://x.com/j_fishback/status/1720871513849483384?s=46) as evidence, claim that judges are insanely biased in favor of leftists. In the round I linked, James notes that the judges support the affirmative’s non-resolutional discussion of trans rights. This is evidence that, post-debate, the judges identify with a particular side of an issue, but it is not evidence that the judges violated neutrality during the debate. Judges are instructed to be neutral and encourage debaters to resolve arguments themselves to minimize judge intervention.  But even if you think that judges have certain unmitigable biases, there are several other mechanisms in debate that help remedy this issue:
+
+- Judge paradigms – judges must post a blurb (you can read mine [here](https://docs.google.com/document/d/1DIQjy89HYGRN5i-p-A3OAtQs0gZJKkbOUt24qRQ4J_0/edit?usp=sharing)) explaining their debate/ideological beliefs. This way, debaters can adapt their arguments to their judge, which is an important part of persuasion and ideological flexibility. 
+
+- Judge preferences – pre-tournament, debaters can rank judges based on preference, and during a tournament, after pairings have been made, debaters are assigned a judge (or a panel of judges) with equivalent ratings from each side. Debaters also get a certain number of strikes, which can be assigned instead of a rating to avoid getting that judge. If you think a judge is extremely biased, you can put them at the bottom of your preference card or strike them. Of course, getting judges you’re not entirely philosophically aligned with is unavoidable, but the preference system strikes a good balance between diversity of judging and impartiality to both competitors.
+
+
+Given these self-correcting mechanisms within debate, it’s frustrating to me that rightists point to debate as another corrupted institution without understanding the point of switching sides or how flow debate actually works. I agree with the sentiment that flow debate judging should be composed of more diverse professions and demographics, but to have laypeople (or a Twitter mob) judge flow debate would be like having laypeople judge Olympic gymnastics or peer-review physics journal submissions.
+
+One way to address the diversity issue directly would be to build a stronger tradition of alumni connections—schools asking former debaters and coaches, many of whom have gone on to careers in every field imaginable—to judge a few times a year for the betterment of high school or college students.
+
+Beyond bringing in more alumni, we should also encourage students to do flow debate, either as its own activity or alongside lay debate (debaters trained in flow debate often perform extremely well in lay debate). Citing Zhou again, who references extensive academic research, flow debate has the power to motivate students to deeply research, to actively learn (because the stakes of knowledge are victory or loss), to critically think on their feet and logically reason, and to avoid dogmatism and ideological silos.
+
+As a debate alumnus, it's hard for me to overstate the positive impact the activity had on how I think about the world and on my mental capabilities. I hear the same sentiment from fellow debate alumni, most of whom also invested hundreds or thousands of hours into the activity. Yet despite these benefits and the mechanisms that make flow debate work, the general public still doesn't grasp how switch-side debate solves most of the concerns right-wingers raise, or even recognize that debate is a technically demanding pursuit. If I mentioned to a random person that my main intellectual focus in high school was debate, I'd likely get a puzzled look in return.
+
+This disconnect represents a real loss—both for the activity and for society more broadly. The skills developed through flow debate are exactly what we need more of: the ability to research deeply, think critically under pressure, engage with opposing viewpoints in good faith, and avoid ideological dogmatism, understanding that no one side has a monopoly on the truth. Yet debate remains misunderstood, often dismissed as either idealistic policy simulation that ignores politics or, as recent criticisms suggest, political indoctrination.
+
+
+I'm not sure what the complete solution to this lack of understanding is, or if there is even a complete one to begin with. Nonetheless, if there is one, it likely requires effort from the debate community itself, as well as those who have left it for other pursuits. Laurence concludes his Foreign Policy article I linked above with one potential solution:
+
+
+> As former debaters, we should wear our experience with pride, not as a quirky footnote but as a profound influence on our critical faculties and civic engagement. It is time we stepped into the role of educators and advocates, clarifying the unique dynamics of policy-style debate to the public and inviting more diverse participation. In doing so, we build a community that not only appreciates the art of debate but also upholds it as a cornerstone of our democratic society.
