@@ -22,18 +22,21 @@ about:
 ---
 
 ## About me
-I am cofounder of [Acaceta](acaceta.com), which is a knowledge solutions platform for medical sales representatives and doctors.
 
-I am also currently a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) in the Lab of Professor Lun-Wei Ku, where I am researching retrieval-augmented generation strategies and debate between language models as a means of finding truth.
+I am an independent ML researcher studying debate for scalable oversight.
 
-I earned my bachelor's degree from the University of California, Berkeley, where I graduated magna cum laude with a major in Data Science, a concentration in Applied Mathematics and Modeling, and a minor in Chinese. At Berkeley, I wrote an honors thesis, in which I applied natural language processing (NLP) techniques to quantify media bias in Taiwan. I was advised by [Lucy Li](https://lucy3.github.io).
+Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) in the lab of Professor Lun-Wei Ku, where I researched domain adaptation in retrieval-augmented generation across model scales and abilities.
+
+Before that, and concurrently for some time (working double time), I was founding engineer of [Acaceta](https://acaceta.com), which was a knowledge solutions platform for medical sales representatives and doctors.
+
+I earned my bachelor's degree from the University of California, Berkeley, where I graduated magna cum laude (3.98/4.00) with a major in Data Science, a concentration in Applied Mathematics and Modeling, and a minor in Chinese. At Berkeley, I wrote an honors thesis, in which I applied natural language processing (NLP) techniques to quantify bias in Taiwanese media. I was advised by [Lucy Li](https://lucy3.github.io).
 
 At the Haas School of Business, I was a member of [Angus Hildreth](https://www.johnson.cornell.edu/faculty-research/faculty/jdh362/)'s Social Psychology and Business Lab for four semesters (Spring 2022-Spring 2024), where I conducted experiments relating to organizational behavior.
 
-I speak English and Mandarin. I studied abroad in Taiwan in Spring 2023 and have returned to Taiwan for some time for work.
+I speak English and Mandarin fluently. I studied abroad in Taiwan in Spring 2023 and returned to Taiwan from 2024-2025 to work at Academia Sinica.
 
 I also speak Japanese at an intermediate level (well enough to navigate life in Japan, but not well enough to work there).
 
-In high school, I was ranked top-50 in Lincoln-Douglas debate worldwide, and during my freshman and sophomore years of college, I coached for DebateDrills, a nationally successful team.
+In high school, I was ranked top-50 in Lincoln-Douglas debate worldwide, and during my freshman and sophomore years of college, I coached for DebateDrills, a championship-level debate team.
 
-For fun, I like to engage in reading, road biking, cooking, language-learning, surfing, traveling, and pick-up sports.
+For fun, I like to read, road bike, cook, learn languages, surf, travel, and play pick-up sports.
