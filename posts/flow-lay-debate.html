@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ethan Elasky">
+<meta name="dcterms.date" content="2025-06-21">
+<meta name="description" content="Or at least, not a monolithic one">
 
-<title>Ethan Elasky’s Blog – Ethan Elasky</title>
+<title>“Debate” is not an activity – Ethan Elasky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1591bf151c2ed0e5620f1a4f1fb0cf7f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-1591bf151c2ed0e5620f1a4f1fb0cf7f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,65 +71,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -139,7 +82,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ethan Elasky</span>
     </a>
   </div>
@@ -150,11 +93,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../posts.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -184,15 +127,31 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ethan Elasky’s Blog</h1>
-<p class="subtitle lead">Thoughts about data science, Lincoln-Douglas debate, and more.</p>
+<h1 class="title">“Debate” is not an activity</h1>
 </div>
 
+<div>
+  <div class="description">
+    Or at least, not a monolithic one
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ethan Elasky </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 21, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -202,215 +161,66 @@ window.Quarto = {
 </header>
 
 
+<p>Debate is one of the most misunderstood extracurriculars. It is not a singular entity; “debate” is an umbrella term that encompasses two highly dissimilar activities. Lay debate is a slow, rhetoric-focused activity that appeals to laypeople, while flow debate is a fast, evidence-intensive activity that requires trained judges.</p>
+<p>Lay debate is debate judged by laypeople – think parents, volunteers, and sometimes a few coaches. In this format, debaters use a normal cadence and appeal to common sense and traditional values. When people imagine debate, what they think of is something like lay debate – something between presidential debates and <a href="https://youtu.be/LQbmA3PfRFg?si=NwGPHEaxNBpFtPJR">Charlie Kirk</a> on YouTube.</p>
+<p>In fact, the default mode of debate, particularly at lower-prestige debate tournaments, is lay debate. At most county- or state-level tournaments, this is what you’ll encounter. There are two national tournaments that cater to lay debate: the NSDA and NCFL Nationals, both held in June.</p>
+<p>Flow debate is an activity where details matter much more, and it dominates the National Circuit<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. People speak at double or triple normal speed, the opening speeches are extremely evidence-heavy, and experienced judges meticulously track arguments from speech to speech. Almost all major national tournament rounds in the Policy Debate and Lincoln Douglas formats use the flow format; with judges generally required to be debate experts. This is somewhat antithetical to lay debate, which is supposed to appeal to the general public. To get a feel for what flow debate looks like, you can watch <a href="https://www.youtube.com/live/G2GKX4Y0hNA?si=7FlGpcyxKaa2VsA1&amp;t=392">this</a> collegiate flow debate round.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/G2GKX4Y0hNA?si=2gOtPDJOxvRVNbjq" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="types-of-resolutionality" class="level2">
+<h2 class="anchored" data-anchor-id="types-of-resolutionality">Types of resolutionality</h2>
+<p>One immediate difference between flow and lay debate is that flow debate usually adopts a different form of resolutionality.</p>
+<p>To understand this difference, let’s examine a past resolution from the January-February 2019 high school Lincoln-Douglas topic:</p>
+<blockquote class="blockquote">
+<p>Resolved: The United States ought not provide military aid to authoritarian regimes.</p>
+</blockquote>
+<p>Note that the phrases “military aid” and “authoritarian regimes” are not specified. At face value, these terms seem like they should be interpreted broadly, which aligns with how lay debate interprets resolutions. But flow affirmatives usually specify a certain type of military aid, particular authoritarian regime(s), or another element in the resolution to narrow the debate’s scope. In other words, flow debate allows participants to make more specific advocacies (“plans”) within the resolution’s bounds. For instance, on the military aid topic above, a flow affirmative might narrow the debate to eliminating arms sales to Saudi Arabia and the UAE, and the negative must be prepared to disagree with that specific affirmative, as well as all other possible specifications. As you might expect, this massively increases the preparation burden for both sides: the affirmative is incentivized to research all possible plans in search of the best one, while the negative must be ready to negate every conceivable affirmative.</p>
+<p>Since negatives must be prepared to debate all possible affirmatives, students can spend up to thousands of hours over the course of their debate career reading academic journal articles, books, and newspapers for high-quality sources and arguments. In fact, in flow debate, such extreme focus is placed on evidence that the first speeches consist almost solely of reading evidence into the record for use in rebuttal speeches. This is in contrast to lay debate, in which it’s possible to spend roughly 50 hours or less on research for a given topic. Flow debaters often develop extremely strong understandings of their topic areas—both the available arguments and their comparative merit, as competitive dynamics tend to push competitors toward the truest arguments.</p>
+<p>Within the flow debate community, other norms have proliferated. There is a standard of open evidence, meaning both sides must disclose all previously argued positions and evidence online at <a href="http://opencaselist.com">this wiki</a>. Also, before any debate round, the affirmative must tell the negative side which advocacy they plan to deploy—a practice established to facilitate in-round clash.</p>
+<p>Another norm is substantial time commitment. Flow debaters often also have no choice but to make debate their “main activity” when they compete, whether in high school or college. Flow debate requires significant commitment and, on top of a difficult course load, can be difficult to pursue seriously alongside other activities. This contrasts to lay debate, which can be done in conjunction with other activities.</p>
+<p>These cultural differences between the formats become even more pronounced when we consider how each approaches one of debate’s most fundamental and controversial features—the requirement that students argue both sides of an issue.</p>
+</section>
+<section id="switching-sides" class="level2">
+<h2 class="anchored" data-anchor-id="switching-sides">Switching Sides</h2>
+<p>One commonality between both lay and flow debate is the ability to switch sides. According to debate veteran Laurence Zhou, this practice <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<blockquote class="blockquote">
+<p>increases the chance for good faith debates to emerge and helps strengthen your existing beliefs by helping you find weaknesses in them, both desperately needed in an age where partisanship has made good faith debate difficult if not impossible. This process of switching sides forces students who may never have been exposed to more leftist or radical views to evaluate them on their merits. It forces students to think about how to offer a defense of views they may disagree with, challenging previous strawmen they may have previously believed. Debate, then, provides an obvious mechanism for penetrating filter bubbles by exposing students to a range of views they have previously not considered. (<a href="https://www.currentaffairs.org/2021/10/why-we-should-teach-kids-to-debate">Zhou 2021</a>)</p>
+</blockquote>
+<p>Flow debaters have pushed this principle far beyond what most lay tournaments would find acceptable. For over thirty years, flow debaters have been deploying critical theory, normally seen in graduate humanities classrooms, in their debate rounds. Alongside the usual policy and traditional value-level disagreements with an affirmative, negatives now frequently introduce methodological disagreements (“critiques”) using concepts from Marxism, feminism, colonialism, psychoanalysis, and other frameworks of analysis. These concepts typically create debates about epistemology, metaphysics, ontology, and other abstract philosophical concepts, forcing the affirmative to justify their assumptions and methods alongside their policy arguments. Some affirmatives also employ critical arguments in support of the resolution (or perhaps an unconventional interpretation of it), shifting the focus away from the policy consequences of the resolution and towards theory, which further increases the diversity of arguments.</p>
+<p>Recently, people on the right like James Fishback, founder of neo-traditional debate league <a href="incubatedebate.org">Incubate Debate</a>, have been posting out-of-context clips of critical theory affirmatives from flow debate on Twitter. His replies are full of people who assume that yet another institution in American society—this time good old-fashioned high school debate—has been taken over by leftists.</p>
+<p>There are two problems with this view.</p>
+<p>First, debate is by nature internally resolving. It’s not an activity like soccer, where if someone cheats, the game is paused, a referee makes a call, and a punishment is meted out. Debate is self-adjudicating. If an argument is of poor quality or if someone is cheating, then the two teams can use the debate itself to resolve the issue. If an argument seems wrong but the other side can’t come up with a counterargument, the other side should either (a) get better at debate or (b) tailor their strategy accordingly, as this “wrong” argument might just be true.</p>
+<p>If a team makes an argument like what James <a href="https://x.com/j_fishback/status/1720400504600072247">describes</a>:</p>
+<blockquote class="blockquote">
+<p>“They have a white debater on their team, which inherently means they have more whiteness than us” argues a **nationally ranked high school debater.**</p>
+</blockquote>
+<p>their opponents can and should make arguments that the round should be evaluated on arguments, not identity, and that deciding wins and losses based on identity is a bad model for debate.</p>
+<p>If an affirmative decides not to present a resolutional advocacy because they would rather talk about, e.g., <a href="https://x.com/j_fishback/status/1719060564633169921">trans rights</a>, the negative can and should argue that that affirmative should lose. Negatives can talk about why it’s unfair that the affirmative has presented an advocacy that is hard to disagree with, why debate is good, why the resolution should be the center of the debate, and so on.</p>
+<p>Second is the issue of judges. Some people like James and his reply guys, with another <a href="https://x.com/j_fishback/status/1720871513849483384?s=46">clip</a> as evidence, claim that judges are insanely biased in favor of leftists. In the round I linked, James notes that the judges support the affirmative’s non-resolutional discussion of trans rights. This is evidence that, post-debate, the judges identify with a particular side of an issue, but it is not evidence that the judges violated neutrality during the debate. Judges are instructed to be neutral and encourage debaters to resolve arguments themselves to minimize judge intervention. But even if you think that judges have certain unmitigable biases, there are several other mechanisms in debate that help remedy this issue:</p>
+<ul>
+<li><p>Judge paradigms – judges must post a blurb (you can read mine <a href="https://docs.google.com/document/d/1DIQjy89HYGRN5i-p-A3OAtQs0gZJKkbOUt24qRQ4J_0/edit?usp=sharing">here</a>) explaining their debate/ideological beliefs. This way, debaters can adapt their arguments to their judge, which is an important part of persuasion and ideological flexibility.</p></li>
+<li><p>Judge preferences – pre-tournament, debaters can rank judges based on preference, and during a tournament, after pairings have been made, debaters are assigned a judge (or a panel of judges) with equivalent ratings from each side. Debaters also get a certain number of strikes, which can be assigned instead of a rating to avoid getting that judge. If you think a judge is extremely biased, you can put them at the bottom of your preference card or strike them. Of course, getting judges you’re not entirely philosophically aligned with is unavoidable, but the preference system strikes a good balance between diversity of judging and impartiality to both competitors.</p></li>
+</ul>
+<p>Given these self-correcting mechanisms within debate, it’s frustrating to me that rightists point to debate as another corrupted institution without understanding the point of switching sides or how flow debate actually works. I agree with the sentiment that flow debate judging should be composed of more diverse professions and demographics, but to have laypeople (or a Twitter mob) judge flow debate would be like having laypeople judge Olympic gymnastics or peer-review physics journal submissions.</p>
+<p>One way to address the diversity issue directly would be to build a stronger tradition of alumni connections—schools asking former debaters and coaches, many of whom have gone on to careers in every field imaginable—to judge a few times a year for the betterment of high school or college students.</p>
+<p>Beyond bringing in more alumni, we should also encourage students to do flow debate, either as its own activity or alongside lay debate (debaters trained in flow debate often perform extremely well in lay debate). Citing Zhou again, who references extensive academic research, flow debate has the power to motivate students to deeply research, to actively learn (because the stakes of knowledge are victory or loss), to critically think on their feet and logically reason, and to avoid dogmatism and ideological silos.</p>
+<p>As a debate alumnus, it’s hard for me to overstate the positive impact the activity had on how I think about the world and on my mental capabilities. I hear the same sentiment from fellow debate alumni, most of whom also invested hundreds or thousands of hours into the activity. Yet despite these benefits and the mechanisms that make flow debate work, the general public still doesn’t grasp how switch-side debate solves most of the concerns right-wingers raise, or even recognize that debate is a technically demanding pursuit. If I mentioned to a random person that my main intellectual focus in high school was debate, I’d likely get a puzzled look in return.</p>
+<p>This disconnect represents a real loss—both for the activity and for society more broadly. The skills developed through flow debate are exactly what we need more of: the ability to research deeply, think critically under pressure, engage with opposing viewpoints in good faith, and avoid ideological dogmatism, understanding that no one side has a monopoly on the truth. Yet debate remains misunderstood, often dismissed as either idealistic policy simulation that ignores politics or, as recent criticisms suggest, political indoctrination.</p>
+<p>I’m not sure what the complete solution to this lack of understanding is, or if there is even a complete one to begin with. Nonetheless, if there is one, it likely requires effort from the debate community itself, as well as those who have left it for other pursuits. Laurence concludes his Foreign Policy article I linked above with one potential solution:</p>
+<blockquote class="blockquote">
+<p>As former debaters, we should wear our experience with pride, not as a quirky footnote but as a profound influence on our critical faculties and civic engagement. It is time we stepped into the role of educators and advocates, clarifying the unique dynamics of policy-style debate to the public and inviting more diverse participation. In doing so, we build a community that not only appreciates the art of debate but also upholds it as a cornerstone of our democratic society.</p>
+</blockquote>
 
 
+</section>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1750464000000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2110">
-<div class="thumbnail"><a href="./posts/flow-lay-debate.html" class="no-external">
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/flow-lay-debate.html" class="no-external">“Debate” is not an activity</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/flow-lay-debate.html" class="no-external">
-<p>Or at least, not a monolithic one</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/flow-lay-debate.html" class="no-external">
-<div class="listing-date">
-Jun 21, 2025
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1703808000000" data-listing-file-modified-sort="1750573093552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="743">
-<div class="thumbnail"><a href="./posts/taiwanese_music_1.html" class="no-external">
-
-<img loading="lazy" src="./posts/iruka_porisu.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/taiwanese_music_1.html" class="no-external">Notes on Taiwanese Indie Music</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/taiwanese_music_1.html" class="no-external">
-<p>Fresh songs from across the planet</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/taiwanese_music_1.html" class="no-external">
-<div class="listing-date">
-Dec 29, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1700006400000" data-listing-file-modified-sort="1750573093548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
-<div class="thumbnail"><a href="./posts/amazon-images.html" class="no-external">
-
-<img loading="lazy" src="./posts/Amazon-Photos-Logo.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/amazon-images.html" class="no-external">Amazon Photos collects your photo data – you can disable this</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/amazon-images.html" class="no-external">
-<p>Don’t become Amazon’s training data</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/amazon-images.html" class="no-external">
-<div class="listing-date">
-Nov 15, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1363">
-<div class="thumbnail"><a href="./posts/flights-nontechnical.html" class="no-external">
-
-<img loading="lazy" src="./posts/cell-11-output-2.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/flights-nontechnical.html" class="no-external">Everything to Know About Flight Delays (no code)</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/flights-nontechnical.html" class="no-external">
-<p>Analyzing post-Covid airline records</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/flights-nontechnical.html" class="no-external">
-<div class="listing-date">
-Jul 30, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1750573093546" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="948">
-<div class="thumbnail"><a href="./posts/Flights-technical.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/Flights-technical_files/figure-html/cell-9-output-2.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Flights-technical.html" class="no-external">Everything to Know About Flight Delays</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/Flights-technical.html" class="no-external">
-<p>Analyzing post-Covid airline records with Python</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Flights-technical.html" class="no-external">
-<div class="listing-date">
-Jul 30, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1595548800000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="840">
-<div class="thumbnail"><a href="./posts/improving-argument-extensions.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/improving-argument-extensions.html" class="no-external">Improving Argument Extensions in Lincoln-Douglas debate</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/improving-argument-extensions.html" class="no-external">
-<p>How to explain your arguments clearly</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/improving-argument-extensions.html" class="no-external">
-<div class="listing-date">
-Jul 24, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
-<div class="thumbnail"><a href="./posts/embedded-clash.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/embedded-clash.html" class="no-external">Embedded Clash - a Primer for Lincoln-Douglas debate</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/embedded-clash.html" class="no-external">
-<p>Getting through your flow faster than ever</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/embedded-clash.html" class="no-external">
-<div class="listing-date">
-May 28, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1750573093548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="898">
-<div class="thumbnail"><a href="./posts/avoiding-overfitting.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/avoiding-overfitting.html" class="no-external">Avoiding overfitting in Lincoln-Douglas debate practice</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/avoiding-overfitting.html" class="no-external">
-<p>Keeping your skills robust against new arguments</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/avoiding-overfitting.html" class="no-external">
-<div class="listing-date">
-May 28, 2020
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<ol>
+<li id="fn1"><p>Flow debate is near-universal in the Policy and Lincoln-Douglas debate formats on the National Circuit, and it’s extremely prevalent in Public Forum.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>If you’re interested in learning more about the benefits of switch-side debate, see <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2734689">here</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
