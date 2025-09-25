@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,14 +35,15 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1591bf151c2ed0e5620f1a4f1fb0cf7f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7ec8e01b38683da2b49cc79085a5d327.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,7 +115,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -139,6 +140,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Ethan Elasky</span>
     </a>
@@ -163,7 +166,7 @@ window.Quarto = {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/elaskyethan"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/ethanelasky"> <i class="bi bi-twitter" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -208,7 +211,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1750464000000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2110">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1750464000000" data-listing-file-modified-sort="1758762374045" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2110">
 <div class="thumbnail"><a href="./posts/flow-lay-debate.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -233,7 +236,7 @@ Ethan Elasky
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1703808000000" data-listing-file-modified-sort="1750573093552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="743">
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1703808000000" data-listing-file-modified-sort="1758762374047" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="743">
 <div class="thumbnail"><a href="./posts/taiwanese_music_1.html" class="no-external">
 
 <img loading="lazy" src="./posts/iruka_porisu.jpg" class="thumbnail-image">
@@ -258,7 +261,7 @@ Ethan Elasky
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1700006400000" data-listing-file-modified-sort="1750573093548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
+<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1700006400000" data-listing-file-modified-sort="1758762374043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="110">
 <div class="thumbnail"><a href="./posts/amazon-images.html" class="no-external">
 
 <img loading="lazy" src="./posts/Amazon-Photos-Logo.jpg" class="thumbnail-image">
@@ -283,32 +286,7 @@ Ethan Elasky
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1363">
-<div class="thumbnail"><a href="./posts/flights-nontechnical.html" class="no-external">
-
-<img loading="lazy" src="./posts/cell-11-output-2.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/flights-nontechnical.html" class="no-external">Everything to Know About Flight Delays (no code)</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/flights-nontechnical.html" class="no-external">
-<p>Analyzing post-Covid airline records</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/flights-nontechnical.html" class="no-external">
-<div class="listing-date">
-Jul 30, 2023
-</div>
-<div class="listing-author">
-Ethan Elasky
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1750573093546" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="948">
+<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1758762374042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="948">
 <div class="thumbnail"><a href="./posts/Flights-technical.html" class="no-external">
 
 <p class="card-img-top"><img src="posts/Flights-technical_files/figure-html/cell-9-output-2.png"  class="thumbnail-image card-img"/></p>
@@ -333,7 +311,32 @@ Ethan Elasky
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1595548800000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="840">
+<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1690675200000" data-listing-file-modified-sort="1758762374045" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1363">
+<div class="thumbnail"><a href="./posts/flights-nontechnical.html" class="no-external">
+
+<img loading="lazy" src="./posts/cell-11-output-2.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/flights-nontechnical.html" class="no-external">Everything to Know About Flight Delays (no code)</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/flights-nontechnical.html" class="no-external">
+<p>Analyzing post-Covid airline records</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/flights-nontechnical.html" class="no-external">
+<div class="listing-date">
+Jul 30, 2023
+</div>
+<div class="listing-author">
+Ethan Elasky
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1595548800000" data-listing-file-modified-sort="1758762374045" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="840">
 <div class="thumbnail"><a href="./posts/improving-argument-extensions.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -358,7 +361,7 @@ Ethan Elasky
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1750573093550" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
+<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1758762374045" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="365">
 <div class="thumbnail"><a href="./posts/embedded-clash.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -383,7 +386,7 @@ Ethan Elasky
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1750573093548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="898">
+<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1590624000000" data-listing-file-modified-sort="1758762374043" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="898">
 <div class="thumbnail"><a href="./posts/avoiding-overfitting.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -462,13 +465,14 @@ Ethan Elasky
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
