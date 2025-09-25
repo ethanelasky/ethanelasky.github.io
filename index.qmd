@@ -12,7 +12,7 @@ about:
       href: https://www.linkedin.com/in/ethanelasky/
     - icon: twitter
       text: Twitter
-      href: https://twitter.com/elaskyethan
+      href: https://twitter.com/ethanelasky
     - icon: github
       text: GitHub
       href: https://github.com/ethanelasky
