@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ethan Elasky">
-<meta name="dcterms.date" content="2023-12-29">
-<meta name="description" content="Fresh songs from across the planet">
+<meta name="dcterms.date" content="2026-02-19">
+<meta name="description" content="Practices for getting compounding leverage out of Claude Code’s subagent system — persistent specs, scope declarations, task parallelization, and more.">
 
-<title>Notes on Taiwanese Indie Music – Ethan Elasky</title>
+<title>A Scalable Workflow for Herding AI Agents Toward Your Goals – Ethan Elasky</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -128,12 +163,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Notes on Taiwanese Indie Music</h1>
+<h1 class="title">A Scalable Workflow for Herding AI Agents Toward Your Goals</h1>
 </div>
 
 <div>
   <div class="description">
-    Fresh songs from across the planet
+    Practices for getting compounding leverage out of Claude Code’s subagent system — persistent specs, scope declarations, task parallelization, and more.
   </div>
 </div>
 
@@ -150,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 29, 2023</p>
+      <p class="date">February 19, 2026</p>
     </div>
   </div>
   
@@ -162,72 +197,105 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Since leaving Taiwan, I’ve delved into the island’s indie music scene, taking recommendations mainly from PTT (Taiwan’s Reddit equivalent), my friend Yang Lee, and the Spotify algorithm. The selections I’ve listed below are eclectic, ranging from siren-like female vocals over jazz piano to poppy, guitar-heavy satire of Japanese magical girl anime. Taiwan’s alternative scene is not merely derivative of Japan’s, the West’s, or anywhere else’s—the music is creative and unique, reminding me of the enormity and potential of what’s still out there to discover.</p>
-<p>Note: Translations are mine. Search for songs using the Chinese name if available. I made <a href="https://open.spotify.com/playlist/2GTvo88QMO0ohpefCClJI6?si=4d0fc99d1a444252">a Spotify playlist</a> with every song in this reflection, plus many more.</p>
-<section id="hello-nico" class="level3">
-<h3 class="anchored" data-anchor-id="hello-nico">Hello Nico</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://taiwanbeats.tw/wp-content/uploads/2019/11/45292632_2028529947193786_2197073082701578240_o.jpg" class="img-fluid figure-img"></p>
-<figcaption>Image source: Taiwan Beats</figcaption>
-</figure>
-</div>
-<p>Hello Nico is not a loud band, but their songs are no less powerful because of it. The lyrics take the form of recollections, looking doubtfully at past decisions. Their lead singer’s soft voice makes for good “sad” music, but they have lots of optimistic music that is at least as good. Selections:</p>
-<ul>
-<li><p>Flower/Hua 花 is a slow, apologetic contemplation of what could have been, had the speaker not unintentionally hurt Hua (a pet name for the subject). <a href="https://open.spotify.com/track/3wsrAPGfAsFOPwsU46l5Vm?si=9a68958947b24fbe">Spotify</a>, <a href="https://www.youtube.com/watch?v=BlblBvpVgjE">YouTube</a></p></li>
-<li><p>Unfamiliar Room, Unfamiliar Afternoon 陌生的房間陌生的下午 describes the pain of naively continuing an unreciprocated love. <a href="https://open.spotify.com/track/31BGdCvAt3SNBzgtDbEqRg?si=a7b5d542e491472b">Spotify</a>, <a href="https://www.youtube.com/watch?v=UX8nRhZV-W0">YouTube</a></p></li>
-<li><p>Facing Yourself 面向自己 exemplifies “breathiness” in Taiwanese music (which is popular in the Japanese scene) and intelligently uses myriad color and light-based metaphors to describe the uniqueness of the speaker’s romantic interest. <a href="https://open.spotify.com/track/0JhpzFv4v5wVnu2rZCMn5h?si=83c4e1c3714142bb">Spotify</a>, <a href="https://m.youtube.com/watch?v=WX-9BoIuEUk&amp;pp=ygUHI-iNkuiVqg%3D%3D">YouTube</a></p></li>
-</ul>
+<p><strong>TL;DR:</strong> I’ve been using Claude Code’s subagent system to build and maintain complex projects with minimal manual oversight. The core pattern: treat your main Claude Code instance as a manager that delegates to subagents, not a laborer that does everything itself. This post covers the practices that make this work — persistent specs, scope declarations, task parallelization with git worktrees, building skills/tooling to automate yourself out of the loop, and command scoping to keep the whole thing running unattended.</p>
+<hr>
+<p>I’ve been iterating on this workflow across several projects — most extensively a debate/AI safety research codebase and an iOS app — over the past few months. What started as “just use subagents” has turned into a fairly specific set of practices that I keep converging on. I originally sent a version of this as a rambling iMessage to a friend and then realized it might be useful to more people, so here it is cleaned up.</p>
+<p>Here is a workflow I’ve been using to get serious, compounding leverage out of Claude Code’s subagent system. The core idea is simple: <strong>you have a “review agent” (your main Claude Code instance) whose job is to delegate, supervise, and integrate — not to do the grunt work itself.</strong> Think of it as your friend who manages a team. You don’t want your friend’s context window getting clogged with low-level execution, because once it fills up, you’ve effectively lost your best coordinator. Make the subagents do the hard work.</p>
+<p>Below are the practices that make this actually work at scale.</p>
+<hr>
+<section id="make-a-spec-and-treat-it-like-your-bible" class="level2">
+<h2 class="anchored" data-anchor-id="make-a-spec-and-treat-it-like-your-bible">1. Make a Spec and Treat It Like Your Bible</h2>
+<p>LLMs don’t have continual learning. They’re also not always great at remembering something you said 10 turns ago. This is why having a written spec that the agentic system can reference is so important — it’s the persistent source of truth that compensates for the model’s lack of memory.</p>
+<p><strong>Building a spec from an existing codebase:</strong></p>
+<ol type="1">
+<li>Have the review agent dispatch <strong>Explore subagents</strong> to comprehensively traverse the codebase and produce sub-specs of different areas.</li>
+<li>The review agent supervises these subagents and integrates their findings into a <strong>comprehensive spec</strong>.</li>
+<li>Once the spec exists, dispatch subagents to <strong>review functionality against individual parts of the spec</strong>.</li>
+<li>Then dispatch subagents to review <strong>cross-cutting flows</strong> — e.g., research configs, user workflows in an app — that exercise interactions <em>across</em> the codebase. This catches things the earlier, scope-limited review missed.</li>
+<li>Subagents report findings up; the review agent updates the spec. <strong>Repeat steps 3–4 until no further issues are found.</strong></li>
+</ol>
+<p>You can also have the review agent command subagents to <strong>run actual configs and predict the output before it occurs</strong> — how long it will take, what the result will be, etc. The subagent then checks itself against reality, and any divergences get incorporated into the spec. (The spec should maintain a separate section for “bugs” or “behaviors that seem to go against the intended design” — this keeps the intended-behavior spec clean while still tracking known issues in a persistent, referenceable place.)</p>
+<p>Between steps, the review agent should summarize findings and report its next steps to the user (writing to a log file is ideal). In a perfect world, the human’s only burden is reading a summary at the end and doing a final quality check. The review agent should not present work to you unless it’s either flawless or it has tried at least eight times and is stuck.</p>
+<p><strong>Adding new features:</strong></p>
+<p>Have the review agent dispatch subagents to do relevant exploration, then have it write a draft spec update (make sure your spec is committed so you can revert). Claude Code’s plans are usually pretty good at architecting these draft updates — but you should have the plan agent (or a fresh subagent) <strong>iterate on the plan and make it more specific</strong> before executing. The devil is in the details: you often don’t discover that something doesn’t work or doesn’t account for edge case X in your codebase until implementation is halfway through, which wrecks your velocity. It’s far cheaper to have an over-detailed plan than to recover from a half-built wrong approach. Have models critique the draft until you’re satisfied. Then follow the same dispatch-review-fix cycle described above.</p>
+<hr>
 </section>
-<section id="iruka-porisu-aka-dolphin-police-イルカポリス-海豚刑警" class="level3">
-<h3 class="anchored" data-anchor-id="iruka-porisu-aka-dolphin-police-イルカポリス-海豚刑警">Iruka Porisu (aka Dolphin Police, イルカポリス, 海豚刑警)</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://pica.zhimg.com/v2-2eaa033fb89741f7258a82d4dd609835_r.jpg?source=172ae18b" class="img-fluid figure-img"></p>
-<figcaption>Image source: Zhihu</figcaption>
-</figure>
-</div>
-<p>Iruka Porisu’s 2019 album Call Me When Night Go Blue is one of my favorites of 2023. Songs effortlessly mesh the lead singer Wuyue’s (伍悅) siren-like voice, intense guitar solos, and unconventional instruments such as a kid’s piano. Their music, lyrics, social media profiles, and videos embody youth—irreverent, chaotic, and joyful—and remind me to enjoy mine while it lasts. Check out their music videos, which I’ve linked below.</p>
-<p>Selections:</p>
-<ul>
-<li><p>Lights of Anping 安平之光 describes blithely riding a Vespa around Anping, Tainan (a city in the south of Taiwan), away from depressing Taipei. <a href="https://open.spotify.com/track/5vW8NkquQ1WgJUtyS7pwJx?si=35d1a9a8b5e5410e">Spotify</a>, <a href="https://youtu.be/ZrpZB8-VBD0?si=i67yOTFIXKyImhOV">Youtube</a></p></li>
-<li><p>Tell Me I Was in Your Dream 當ㄋ沉睡ㄉ時候告訴婐ㄋ夢到ㄌ婐 is an enthralling song about love and longing in a relationship with a pessimist. <a href="https://open.spotify.com/track/3zLdMtVS1ku6ACHDGy1oXi?si=49f9e896380b4810">Spotify</a>, <a href="https://www.youtube.com/watch?v=4v_qdAXu5p4">YouTube</a>, <a href="https://www.youtube.com/watch?v=hgt9UkQz6k8">YouTube acoustic</a></p></li>
-<li><p>Young Folks Die Late (original song title is in English) is full of harmonic tension and discusses the previous night’s sexual partner for misunderstanding the speaker. <a href="https://open.spotify.com/track/4olMBqpE3xKbmgc4s2WOGl?si=cde8c30b53d84347">Spotify</a>, <a href="https://youtu.be/q8I0Ahl2y2c?si=EHAi2UMomAPkWDI_">YouTube</a></p></li>
-<li><p>Badminton Youth 羽球少年 describes the speaker’s romantic frustrations with men, women, and the available partners in her environment, especially those available on Tinder. <a href="https://open.spotify.com/track/7rAMxhio3gkeUzn5HoUMmo?si=c265f9962485465d">Spotify</a>, <a href="https://www.youtube.com/watch?v=LRYSMEvOc0g">YouTube</a></p></li>
-</ul>
+<section id="scope-declaration" class="level2">
+<h2 class="anchored" data-anchor-id="scope-declaration">2. Scope Declaration</h2>
+<p>It is helpful for models to know how hard they should try and what quality bar they’re targeting. A code change to a microservice at Facebook is very different from exploratory graph creation for a blog post.</p>
+<p>Identify the scope you’re working in and push the model to work at the <strong>highest echelon</strong> of that scope. For example, if you’re writing a machine learning paper, tell the model that outputs should be worthy of an ICML best paper award.</p>
+<p><strong>Avoid overly personal scope definitions</strong> like “write this how [specific researcher] would.” Models will shallowly overfit to the name. The exception is if you genuinely want to emulate someone’s style — but if so, make style exploration a <strong>separate task</strong> that a subagent dedicates its full effort to producing a style spec. Then have your agent reference that spec rather than relying on name-dropping.</p>
+<hr>
 </section>
-<section id="elephant-gym-大象體操" class="level3">
-<h3 class="anchored" data-anchor-id="elephant-gym-大象體操">Elephant Gym (大象體操)</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://taiwanbeats.tw/wp-content/uploads/2021/11/IMG2875-768x512.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Image source: Taiwan Beats</figcaption>
-</figure>
-</div>
-<p>Within my first month in Taiwan, shortly after discovering Elephant Gym on PTT, I saw them perform at an annual memorial concert that raises awareness for the <a href="https://en.wikipedia.org/wiki/February_28_incident">228 Incident</a>, an anti-government uprising in 1948 that was violently suppressed by the Chiang Kai-shek regime. Recently, they’ve skyrocketed in popularity in the West and have even been selected as the cover image for Spotify’s global math rock playlist. The trio expertly combines melodies with polyrhythms on guitar, base, and drums, and sometimes even adds in female vocals. Words rarely appear on tracks, and when they do, they are sparing. Hence, I have omitted descriptions of lyrics for this artist.</p>
-<p>They’re currently on their World Tour. If anyone is interested in seeing the Los Angeles or San Francisco shows, I have tickets to both.</p>
-<p>Selections:</p>
-<ul>
-<li><p>Midway 中途 <a href="https://open.spotify.com/track/2Bt3eNSRuYmbrLETXSdnrQ?si=T8YYWyLMT1m49yPUnpWKKA&amp;nd=1&amp;dlsi=ebdb6c90ec4347ef">Spotify</a>, <a href="https://youtu.be/lIBGM7uYNfs?si=sM4v9DGttOfisL97">YouTube</a></p></li>
-<li><p>Go Through the Night 穿過夜晚 <a href="https://open.spotify.com/track/3BkWm5yGQ91hu1b9BHNbaz?si=CaJKD0fAQwe3wZYb7CFr4A&amp;nd=1&amp;dlsi=4ea7a485d32a42e8">Spotify</a>, <a href="https://youtu.be/-WGaDoOlHwo?si=cTo6zNh9FQI9Xi85">YouTube</a></p></li>
-<li><p>Underwater 水底 <a href="https://open.spotify.com/track/5kh9pDPnkZgp1birESwLRn?si=IXZxwr4fTmez6qung8pZtw&amp;nd=1&amp;dlsi=63f047fda2a54ad5">Spotify</a>, <a href="https://www.youtube.com/watch?v=jDDy-Vh55to">YouTube</a></p></li>
-</ul>
+<section id="task-parallelization" class="level2">
+<h2 class="anchored" data-anchor-id="task-parallelization">3. Task Parallelization</h2>
+<p>This is heavily referenced in §1. The primary benefit is speed: many workflows can be parallelized — exploration, review, independent coding tasks.</p>
+<p>Some workflows <strong>cannot</strong> be parallelized: tasks hitting an external API with a global rate limit, tasks bottlenecked on GPU availability, etc. For these, run sequentially with high internal batch size.</p>
+<p>When the review agent faces a complex problem, it should <strong>construct a dependency graph</strong> and dispatch parallel subagents for independent subtasks (max batch size of ~5 subagents to avoid context compaction problems from overloading the coordinator).</p>
+<p><strong>Git worktrees for parallel agents:</strong> If you’re running multiple review agents in parallel (or even if you’re not — you can’t always know), git worktrees are essential. The idea is simple: every agent session gets its own worktree so there are no filesystem conflicts.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From main repo, create a worktree with a new branch</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> worktree add ../myproject-<span class="op">&lt;</span>task-name<span class="op">&gt;</span> -b <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../myproject-<span class="op">&lt;</span>task-name<span class="op">&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dependencies (required for each new worktree)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync  <span class="co"># or npm install, etc.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If your workflow involves a local server, run it on a different port per worktree to avoid conflicts. Before pushing, always sync with main — other agents may have pushed while you worked:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> fetch origin main</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge origin/main  <span class="co"># Resolve any conflicts, then push</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Clean up after merging:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /path/to/main-repo</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> worktree remove ../myproject-<span class="op">&lt;</span>task-name<span class="op">&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> <span class="op">&lt;</span>branch-name<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A good rule of thumb: <strong>never edit the main worktree directly.</strong> Put this in your <code>CLAUDE.md</code> so agents internalize it. <code>git worktree list</code> is your friend for keeping track of what’s active.</p>
+<hr>
 </section>
-<section id="sweet-john-甜約翰" class="level3">
-<h3 class="anchored" data-anchor-id="sweet-john-甜約翰">Sweet John (甜約翰)</h3>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://static.wixstatic.com/media/2e9a39_dbd3566003094ef48600d4b4422780fb~mv2_d_5472_3648_s_4_2.jpg/v1/fill/w_1752,h_1142,al_c,q_90,usm_0.66_1.00_0.01/2e9a39_dbd3566003094ef48600d4b4422780fb~mv2_d_5472_3648_s_4_2.webp" class="img-fluid figure-img"></p>
-<figcaption>Image source: Musictalk</figcaption>
-</figure>
-</div>
-<p>Sweet John makes love songs that are introverted in character and content. The music is largely absent of the hysteria and bold proclamations typical of the genre, an interviewer <a href="https://blog.pinkoi.com/tw/interviews/jq6mlq8h/">noted</a> in early 2020. Their lyrics instead provide a more realistic treatment of feelings like the anxiety inherent to an ambiguous relationship and of falling out of love in a relationship.</p>
-<p>Selections:</p>
+<section id="skills-and-know-how" class="level2">
+<h2 class="anchored" data-anchor-id="skills-and-know-how">4. Skills and Know-How</h2>
+<p>You probably have preferences that override the model’s defaults. For example, the pyplot graphs Claude produces out of the box are built for PowerPoint insertion — small fonts, titles present — which is far from paper-quality. (LaTeX figures in ML papers usually omit titles because the caption serves that purpose, and titles waste precious space.)</p>
+<p>You can encode these preferences in <code>claude.md</code>, but if it starts getting long (&gt;500 lines), break them out into <strong>separate skill files</strong> that Claude references when needed. You can have Claude create these skills, and choose whether they’re project-specific or general. See <a href="https://code.claude.com/docs/en/skills">the skills documentation</a> for details.</p>
+<p><strong>Skills for automation:</strong> Keep a mental tally of where you’re manually involved in the workflow. (If you’re not naturally good at noticing things you want to automate, consider actually writing these down — e.g., in Obsidian. The act of being aware of automation potential is a skill in itself.) For example, if you’re building an iPhone app, you might be scrolling through screens and noting issues by hand. This is fine as a quality check but grows tedious fast — especially when you tell Claude to fix things, it comes back, and half the fixes didn’t work while one or two introduced new bugs.</p>
+<p>Invest in upgrading your tooling. For example, Claude and I developed a workflow using <strong>screenshots, native iOS swipes, and Maestro</strong> to let it run gestures and ingest the resulting screenshots to verify changes went through. Claude is persistent — it’ll work for ~5 turns to fix issues, which resolves the vast majority of cases.</p>
+<p><strong>Blind spots:</strong> Be aware of what your tools can’t catch. Claude is good at detecting text overlap in images but bad at catching small spacing issues a human would notice immediately. If you primarily oversee app changes via screenshots, don’t be surprised when it can’t tell your app is laggy somewhere. Sometimes you can add tools to compensate; sometimes you can’t, and a notification system for when problems arise is valuable here. (As of this writing, a Claude Code WhatsApp integration exists as an MCP server that I haven’t tested yet but plan to soon — something like this would be ideal for getting pinged when the agent hits a wall rather than having to babysit it.)</p>
+<p><strong>Generalization failures:</strong> Claude often won’t take a skill you’ve given it in one context and apply it elsewhere. If you say “the keyboard-hiding function is broken on screens X, Y, and Z,” it will often fix only those three screens rather than inspecting <em>all</em> screens for the same issue. Adding “generalize the instructions I give you” to <code>claude.md</code> helps but doesn’t fully solve this. Expect to prompt for generalization more than you would with a competent engineer.</p>
+<hr>
+</section>
+<section id="command-scoping" class="level2">
+<h2 class="anchored" data-anchor-id="command-scoping">5. Command Scoping</h2>
+<p>It’s critical that subagents use <strong>native Claude Code tools</strong> rather than arbitrarily powerful command-line tools like <code>sed</code>. Powerful tools are likely to trigger human-review prompts, which is death for an automated system you want to leave running for hours.</p>
+<p>If a subagent hits permission issues, the review agent should first try spinning up a <strong>new agent for the same task with elevated permissions</strong>, passing along context from the old agent’s trajectory so it doesn’t have to rerun everything. If that still fails, the review agent should handle the task itself between steps. If <em>that</em> triggers a human input request, the review agent should flag it prominently — in the final paragraphs sent to the user and in the summary log, not buried in mid-trajectory output. The user can then either update Claude Code’s permissions (if reasonable) or work with the model to find a more restricted alternative.</p>
+<p>You may also want to ban certain tools for other reasons, e.g., reading long files that explode context lengths. In these cases, <strong>build custom tools</strong> that let the model access the information more efficiently (and optionally build yourself a simple FastAPI frontend to explore the same data).</p>
+<p>For example, here’s what this looks like in practice for one of my projects — a debate/AI safety research codebase where reading transcript and evaluation files directly would blow up the context window. Near the top of the project’s <code>CLAUDE.md</code>:</p>
+<pre><code>**NEVER use the Explore agent, Task tool with Explore, or direct file reads
+for transcript/evaluation tasks.**
+
+ALWAYS use these CLI tools instead:
+
+# Set this prefix for all commands
+UV="INPUT_ROOT=. SRC_ROOT=. uv run python"
+
+# Transcript counts and summary
+$UV tools/transcript_viewer/list_transcripts.py --run-id "&lt;run&gt;" --summary
+
+# Unevaluated transcripts
+$UV tools/transcript_viewer/list_transcripts.py --run-id "&lt;run&gt;" --status unevaluated
+
+# Evaluations filtered by review status
+$UV tools/transcript_viewer/list_evaluations.py --run-id "&lt;run&gt;" --status needs_cc_subagent_review
+
+# View evaluation content (NEVER read .json files directly)
+$UV tools/transcript_viewer/show_content.py --run-id "&lt;run&gt;" --filename "&lt;file&gt;" --show all</code></pre>
+<hr>
+</section>
+<section id="areas-id-love-input-on" class="level2">
+<h2 class="anchored" data-anchor-id="areas-id-love-input-on">Areas I’d Love Input On</h2>
+<p>There are two topics I think are valuable but don’t have enough experience with to write about authoritatively:</p>
 <ul>
-<li><p>The Chance of Rainfall 降雨機率 has gotten universal acclaim from everyone I’ve shown it to thus far. “Why can’t Americans make more songs like this?” was my dad’s reaction. Its jazz-inspired instrumentals are as strong as its duet vocals and makes a great introduction to this genre. <a href="https://open.spotify.com/track/3OS5IhOdUFyXzhZvuNCjgN?si=6255da935ca5460e">Spotify</a>, <a href="https://www.youtube.com/watch?v=3UYOS8Pcsks">YouTube</a></p></li>
-<li><p>Safety Limit 安全範圍 weaves dramatic guitar riffs and drum rhythms together with a violin part and the singers’ more delicate voices. <a href="https://open.spotify.com/track/0TMkc0N4NlnaEC6HlLPqpf?si=92098712a22540c1">Spotify</a>, <a href="https://www.youtube.com/watch?v=IhKMtzaAHxA">YouTube</a></p></li>
-<li><p>Spark Fades 容易被厭倦的時刻 ponders the longevity of the speaker’s relationship with his significant other. It begins simply with vocals and piano but gradually evolves into an intense guitar and drum-driven climax. <a href="https://open.spotify.com/track/1LYdQTvJRRYlkj7hZq0VVT?si=8576b617473a4b07">Spotify</a>, <a href="https://www.youtube.com/watch?v=UuYiB4Inykc">YouTube</a></p></li>
+<li><strong>Managing agentic teams.</strong> Most of this post is about one human coordinating one review agent and its subagents. What changes when you have multiple review agents working on different parts of a project simultaneously? How do you handle conflicts, keep specs consistent, and avoid duplicated work at that scale?</li>
+<li><strong>Managing Claude Code while doing other things.</strong> Right now, getting the most out of this workflow still requires more babysitting than I’d like. Notification systems, mobile communication (e.g., a Claude Code WhatsApp integration — there’s an MCP server for this I haven’t tested yet), and other “async oversight” patterns seem important but underexplored. How do people stay in the loop without staying at their desk?</li>
 </ul>
+<p>If you’ve figured out good practices for either of these, I’d be very interested to hear about them.</p>
+<hr>
+<p><em>The meta-principle across all of this: treat the review agent as a manager, not a laborer. Offload execution to subagents. Persist knowledge in specs and skills. Automate your own role out of the loop as much as possible. The ideal state is one where you check in, read a summary, and everything is already done correctly.</em></p>
 
 
 </section>
