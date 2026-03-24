@@ -28,7 +28,7 @@ AI Researcher supported by Coefficient Giving
 
 ## About me
 
-I am an independent AI researcher supported by Coefficient Giving, studying scalable oversight, AI debate, and control. I'm interested in faithful training processes, legible model reasoning, and extending advances in problem solving beyond verifiable domains.
+I am an AI researcher supported by Coefficient Giving, studying scalable oversight, AI debate, and control. I'm interested in faithful training processes, legible model reasoning, and extending advances in problem solving beyond verifiable domains.
 
 Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) and founding engineer at [Acaceta](https://acaceta.com). I studied data science, mathematics, and Chinese at UC Berkeley (magna cum laude, 3.98/4.00, Phi Beta Kappa).
 
