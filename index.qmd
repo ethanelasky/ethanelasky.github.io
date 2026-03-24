@@ -40,7 +40,7 @@ Outside of research, I enjoy reading, road biking, surfing, and playing pickleba
 
 **AI Debate for Scalable Oversight** | 2025–present
 : *Independent · Remote*
-: Studying debate as a mechanism for AI control and scalable oversight, supported by Open Philanthropy.
+: Studying debate as a mechanism for AI control and scalable oversight, supported by Coefficient Giving (formerly Open Philanthropy). [Testing Generative Debate on Coding and Reasoning Tasks](https://www.lesswrong.com/posts/kQCLPighFvb4ChHtu/inference-time-generative-debates-on-coding-and-reasoning) (with Frank Nakasako).
 
 **Reasoning Training & Evidence-Based QA** | 2024–2025
 : *Advisor: Lun-Wei Ku · Academia Sinica, Taipei*
