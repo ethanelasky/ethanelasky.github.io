@@ -30,3 +30,38 @@ $code-block-bg: $light-gray; // code block background color
 
 // Navbar customization
 $navbar-padding-y: 70;
+
+/*-- scss:rules --*/
+
+.profile-sidebar {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 80px;
+  align-self: start;
+
+  img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-link {
+    display: block;
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+}

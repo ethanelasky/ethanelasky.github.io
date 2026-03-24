@@ -1,0 +1,86 @@
+/*-- scss:defaults --*/
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=IM+Fell+DW+Pica&family=IM+Fell+English&display=swap');
+
+// Colors — Clean Minimal
+$dark-gray: #333;
+$medium-gray: #666;
+$light-gray: #f5f5f5;
+$link-accent: #5c7a99;
+
+// Base document colors
+$navbar-bg: #fff;
+$navbar-fg: $dark-gray;
+$navbar-hl: $link-accent;
+$body-bg: #fff;
+$body-color: $dark-gray;
+$footer-bg: #fafafa;
+$link-color: $link-accent;
+
+// Inline code
+$code-bg: $light-gray;
+$code-color: $dark-gray;
+
+// Code blocks
+$code-block-bg: $light-gray;
+
+// Font size
+$font-size-base: 1.1rem;
+
+// Navbar customization
+$navbar-padding-y: 70;
+
+/*-- scss:rules --*/
+
+.navbar {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.profile-sidebar {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 80px;
+  align-self: start;
+
+  img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    color: $medium-gray;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-link {
+    display: block;
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+}
+
+.g-col-md-9 {
+  padding-right: 15%;
+}
+
+// Ensure listing post titles use accent color
+.quarto-listing .listing-title,
+.quarto-listing a {
+  color: $link-accent;
+}
+
+.quarto-listing a:hover {
+  color: darken($link-accent, 15%);
+}

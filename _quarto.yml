@@ -20,7 +20,7 @@ website:
 format:
   html:
     theme: 
-      - styles.scss
+      - styles-v1.scss
       - flatly
     toc: false
     mainfont: "EB Garamond"

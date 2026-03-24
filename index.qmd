@@ -1,40 +1,59 @@
 ---
-title: "Ethan Elasky"
-
-about: 
-  template: solana
-  image: headshot.jpg
-  image-shape: rounded
-  image-width: 20em
-  links:
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/ethanelasky/
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/ethanelasky
-    - icon: github
-      text: GitHub
-      href: https://github.com/ethanelasky
-    - icon: envelope
-      text: Email
-      href: mailto:elasky2024@berkeley.edu
+title: ""
+page-layout: full
+toc: false
 ---
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-3 .profile-sidebar}
+
+![](headshot.jpg){.rounded .img-fluid}
+
+### Ethan Elasky
+
+AI Researcher supported by Coefficient Giving
+
+[{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/ethanelasky/){.sidebar-link}
+
+[{{< fa brands twitter >}} Twitter](https://twitter.com/ethanelasky){.sidebar-link}
+
+[{{< fa brands github >}} GitHub](https://github.com/ethanelasky){.sidebar-link}
+
+[{{< fa envelope >}} Email](mailto:elasky2024@berkeley.edu){.sidebar-link}
+
+:::
+
+::: {.g-col-12 .g-col-md-9}
 
 ## About me
 
-I am an independent machine learning researcher supported by Open Philanthropy, studying debate for AI control and scalable oversight.
+I am an independent AI researcher supported by Coefficient Giving, studying scalable oversight, AI debate, and control. I'm interested in faithful training processes, legible model reasoning, and extending advances in problem solving beyond verifiable domains.
 
-Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) in the Natural Language Processing Lab of Professor Lun-Wei Ku (古倫維). I investigated how reasoning training impacts evidence-based question answering, and conducted my work mostly in Mandarin, which I am fluent in.
+Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) and founding engineer at [Acaceta](https://acaceta.com). I studied data science, mathematics, and Chinese at UC Berkeley (magna cum laude, 3.98/4.00, Phi Beta Kappa).
 
-Alongside this research, I was also founding engineer at [Acaceta](https://acaceta.com), which was a knowledge solutions platform for medical sales representatives and doctors.
-
-I earned my bachelor's degree from the University of California, Berkeley, where I graduated magna cum laude (3.98/4.00, ΦΒΚ) with a major in Data Science, a concentration in Applied Mathematics and Modeling, and a minor in Chinese. At Berkeley, I wrote an honors thesis, in which I applied natural language processing (NLP) techniques to quantify bias in Taiwanese media. I was advised by [Lucy Li](https://lucy3.github.io).
-
-At the Haas School of Business, I was a member of [Angus Hildreth](https://www.johnson.cornell.edu/faculty-research/faculty/jdh362/)'s Social Psychology and Business Lab for four semesters (Spring 2022-Spring 2024), where I conducted experiments relating to human values and ethical behavior when they conflicted with organizational pressures.
-
-I also speak Japanese at an intermediate level (enough to navigate daily life in Japan, though not professional settings).
-
-In high school, I was ranked top-50 worldwide in Lincoln-Douglas debate; in college, I coached for two years at DebateDrills, a championship-winning team. I am the author of [*Lincoln Douglas Debate from First Principles*](http://lddebatebook.com/) and a debate blog, which together have helped hundreds of students improve at the activity.
+I am a dual 🇺🇸 🇸🇰 citizen who speaks Mandarin fluently and Japanese at an intermediate level. In high school I was ranked top-50 worldwide in Lincoln-Douglas debate, and I authored [*Lincoln Douglas Debate from First Principles*](http://lddebatebook.com/).
 
 Outside of research, I enjoy reading, road biking, surfing, and playing pickleball, tennis, and golf.
+
+## Projects {#projects}
+
+**AI Debate for Scalable Oversight** | 2025–present
+: *Independent · Remote*
+: Studying debate as a mechanism for AI control and scalable oversight, supported by Open Philanthropy.
+
+**Reasoning Training & Evidence-Based QA** | 2024–2025
+: *Advisor: Lun-Wei Ku · Academia Sinica, Taipei*
+: Investigated how reasoning training impacts evidence-based question answering at Academia Sinica, in the NLP Lab of Professor Lun-Wei Ku. Role in Mandarin Chinese.
+
+**Quantifying Bias in Taiwanese Media** | 2023–2024
+: *Advisor: [Lucy Li](https://lucy3.github.io) · UC Berkeley*
+: Honors thesis applying NLP techniques to measure bias in Taiwanese media coverage. Includes an [interactive topic model visualization](projects/tmc-interactives/tmc_10_topic_visualization_gensim.html).
+
+**Lincoln Douglas Debate from First Principles** | 2022
+: *Independent · Berkeley, CA*
+: Authored a [textbook](http://lddebatebook.com/) on Lincoln-Douglas debate that has helped hundreds of students improve at the activity.
+
+:::
+
+:::
