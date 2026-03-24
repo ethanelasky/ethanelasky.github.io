@@ -17,6 +17,8 @@ website:
         href: https://twitter.com/ethanelasky
     pinned: false
 
+  description: "Ethan Elasky — AI researcher studying scalable oversight, debate, and control."
+
 format:
   html:
     theme: 

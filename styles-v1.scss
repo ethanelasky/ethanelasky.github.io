@@ -40,9 +40,12 @@ $navbar-padding-y: 70;
 .profile-sidebar {
   text-align: center;
   padding: 1.5rem 1rem;
-  position: sticky;
-  top: 80px;
-  align-self: start;
+
+  @media (min-width: 768px) {
+    position: sticky;
+    top: 80px;
+    align-self: start;
+  }
 
   img {
     width: 160px;
@@ -72,7 +75,9 @@ $navbar-padding-y: 70;
 }
 
 .g-col-md-9 {
-  padding-right: 15%;
+  @media (min-width: 768px) {
+    padding-right: 15%;
+  }
 }
 
 // Ensure listing post titles use accent color

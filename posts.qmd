@@ -1,6 +1,6 @@
 ---
-title: "Ethan Elasky's Blog"
-subtitle: "Thoughts about data science, Lincoln-Douglas debate, and more."
+title: "Blog"
+subtitle: "Thoughts on AI safety, debate, and data science."
 listing:
   sort: "date desc"
   type: default
