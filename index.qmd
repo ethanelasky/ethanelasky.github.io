@@ -36,21 +36,21 @@ I am a dual 🇺🇸 🇸🇰 citizen who speaks Mandarin fluently and Japanese 
 
 Outside of research, I enjoy reading, road biking, surfing, and playing pickleball, tennis, and golf.
 
-## Projects {#projects}
+## Selected Projects {#projects}
 
-**[Palaestra Research](https://palaestraresearch.org)** | 2026–present
-: *Co-founder · Remote*
-: Co-founded an independent nonprofit advancing the empirical science of scalable oversight: debate, consultancy, and the protocols that let weaker judges reliably supervise stronger models.
-
-**AI Debate for Scalable Oversight** | 2025–present
+**[When does debate help a weak judge? Evidence from code and logic](https://palaestraresearch.org/outputs/2026-debate-code-logic/)** | 2026
 : *Palaestra Research · Remote*
-: Studying debate as a mechanism for AI control and scalable oversight, supported by Coefficient Giving (formerly Open Philanthropy). Selected writeups (with Frank Nakasako): [When does debate help a weak judge? Evidence from code and logic](https://palaestraresearch.org/outputs/2026-debate-code-logic/) and [Inference-time Generative Debates on Coding and Reasoning Tasks for Scalable Oversight](https://palaestraresearch.org/outputs/2026-inference-time-generative-debates/).
+: With Frank Nakasako and Naman Goyal. When an independent critic improves a weak judge's reward labels on code and logic tasks, and when it does not, across five model pairings.
 
-**Reasoning Training & Evidence-Based QA** | 2024–2025
+**[Inference-time Generative Debates on Coding and Reasoning Tasks for Scalable Oversight](https://palaestraresearch.org/outputs/2026-inference-time-generative-debates/)** | 2026
+: *Palaestra Research · Remote*
+: With Frank Nakasako. Generative debate versus consultancy on coding and reasoning tasks with verifiable ground truth; introduces the cleaned BigCodeBench+ benchmark. Supported by Coefficient Giving (formerly Open Philanthropy).
+
+**Reasoning Training & Evidence-Based QA** | 2025
 : *Advisor: Lun-Wei Ku · Academia Sinica, Taipei*
 : Investigated how reasoning training impacts evidence-based question answering at Academia Sinica, in the NLP Lab of Professor Lun-Wei Ku. Role in Mandarin Chinese.
 
-**Quantifying Bias in Taiwanese Media** | 2023–2024
+**Quantifying Bias in Taiwanese Media** | 2024
 : *Advisor: [Lucy Li](https://lucy3.github.io) · UC Berkeley*
 : Honors thesis applying NLP techniques to measure bias in Taiwanese media coverage. Includes an [interactive topic model visualization](projects/tmc-interactives/tmc_10_topic_visualization_gensim.html).
 
