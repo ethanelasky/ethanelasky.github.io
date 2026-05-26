@@ -30,7 +30,7 @@ Co-founder, [Palaestra Research](https://palaestraresearch.org)
 
 I am an AI researcher and co-founder of [Palaestra Research](https://palaestraresearch.org), an independent nonprofit studying scalable oversight: the protocols, evaluations, and training methods that let weaker judges supervise stronger models. My work centers on AI debate, faithful reward labeling, legible model reasoning, and extending advances in problem solving beyond verifiable domains. I am currently supported by Coefficient Giving.
 
-Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) and founding engineer at [Acaceta](https://acaceta.com). I studied data science, mathematics, and Chinese at UC Berkeley (magna cum laude, 3.98/4.00, Phi Beta Kappa).
+Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) (role in Chinese) and founding engineer at [Acaceta](https://acaceta.com). I studied data science, mathematics, and Chinese at UC Berkeley (magna cum laude, 3.98/4.00, Phi Beta Kappa).
 
 I am a dual 🇺🇸 🇸🇰 citizen who speaks Mandarin fluently and Japanese at an intermediate level. In high school I was ranked top-50 worldwide in Lincoln-Douglas debate, and I authored [*Lincoln Douglas Debate from First Principles*](http://lddebatebook.com/).
 
