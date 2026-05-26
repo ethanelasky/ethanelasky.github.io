@@ -12,7 +12,7 @@ toc: false
 
 ### Ethan Elasky
 
-AI Researcher supported by Coefficient Giving
+Co-founder, [Palaestra Research](https://palaestraresearch.org)
 
 [{{< fa brands linkedin >}} LinkedIn](https://www.linkedin.com/in/ethanelasky/){.sidebar-link}
 
@@ -28,7 +28,7 @@ AI Researcher supported by Coefficient Giving
 
 ## About me
 
-I am an AI researcher supported by Coefficient Giving, studying scalable oversight, AI debate, and control. I'm interested in faithful training processes, legible model reasoning, and extending advances in problem solving beyond verifiable domains.
+I am an AI researcher and co-founder of [Palaestra Research](https://palaestraresearch.org), an independent nonprofit studying scalable oversight: the protocols, evaluations, and training methods that let weaker judges supervise stronger models. My work centers on AI debate and control, faithful training processes, legible model reasoning, and extending advances in problem solving beyond verifiable domains. I have been supported by Coefficient Giving (formerly Open Philanthropy).
 
 Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) and founding engineer at [Acaceta](https://acaceta.com). I studied data science, mathematics, and Chinese at UC Berkeley (magna cum laude, 3.98/4.00, Phi Beta Kappa).
 
@@ -38,9 +38,13 @@ Outside of research, I enjoy reading, road biking, surfing, and playing pickleba
 
 ## Projects {#projects}
 
+**[Palaestra Research](https://palaestraresearch.org)** | 2026–present
+: *Co-founder · Remote*
+: Co-founded an independent nonprofit advancing the empirical science of scalable oversight: debate, consultancy, and the protocols that let weaker judges reliably supervise stronger models.
+
 **AI Debate for Scalable Oversight** | 2025–present
-: *Independent · Remote*
-: Studying debate as a mechanism for AI control and scalable oversight, supported by Coefficient Giving (formerly Open Philanthropy). [Testing Generative Debate on Coding and Reasoning Tasks](https://www.lesswrong.com/posts/kQCLPighFvb4ChHtu/inference-time-generative-debates-on-coding-and-reasoning) (with Frank Nakasako).
+: *Palaestra Research · Remote*
+: Studying debate as a mechanism for AI control and scalable oversight, supported by Coefficient Giving (formerly Open Philanthropy). Selected writeups (with Frank Nakasako): [When does debate help a weak judge? Evidence from code and logic](https://palaestraresearch.org/outputs/2026-debate-code-logic/) and [Inference-time Generative Debates on Coding and Reasoning Tasks for Scalable Oversight](https://palaestraresearch.org/outputs/2026-inference-time-generative-debates/).
 
 **Reasoning Training & Evidence-Based QA** | 2024–2025
 : *Advisor: Lun-Wei Ku · Academia Sinica, Taipei*
