@@ -28,7 +28,7 @@ Co-founder, [Palaestra Research](https://palaestraresearch.org)
 
 ## About me
 
-I am an AI researcher and co-founder of [Palaestra Research](https://palaestraresearch.org), an independent nonprofit studying scalable oversight: the protocols, evaluations, and training methods that let weaker judges supervise stronger models. My work centers on AI debate and control, faithful training processes, legible model reasoning, and extending advances in problem solving beyond verifiable domains. I have been supported by Coefficient Giving (formerly Open Philanthropy).
+I am an AI researcher and co-founder of [Palaestra Research](https://palaestraresearch.org), an independent nonprofit studying scalable oversight: the protocols, evaluations, and training methods that let weaker judges supervise stronger models. My work centers on AI debate, faithful reward labeling, legible model reasoning, and extending advances in problem solving beyond verifiable domains. I am currently supported by Coefficient Giving.
 
 Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.edu.tw/en/) and founding engineer at [Acaceta](https://acaceta.com). I studied data science, mathematics, and Chinese at UC Berkeley (magna cum laude, 3.98/4.00, Phi Beta Kappa).
 
