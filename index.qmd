@@ -46,10 +46,6 @@ Outside of research, I enjoy reading, road biking, surfing, and playing pickleba
 : *Palaestra Research · Remote*
 : With Frank Nakasako. Generative debate versus consultancy on coding and reasoning tasks with verifiable ground truth; introduces the cleaned BigCodeBench+ benchmark. Supported by Coefficient Giving (formerly Open Philanthropy).
 
-**Reasoning Training & Evidence-Based QA** | 2025
-: *Advisor: Lun-Wei Ku · Academia Sinica, Taipei*
-: Investigated how reasoning training impacts evidence-based question answering at Academia Sinica, in the NLP Lab of Professor Lun-Wei Ku. Role in Mandarin Chinese.
-
 **Quantifying Bias in Taiwanese Media** | 2024
 : *Advisor: [Lucy Li](https://lucy3.github.io) · UC Berkeley*
 : Honors thesis applying NLP techniques to measure bias in Taiwanese media coverage. Includes an [interactive topic model visualization](projects/tmc-interactives/tmc_10_topic_visualization_gensim.html).
