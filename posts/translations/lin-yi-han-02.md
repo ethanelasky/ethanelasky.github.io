@@ -11,9 +11,11 @@ include-after-body: sidenotes.html
 
 Also note that the interview and synopsis below spoils significant plot events.
 
-Synopsis for those who haven't read the book yet:
+::: {.callout-note collapse="true" appearance="simple" icon="false"}
+## Synopsis for those who haven't read the book yet
 
 Fang Si-Chi and Liu Yi-Ting are little girls who live across from each other and could be twins. With the guidance of Yi-Wen, a refined housewife living a few floors below, the two girls devote themselves to literature. When the girls are in middle school, Lee Guo-Hua, an after-school tutoring center teacher in his fifties who specializes in Chinese Literature, capitalizes on this and offers to review a composition every week with each girl individually. While Lee Guo-Hua actually reviews composition with Yi-Ting, Si-Chi's composition hour is when Lee Guo-Hua rapes her. The girls move to Taipei for high school, and Guo-Hua continues to rape Si-Chi. Meanwhile, Yi-Wen divorces her abusive husband after he nearly kills her and becomes intertwined with Mao-Mao, a soft-spoken jeweler. Most of the story is Yi-Ting reading Si-Chi's diary after Si-Chi has a breakdown and regresses to the mental age of a toddler.
+:::
 
 ---
 
@@ -75,7 +77,7 @@ My conclusion is, I once was seriously obsessed with Eileen Chang. No matter how
 
     Thus, although 痛快 as a compound means 'pleasure', its components can individually mean pain (痛) and pleasure (快), and Lin draws on this tension in the present paragraph.
 
-[^continuing]: i.e., you foresee the pain in continuing, but must continue anyway.
+[^continuing]: i.e., you foresee the pain, but must continue anyway.
 
 [^analects-14]: [*Analects*](https://en.wikipedia.org/wiki/Analects) 14.38 (憲問): a gatekeeper at Stone Gate says of [Confucius](https://en.wikipedia.org/wiki/Confucius) to his disciple [Zilu](https://en.wikipedia.org/wiki/Zhong_You), 「是知其不可而為之者與？」 "Is he the one who knows it can't be done and yet does it anyway?" ([Wikisource](https://zh.wikisource.org/wiki/論語/憲問第十四)). Lin quotes the phrase as it is orally known, 知其不可為而為之. She calls this a "misuse" because the original is a recluse's jibe at Confucius for persisting in trying to set the world right when he knows the age is past saving (so [Zhu Xi](https://en.wikipedia.org/wiki/Zhu_Xi)'s commentary, quoting Hu Yin: 「晨門知世之不可而不為，故以是譏孔子」), not a description of a reader who knows she should look away and keeps reading anyway.
 

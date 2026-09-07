@@ -126,6 +126,7 @@ main.sn-animate .sn-note > div[id^="fn"] { transition: max-height .2s ease; }
   function schedule() { clearTimeout(timer); timer = setTimeout(layout, 60); }
   layout();
   window.addEventListener('resize', schedule);
+  ['shown.bs.collapse','hidden.bs.collapse'].forEach(function (ev) { document.addEventListener(ev, function () { animate(function () { if (desktop) place(); else schedule(); }); }); });
   main.querySelectorAll('img').forEach(function (img) { if (!img.complete) img.addEventListener('load', schedule); });
   // Reveal once fonts and images are in, so notes don't visibly jump around after load.
   var ready = [];
