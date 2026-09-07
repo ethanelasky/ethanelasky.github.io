@@ -5,7 +5,7 @@ title: "About *Fang Si-Chi's First Love Paradise*, What I Want to Say to the Rea
 description: "A translation of Lin Yi-Han's May 2017 talk on her novel"
 image: "fang-si-chi-cover.jpg"
 ---
-*Below is my translation of an interview with Lin Yi-Han discussing about her novel Fang Si-Chi's First Love Paradise. The first draft of the translation was mine, with small edits on subsequent drafts from Claude Fable 5.1. I [read](https://www.goodreads.com/user/show/119697841) in the original Chinese. I progressed the first third of this book little by little in Fall 2025, and then the rest all at once during the summer of 2026. I haven't read the English translation by Jenna Tang, and all translations of the original text are my own, though I follow that translation's convention when translating names. Note that this translation is cleaner, and thus hopefully more readable, than the original oral transcript.*
+*Below is my translation of an interview with Lin Yi-Han discussing her novel Fang Si-Chi's First Love Paradise. The first draft of the translation was mine, with small edits on subsequent drafts from Claude Fable 5.1. I [read](https://www.goodreads.com/user/show/119697841) in the original Chinese. I progressed the first third of this book little by little in Fall 2025, and then the rest all at once during the summer of 2026. I haven't read the English translation by Jenna Tang, and all translations of the original text are my own, though I follow that translation's convention when translating names. Note that this translation is cleaner, and thus hopefully more readable, than the original oral transcript.*
 
 ---
 
