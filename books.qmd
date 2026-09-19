@@ -8,9 +8,10 @@ css: reading.css
 ### On ratings
 Scores indicate “do I think should you read this” and not “is this quality”. There is plenty of good art I don't personally like, and you probably have some gauge of the latter already, so all I can offer is the former.
 
-I try to average ratings at ⭐️⭐️⭐️, following [Tabelog's](https://tabelog.com/en/) rating system to avoid compression. 
-- ⭐️: I don't recommend. 
-- ⭐️⭐️: You won't miss much by skipping. 
+I try to average ratings at ⭐️⭐️⭐️, following [Tabelog's](https://tabelog.com/en/) rating system to avoid compression.
+
+- ⭐️: I don't recommend.
+- ⭐️⭐️: You won't miss much by skipping.
 - ⭐️⭐️⭐️ and above: Recommend.
 
 Books I've read, most recently finished first; books without a finish date follow. [See my shelf on Goodreads](https://www.goodreads.com/review/list/119697841?shelf=read&sort=date_read&order=d).
