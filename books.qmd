@@ -11,7 +11,7 @@ Scores indicate “do I think should you read this” and not “is this quality
 I try to average ratings at ⭐️⭐️⭐️, following [Tabelog's](https://tabelog.com/en/) rating system to avoid compression.
 
 - ⭐️: I don't recommend.
-- ⭐️⭐️: You won't miss much by skipping.
+- ⭐️⭐️/No rating: You won't miss much by skipping.
 - ⭐️⭐️⭐️ and above: Recommend.
 
 Books I've read, most recently finished first; books without a finish date follow. [See my shelf on Goodreads](https://www.goodreads.com/review/list/119697841?shelf=read&sort=date_read&order=d).
