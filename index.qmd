@@ -34,7 +34,7 @@ Previously, I was a Research Assistant at [Academia Sinica](https://www.sinica.e
 
 I am a dual 🇺🇸 🇸🇰 citizen who speaks Mandarin fluently and Japanese at an intermediate level. In high school I was ranked top-50 worldwide in Lincoln-Douglas debate, and I authored [*Lincoln Douglas Debate from First Principles*](http://lddebatebook.com/).
 
-Outside of research, I enjoy reading, road biking, surfing, and playing pickleball, tennis, and golf.
+Outside of research, I enjoy [reading](books.qmd), road biking, surfing, and playing pickleball, tennis, and golf.
 
 ## Selected Projects {#projects}
 

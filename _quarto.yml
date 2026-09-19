@@ -11,6 +11,8 @@ website:
         text: About
       - href: posts.qmd
         text: Blog
+      - href: books.qmd
+        text: Books
       - icon: github
         href: https://github.com/ethanelasky
       - icon: twitter
