@@ -47,8 +47,7 @@
     previewTitle.textContent = cover.querySelector('img')?.alt || 'Book review';
     previewEnglishTitle.textContent = englishTitles[previewTitle.textContent] || '';
     previewEnglishTitle.hidden = !previewEnglishTitle.textContent;
-    previewText.textContent = review?.textContent.trim() || '';
-    previewText.hidden = !previewText.textContent;
+    previewText.textContent = review?.textContent.trim() || 'No review yet';
     cover.removeAttribute('title');
     cover.setAttribute('aria-describedby', preview.id);
     preview.hidden = false;
