@@ -8,6 +8,19 @@
   const next = shelf.querySelector('[data-page="next"]');
   let size = new URL(location.href).searchParams.get('grid') === '7' ? 7 : 5;
   let page = 0;
+  const compactLayout = matchMedia('(max-width: 700px)');
+  const tapPreview = matchMedia('(hover: none), (max-width: 700px)');
+  const dialog = document.querySelector('#book-review-dialog');
+
+  function bookDetails(cover) {
+    const book = cover.closest('.gr_custom_each_container_1788931927');
+    const title = cover.querySelector('img')?.alt || 'Book review';
+    return {
+      title,
+      englishTitle: englishTitles[title] || '',
+      review: book.querySelector('.gr_custom_review_1788931927')?.textContent.trim() || 'No review yet',
+    };
+  }
 
   // English edition titles for the foreign-language titles on this shelf.
   const englishTitles = {
@@ -42,12 +55,11 @@
     clearTimeout(closeTimer);
     activeCover?.removeAttribute('aria-describedby');
     activeCover = cover;
-    const book = cover.closest('.gr_custom_each_container_1788931927');
-    const review = book.querySelector('.gr_custom_review_1788931927');
-    previewTitle.textContent = cover.querySelector('img')?.alt || 'Book review';
-    previewEnglishTitle.textContent = englishTitles[previewTitle.textContent] || '';
+    const details = bookDetails(cover);
+    previewTitle.textContent = details.title;
+    previewEnglishTitle.textContent = details.englishTitle;
     previewEnglishTitle.hidden = !previewEnglishTitle.textContent;
-    previewText.textContent = review?.textContent.trim() || 'No review yet';
+    previewText.textContent = details.review;
     cover.removeAttribute('title');
     cover.setAttribute('aria-describedby', preview.id);
     preview.hidden = false;
@@ -62,8 +74,28 @@
     return target.closest('.gr_custom_book_container_1788931927 a');
   }
 
+  shelf.addEventListener('click', event => {
+    const cover = coverFor(event.target);
+    if (!cover || !tapPreview.matches || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    hidePreview();
+    const details = bookDetails(cover);
+    dialog.querySelector('h2').textContent = details.title;
+    const englishTitle = dialog.querySelector('.book-review-english-title');
+    englishTitle.textContent = details.englishTitle;
+    englishTitle.hidden = !details.englishTitle;
+    dialog.querySelector('.book-dialog-review').textContent = details.review;
+    dialog.querySelector('.book-dialog-link').href = cover.href;
+    dialog.showModal();
+  });
+  dialog.querySelector('button').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', event => {
+    const rect = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) dialog.close();
+  });
+
   shelf.addEventListener('pointerover', event => {
-    if (event.pointerType === 'touch') return;
+    if (event.pointerType === 'touch' || tapPreview.matches) return;
     const cover = coverFor(event.target);
     if (cover && !cover.contains(event.relatedTarget)) showPreview(cover);
   });
@@ -72,6 +104,7 @@
     if (cover && !cover.contains(event.relatedTarget)) closeTimer = setTimeout(hidePreview, 150);
   });
   shelf.addEventListener('focusin', event => {
+    if (tapPreview.matches) return;
     const cover = coverFor(event.target);
     if (cover) showPreview(cover);
   });
@@ -95,6 +128,9 @@
     shelf.dataset.grid = String(size);
     books.forEach((book, index) => {
       book.hidden = index < start || index >= start + perPage;
+      const cover = book.querySelector('.gr_custom_book_container_1788931927 a');
+      if (tapPreview.matches) cover?.setAttribute('aria-haspopup', 'dialog');
+      else cover?.removeAttribute('aria-haspopup');
       const rating = book.querySelector('.gr_custom_rating_1788931927');
       if (!rating) return;
       const stars = rating.querySelectorAll('img');
@@ -109,7 +145,13 @@
       }
     });
 
-    layouts.forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.gridSize) === size)));
+    shelf.querySelector('.books-layout').setAttribute('aria-label', compactLayout.matches ? 'Books per page' : 'Grid size');
+    shelf.querySelector('.books-layout > span').textContent = compactLayout.matches ? 'Per page' : 'Grid';
+    layouts.forEach(button => {
+      const grid = Number(button.dataset.gridSize);
+      button.textContent = compactLayout.matches ? String(grid * grid) : `${grid} × ${grid}`;
+      button.setAttribute('aria-pressed', String(grid === size));
+    });
     shelf.querySelector('.books-count').textContent = books.length
       ? `${start + 1}–${Math.min(start + perPage, books.length)} of ${books.length} books`
       : 'No books yet';
@@ -139,5 +181,7 @@
 
   // Goodreads replaces the saved shelf after its script loads.
   new MutationObserver(render).observe(widget, {childList: true});
+  compactLayout.addEventListener('change', render);
+  tapPreview.addEventListener('change', render);
   render();
 })();
