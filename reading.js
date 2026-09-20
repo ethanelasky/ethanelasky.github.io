@@ -9,14 +9,24 @@
   let size = new URL(location.href).searchParams.get('grid') === '7' ? 7 : 5;
   let page = 0;
 
+  // English edition titles for the foreign-language titles on this shelf.
+  const englishTitles = {
+    '房思琪的初戀樂園': 'Fang Si-Chi’s First Love Paradise',
+    '阿Q正传': 'The True Story of Ah Q',
+    '孔乙己': 'Kong Yiji',
+  };
+
   const preview = document.createElement('div');
   preview.id = 'book-review-preview';
   preview.className = 'book-review-preview';
   preview.setAttribute('role', 'tooltip');
   preview.hidden = true;
   const previewTitle = document.createElement('strong');
+  const previewEnglishTitle = document.createElement('span');
+  previewEnglishTitle.className = 'book-review-english-title';
+  previewEnglishTitle.lang = 'en';
   const previewText = document.createElement('p');
-  preview.append(previewTitle, previewText);
+  preview.append(previewTitle, previewEnglishTitle, previewText);
   document.body.append(preview);
   let activeCover;
   let closeTimer;
@@ -35,7 +45,10 @@
     const book = cover.closest('.gr_custom_each_container_1788931927');
     const review = book.querySelector('.gr_custom_review_1788931927');
     previewTitle.textContent = cover.querySelector('img')?.alt || 'Book review';
-    previewText.textContent = review?.textContent.trim() || 'No written review yet.';
+    previewEnglishTitle.textContent = englishTitles[previewTitle.textContent] || '';
+    previewEnglishTitle.hidden = !previewEnglishTitle.textContent;
+    previewText.textContent = review?.textContent.trim() || '';
+    previewText.hidden = !previewText.textContent;
     cover.removeAttribute('title');
     cover.setAttribute('aria-describedby', preview.id);
     preview.hidden = false;
