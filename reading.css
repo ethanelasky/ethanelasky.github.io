@@ -120,8 +120,16 @@
   text-align: left;
 }
 
-.book-review-preview[hidden] {
+.book-review-preview[hidden],
+.book-review-preview [hidden] {
   display: none;
+}
+
+.book-review-english-title {
+  display: block;
+  margin-top: 0.15rem;
+  color: #666;
+  font-size: 0.95rem;
 }
 
 .book-review-preview p {
