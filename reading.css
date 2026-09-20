@@ -38,6 +38,9 @@
   padding: 0.35rem 0.75rem;
   font: inherit;
   cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
 }
 
 .bookshelf button[aria-pressed="true"] {
@@ -121,7 +124,8 @@
 }
 
 .book-review-preview[hidden],
-.book-review-preview [hidden] {
+.book-review-preview [hidden],
+.book-review-dialog [hidden] {
   display: none;
 }
 
@@ -137,6 +141,58 @@
   white-space: pre-line;
 }
 
+.book-review-dialog {
+  position: fixed;
+  inset: auto 0 0;
+  margin: auto auto 0;
+  width: min(100%, 32rem);
+  max-width: 100%;
+  max-height: 85vh;
+  max-height: 85dvh;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.25rem 1.25rem max(1.25rem, env(safe-area-inset-bottom));
+  border: 0;
+  border-radius: 16px 16px 0 0;
+  background: #fff;
+  color: #333;
+  line-height: 1.5;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.book-review-dialog::backdrop {
+  background: #0006;
+}
+
+body:has(.book-review-dialog[open]) {
+  overflow: hidden;
+}
+
+.book-review-dialog h2 {
+  clear: both;
+  margin: 0 0 0.25rem;
+  font-size: 1.3rem;
+  line-height: 1.35;
+}
+
+.book-dialog-close {
+  display: block;
+  margin: 0 0 0.75rem auto;
+}
+
+.book-dialog-review {
+  margin: 1rem 0;
+  white-space: pre-line;
+}
+
+.book-dialog-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .bookshelf .gr_custom_header_1788931927,
 .bookshelf .gr_custom_container_1788931927 > br,
 .bookshelf .gr_custom_container_1788931927 > center,
@@ -148,6 +204,7 @@
 .books-pagination {
   justify-content: center;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 700px) {
@@ -155,6 +212,10 @@
   .bookshelf[data-grid="7"] {
     --columns: 3;
     --cover-height: 110px;
+  }
+
+  .books-toolbar {
+    gap: 0.5rem 1rem;
   }
 }
 
