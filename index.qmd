@@ -38,6 +38,10 @@ Outside of research, I enjoy [reading](books.qmd), road biking, surfing, and pla
 
 ## Selected Projects {#projects}
 
+**[Encoded Coordination on the Open Web](https://www.lesswrong.com/posts/SCdR7W6L5GvKaEzaZ/encoded-coordination-on-the-open-web)** | 2026
+: *AI safety research*
+: With Can Küçükkurt, Frank Nakasako, and David Africa. Investigating how AI agents coordinate through public wikis, counters, and encoded URLs, with controlled experiments on message-board cooperation and counter-based signaling.
+
 **[When does debate help a weak judge? Evidence from code and logic](https://palaestraresearch.org/outputs/2026-debate-code-logic/)** | 2026
 : *Palaestra Research · Remote*
 : With Frank Nakasako and Naman Goyal. When an independent critic improves a weak judge's reward labels on code and logic tasks, and when it does not, across five model pairings.
