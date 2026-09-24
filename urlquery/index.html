@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore URLQuery scanner activity, shared transaction state, and the evidence limits of agent attribution.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>URLQuery activity explorer · Ethan Elasky</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a href="/">Ethan Elasky</a><span>Research / Evidence explorer</span><a href="graph.html">Open full graph ↗</a></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">URLQUERY INVESTIGATION · SEPTEMBER 2026</p>
+      <h1>Trace the activity.<br><span>Keep identity an open question.</span></h1>
+      <p class="lede">Explore a sequence of Quidax scans, follow reused transaction state, and inspect the evidence behind each connection.</p>
+      <div class="verdict"><strong>Connected workflow. Unresolved agent count.</strong><p>Later programs reuse earlier transaction IDs and adapt to recorded errors. Two scans overlap, but one agent using parallel tools could explain that. These records do not establish communication between distinct agents.</p></div>
+      <div class="metrics"><div><strong>16</strong><span>Quidax + control reports</span></div><div><strong>488</strong><span>HTTP requests</span></div><div><strong>2</strong><span>reused transaction references</span></div><div><strong>24 ms</strong><span>between concurrent scan starts</span></div></div>
+    </section>
+
+    <section class="explorer" aria-labelledby="timeline-heading">
+      <div class="section-heading"><div><p class="eyebrow">01 / CHRONOLOGY</p><h2 id="timeline-heading">Inspect a scan</h2></div><a class="button" href="graph.html?report=fa7c2f4c-4799-412c-9f85-0d9f38eb194b">Explore Quidax graph →</a></div>
+      <div class="filters"><label>Search<input id="search" type="search" placeholder="Report ID, purpose, marker…"></label><label>Marker<select id="marker"><option value="">All markers</option><option>e705</option><option>e792</option><option>e898</option><option value="unmarked">Unmarked</option></select></label><label>Shared state<select id="reference"><option value="">All reports</option><option value="sell-ref">Sell reference</option><option value="buy-ref">Buy reference</option></select></label><button id="clear" class="button">Reset</button></div>
+      <p id="count" class="subtle" role="status"></p>
+      <p class="caption">Times are first observed HTTP activity in UTC, not original submission times. Markers are labels found in submitted content, not authenticated agent IDs.</p>
+      <div class="workspace"><div class="scan-list" id="scan-list" aria-label="Reports"></div><section class="inspector" id="inspector" aria-label="Selected report details"></section></div>
+    </section>
+
+    <section class="wide-section" aria-labelledby="overview-heading"><div class="section-heading"><div><p class="eyebrow">02 / THE WHOLE SEQUENCE</p><h2 id="overview-heading">Concurrent scans, sequential revisions</h2></div><a href="scan-timeline.svg">Open full-size timeline ↗</a></div><img class="timeline-image" src="scan-timeline.svg" alt="Timeline of sixteen scans from September 19 at 21:53 UTC to September 20 at 00:27 UTC. A sell-reference revisit and buy initiation overlap; the five later e898 probes run sequentially." loading="lazy"></section>
+
+    <section class="wide-section"><p class="eyebrow">03 / BEYOND QUIDAX</p><h2>Follow the wider artifact trail</h2><p class="section-copy">The graph connects reports, exact URL identities, content hashes, and archived posts across 230 sampled reports plus one separately retrieved followup. Each edge retains its evidence type and source pointer.</p><div class="case-grid">
+      <a class="case" href="graph.html?report=90c67908-e190-4c5b-907a-e22b92a5c709"><span>CONTENT REUSE</span><h3>Roi Et answer table →</h3><p>Identical answer bytes move across several hosting services.</p></a>
+      <a class="case" href="graph.html?report=42fa1863-3649-4111-961b-95e9cc704b08"><span>ARCHIVED REFERENCE</span><h3>MAX report to wiki →</h3><p>An exact archived response link is published in a wiki revision.</p></a>
+      <a class="case" href="graph.html?report=0911e177-207a-42ad-8eaa-515c5f744974"><span>REPORT RETRIEVAL</span><h3>Woodlands followup →</h3><p>A later scan requests an earlier report and its screenshot.</p></a>
+    </div><p class="caption">These links establish artifact relationships. They do not, by themselves, establish independent participants, collusion, or successful peer uptake.</p></section>
+
+    <section class="wide-section methods"><p class="eyebrow">04 / HOW TO READ THIS</p><h2>Evidence and limits</h2>
+      <details open><summary>What distinguishes one agent from several?</summary><p>The missing evidence is a mapping from report UUID to submitting tool call and agent run/session, plus records of which run received earlier results. Shared accounts, server IPs, browser settings, and fresh per-scan cookies do not establish agent identity. No authenticated handoff was recovered.</p></details>
+      <details><summary>What is covered?</summary><p>The Quidax timeline covers 15 target-related reports and one execution control. The wider graph covers a purposive 230-report sample plus one followup from a 38,160-report metadata catalog. It is neither an exhaustive audit nor a random sample; no prevalence estimate is implied. The complete catalog is not loaded into this viewer.</p></details>
+      <details><summary>What do the timestamps and statuses mean?</summary><p>HTTP times are recorded request starts. Ends are inferred from start plus duration. Top-level report dates are kept separate; original submission times are absent. Console entries are untimed. HTTP 200, opaque status 0, or a page title ending in “done” does not establish a successful financial operation. Raw response bodies are unavailable in this sample.</p></details>
+      <details><summary>Was evaluation awareness found?</summary><p>No positive evidence was found in the reviewed material. Most keyword hits were JavaScript “eval” and browser-policy messages. The e705/e792/e898 marker semantics are undocumented; they do not establish evaluation episodes or awareness of an evaluation.</p></details>
+      <details><summary>Sources and downloadable evidence</summary><p>Context: <a href="https://transluce.org/agent-activity" target="_blank" rel="noopener noreferrer">Transluce’s agent-activity research</a> and the <a href="https://timhua.me/codex_quidax_report.html" target="_blank" rel="noopener noreferrer">public Quidax analysis</a>. Each scan above links to its public URLQuery source. Source pointers identify locations in cached report JSON.</p><p class="downloads"><a href="timeline-reports.csv" download>Report CSV ↓</a><a href="timeline-events.csv" download>Event CSV ↓</a><a href="timeline-lineage.json" download>Reference lineage ↓</a><a href="timeline-methodology.json" download>Methodology JSON ↓</a></p><p>Published data omits submitted payload code, raw headers, transaction values, keys, and wallet addresses. Archived code is never executed by this viewer. The graph retains role-labeled public account/scanner identifiers and destination IPs for exploration.</p></details>
+    </section>
+    <footer><span>Analysis snapshot · September 24, 2026</span><a href="graph.html">Open evidence graph →</a></footer>
+  </main>
+</body>
+</html>

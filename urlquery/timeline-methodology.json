@@ -1,0 +1,41 @@
+{
+  "reports": 16,
+  "http_events": 488,
+  "console_objects": 205,
+  "retained_application_console_objects": 36,
+  "timestamp_discrepancies": [],
+  "original_submission_time_available": false,
+  "console_timestamps_available": false,
+  "first_observed_references": {
+    "sell-ref": {
+      "report_id": "960b3314-f644-4832-a57e-fab108a95678",
+      "reference_alias": "sell-ref",
+      "evidence_role": "scanner_request_contains_reference",
+      "time_utc": "2026-09-19T21:54:12.070Z",
+      "json_pointer": "/http/22/url/addr",
+      "offset": 27,
+      "length": 36,
+      "method": "GET",
+      "status": "200"
+    },
+    "buy-ref": {
+      "report_id": "52d9be69-e168-4c93-b9f7-2f4ab04427a5",
+      "reference_alias": "buy-ref",
+      "evidence_role": "scanner_request_contains_reference",
+      "time_utc": "2026-09-19T22:02:43.446Z",
+      "json_pointer": "/http/2/url/addr",
+      "offset": 27,
+      "length": 36,
+      "method": "GET",
+      "status": "200"
+    }
+  },
+  "limitations": [
+    "HTTP date is request start; inferred end is date + time_used milliseconds, not an independent response timestamp.",
+    "Top-level date is retained as report date; it is not the initial submission timestamp.",
+    "Console entries lack timestamps; do not assign them report dates or fabricated event times.",
+    "Overlap of scanner activity supports concurrent jobs, not necessarily distinct agents.",
+    "Only the specified 16 reports are analyzed; first observed means within this source set.",
+    "Secrets, wallet addresses, transaction values, query strings and raw arbitrary console content are omitted."
+  ]
+}
