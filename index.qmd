@@ -50,10 +50,6 @@ Outside of research, I enjoy [reading](books.qmd), road biking, surfing, and pla
 : *Palaestra Research · Remote*
 : With Frank Nakasako. Generative debate versus consultancy on coding and reasoning tasks with verifiable ground truth; introduces the cleaned BigCodeBench+ benchmark. Supported by Coefficient Giving (formerly Open Philanthropy).
 
-**Quantifying Bias in Taiwanese Media** | 2024
-: *Advisor: [Lucy Li](https://lucy3.github.io) · UC Berkeley*
-: Honors thesis applying NLP techniques to measure bias in Taiwanese media coverage. Includes an [interactive topic model visualization](projects/tmc-interactives/tmc_10_topic_visualization_gensim.html).
-
 **Lincoln Douglas Debate from First Principles** | 2022
 : *Independent · Berkeley, CA*
 : Authored a [textbook](http://lddebatebook.com/) on Lincoln-Douglas debate that has helped hundreds of students improve at the activity.
